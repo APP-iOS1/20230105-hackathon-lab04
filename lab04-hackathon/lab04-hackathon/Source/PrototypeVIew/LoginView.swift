@@ -41,7 +41,7 @@ struct LoginView: View {
     var body: some View {
         VStack {
             Text("PENCHAT")
-                .padding(.bottom,50)
+                .padding(.bottom,150)
                 .font(.title)
             
             
@@ -59,7 +59,7 @@ struct LoginView: View {
                 }
                 .padding(.vertical, 6)
                 .background(Divider(), alignment: .bottom)
-                .padding(.bottom, 4)
+                .padding(.bottom, 12)
                 
                 HStack {
                     Image(systemName: "lock")
@@ -72,7 +72,7 @@ struct LoginView: View {
                 }
                 .padding(.vertical, 6)
                 .background(Divider(), alignment: .bottom)
-                .padding(.bottom, 8)
+                .padding(.bottom, 12)
                 
                 if !viewModel.errorMessage.isEmpty {
                     VStack {
@@ -86,9 +86,10 @@ struct LoginView: View {
                     //Text("계정이 없으신가요?")
                     Button(action: { viewModel.switchFlow() }) {
                         Text("회원가입")
-                            .fontWeight(.semibold)
                         //.foregroundColor(.blue)
+                            .font(.caption)
                     }
+                    
                 }
             }
             
@@ -96,7 +97,7 @@ struct LoginView: View {
                 if viewModel.authenticationState != .authenticating {
                     Text("로그인")
                         .padding(.vertical, 8)
-                        .font(.title)
+                        .font(.title3)
                         //.frame(maxWidth: .infinity)
                         //.foregroundColor(.primary)
                 }
