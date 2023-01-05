@@ -8,57 +8,70 @@
 import SwiftUI
 
 struct FeedMenu: View {
+    
     var body: some View {
+        
         VStack(alignment: .leading) {
+            
             HStack {
-                Image(systemName: "person")
-                    .foregroundColor(.gray)
-                    .imageScale(.large)
+                Image("folder")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20)
+                    
                 Text("전체 게시물")
-                    .foregroundColor(.gray)
-                    .font(.headline)
+                    .font(.cafeHeadline2)
+                
             }.padding(.top, 100)
             
             HStack {
-                Image(systemName: "person")
-                    .foregroundColor(.gray)
-                    .imageScale(.large)
+                Image("folder")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20)
+                
                 Text("풍경 그림")
-                    .foregroundColor(.gray)
-                    .font(.headline)
+                    .font(.cafeHeadline2)
+                
             }.padding(.top, 30)
             
             HStack {
-                Image(systemName: "person")
-                    .foregroundColor(.gray)
-                    .imageScale(.large)
+                Image("folder")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20)
+                
                 Text("캐릭터 그림")
-                    .foregroundColor(.gray)
-                    .font(.headline)
+                    .font(.cafeHeadline2)
+                
             }.padding(.top, 30)
             
             HStack {
-                Image(systemName: "person")
-                    .foregroundColor(.gray)
-                    .imageScale(.large)
+                Image("folder")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20)
+                
                 Text("인물 그림")
-                    .foregroundColor(.gray)
-                    .font(.headline)
+                    .font(.cafeHeadline2)
+                
             }.padding(.top, 30)
             
             HStack {
-                Image(systemName: "person")
-                    .foregroundColor(.gray)
-                    .imageScale(.large)
+                Image("folder")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20)
+                
                 Text("동물 그림")
-                    .foregroundColor(.gray)
-                    .font(.headline)
+                    .font(.cafeHeadline2)
+                
             }.padding(.top, 30)
             Spacer()
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(red: 52/255, green: 52/255, blue: 52/255))
+        .background(Color("background"))
         .edgesIgnoringSafeArea(.all)
     }
 }

@@ -25,41 +25,53 @@ struct FeedView: View {
                 }
             }
         
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                ScrollView {
-                    ForEach(feed.feeds, id: \.self) { feed in
-                        FeedCell(feed: feed)
-                    }
-                }
-                .frame(width: geometry.size.width, height: geometry.size.height)
-                .offset(x: showMenu ? geometry.size.width/2 : 0)
-                .disabled(showMenu ? true : false)
-                if showMenu {
-                    FeedMenu()
-                        .frame(width: geometry.size.width/2)
-                        .transition(.move(edge: .leading))
-                }
-            }
-            .gesture(drag)
-        }
-        
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    withAnimation {
-                        showMenu.toggle()
-                    }
-                } label: {
-                    Image(systemName: "line.3.horizontal")
-                }
-            }
+        ZStack {
             
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    AddFeedView()
-                } label: {
-                    Image(systemName: "plus")
+            Color("background")
+                .ignoresSafeArea()
+            
+            GeometryReader { geometry in
+                ZStack(alignment: .leading) {
+                    ScrollView {
+                        ForEach(feed.feeds, id: \.self) { feed in
+                            FeedCell(feed: feed)
+                        }
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .offset(x: showMenu ? geometry.size.width/2 : 0)
+                    .disabled(showMenu ? true : false)
+                    if showMenu {
+                        FeedMenu()
+                            .frame(width: geometry.size.width/2)
+                            .transition(.move(edge: .leading))
+                    }
+                }
+                .gesture(drag)
+            }
+            .toolbar {
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        withAnimation {
+                            showMenu.toggle()
+                        }
+                    } label: {
+                        Image("line")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        AddFeedView()
+                    } label: {
+                        Image("plus")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
+                    }
                 }
             }
         }
