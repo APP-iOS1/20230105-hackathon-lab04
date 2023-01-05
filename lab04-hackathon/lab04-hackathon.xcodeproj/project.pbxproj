@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		63828F652966BF7F007D6CD0 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63828F642966BF7F007D6CD0 /* TabBarView.swift */; };
+		63DBD7ED2966F7AB00875D34 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DBD7EC2966F7AB00875D34 /* Font+.swift */; };
 		6A4CEE462966C02C00484B6B /* FeedMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CEE452966C02C00484B6B /* FeedMenu.swift */; };
 		6A4CEE4A2966C43D00484B6B /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CEE492966C43D00484B6B /* FeedCell.swift */; };
 		A7FC877229666E4E00AAD5EB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877129666E4E00AAD5EB /* FirebaseAuth */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		63828F642966BF7F007D6CD0 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		63DBD7EC2966F7AB00875D34 /* Font+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		6A4CEE452966C02C00484B6B /* FeedMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMenu.swift; sourceTree = "<group>"; };
 		6A4CEE492966C43D00484B6B /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		A7FC877A29667EA200AAD5EB /* PrototypeFeedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeFeedDetailView.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				D5A0F6592966F7B9004DA3EF /* Font+.swift */,
 				FA99083429665149001A8124 /* Timestamp+.swift */,
+				63DBD7EC2966F7AB00875D34 /* Font+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				FA99084529665200001A8124 /* ProfileView.swift in Sources */,
 				A7FC878129667F9300AAD5EB /* PrototypeFeedView.swift in Sources */,
 				D5A0F65A2966F7BA004DA3EF /* Font+.swift in Sources */,
+				63DBD7ED2966F7AB00875D34 /* Font+.swift in Sources */,
 				FA99085329665327001A8124 /* AddFeedView.swift in Sources */,
 				FA9908822966847E001A8124 /* User.swift in Sources */,
 				A7FC877B29667EA200AAD5EB /* PrototypeFeedDetailView.swift in Sources */,
