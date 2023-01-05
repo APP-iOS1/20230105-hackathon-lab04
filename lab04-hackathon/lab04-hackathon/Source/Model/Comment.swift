@@ -34,7 +34,7 @@ struct Comment {
             userId: UUID().uuidString,
             userName: "name\($0)",
             content: "content\($0)",
-            date: Date().addingTimeInterval(.random(in: -2*60*60...2*60*60))
+            date: Date().addingTimeInterval(.random(in: -20*60*60...20*60*60))
         )
     }
 }
