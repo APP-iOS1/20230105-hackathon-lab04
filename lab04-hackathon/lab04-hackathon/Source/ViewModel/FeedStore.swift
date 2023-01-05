@@ -45,7 +45,7 @@ class FeedStore: ObservableObject {
                         let docData = document.data()
                         let userId: String = docData["userId"] as? String ?? ""
                         let title = docData["title"] as? String ?? ""
-                        let date = docData["date"] as? Double ?? 0.0
+                        let date = (docData["date"] as? Timestamp)?.dateValue() ?? Date()
                         let description = docData["description"] as? String ?? ""
                         //let liked = docData["liked"] as? Int ?? 0
                         let category = docData["category"] as? String ?? ""
