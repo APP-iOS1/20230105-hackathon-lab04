@@ -11,7 +11,7 @@ class FeedStore: ObservableObject {
     private let uid = FirebaseAuth.Auth.auth().currentUser?.uid
     //let email = Auth.auth().currentUser?.email
     @Published var feeds: [Feed] = []
-    @Published var images: [FeedImage] = []
+    @Published var feedsorted: [Feed] = []
     
     init () {
         read()
@@ -63,6 +63,7 @@ class FeedStore: ObservableObject {
                                 let uiImage = UIImage(data: data!)!
                                 let feed = Feed(feedId: feedId, userId: userId, title: title, imageURL: imageURL, description: description, category: category, userName: userName, date: date, feedImage: uiImage)
                                 self.feeds.append(feed)
+                                self.feedsorted.append(feed)
                             }
                         }
                     }
@@ -116,7 +117,6 @@ class FeedStore: ObservableObject {
     func retrievePhotos(_ feed: Feed) {
         
         db.collection("Feed").getDocuments { snapshot, error in
-            self.images.removeAll()
             if error == nil && snapshot != nil {
                 
                 let imageName: String = feed.imageURL
@@ -128,9 +128,6 @@ class FeedStore: ObservableObject {
                     
                     if error == nil && data != nil {
                         let uiImage = UIImage(data: data!)!
-                        
-                        self.images.append(FeedImage(feedId: imageName, image: uiImage))
-                        
                     }
                 }
             }
