@@ -16,6 +16,11 @@ struct CommentCell: View {
     
     // temp ========================
     let uid = "GasLC2yL2kc8EshBbVtI"
+    @StateObject var userStore = UserStore()
+    var currentUser: User {
+        userStore.requestUserData(uid: uid)
+        return userStore.user
+    }
     // =============================
     
     var body: some View {
@@ -24,65 +29,87 @@ struct CommentCell: View {
                 component(isFeed: true)
                 
                 Divider()
-                ForEach(Comment.dummy, id: \.commentId) { comment in
+                ForEach(commentStore.comments, id: \.commentId) { comment in
                     component(comment: comment)
                 }
                 
             }
         }
+        .onAppear(perform: {
+            commentStore.read(feedId: feed.feedId)
+        })
+        .onDisappear(perform: {
+            commentStore.detachListener()
+        })
         .padding(.bottom, 115)
-        .navigationTitle("Comments")
+        .navigationTitle("댓글")
         .navigationBarTitleDisplayMode(.inline)
+        .background { Color("background").ignoresSafeArea(.all, edges: [.horizontal, .bottom]) }
         .overlay(alignment: .bottom) {
-            VStack(alignment: .center, spacing: 12.0) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .center, spacing: 12.0) {
-                        ForEach(emojis, id: \.hashValue) { emoji in
-                            Button {
-                                self.commentString.append(emoji)
-                            } label: {
-                                Text(emoji)
-                                    .font(.system(size: 24))
-                            }
+            commentInpuView
+        }
+    }
+    
+    var commentInpuView: some View {
+        VStack(alignment: .center, spacing: 12.0) {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .center, spacing: 12.0) {
+                    ForEach(emojis, id: \.hashValue) { emoji in
+                        Button {
+                            self.commentString.append(emoji)
+                        } label: {
+                            Text(emoji)
+                                .font(.cafeTitle2)
                         }
                     }
+                }
+            }
+            
+            HStack(alignment: .center, spacing: 6.0) {
+                AsyncImage(url: URL(string: feed.imageURL)) {
+                    $0
+                        .resizable()
+                        .aspectRatio(1.0, contentMode: .fit)
+                        .frame(width: 50.0, height: 50.0)
+                        .clipShape(Circle())
+                        .background { Circle().stroke(lineWidth: 0.1)
+                        }
+                } placeholder: {
+                    ProgressView()
                 }
                 
-                HStack(alignment: .center, spacing: 6.0) {
-                    AsyncImage(url: URL(string: feed.imageURL)) {
-                        $0
-                            .resizable()
-                            .aspectRatio(1.0, contentMode: .fit)
-                            .frame(width: 50.0, height: 50.0)
-                            .clipShape(Circle())
-                            .background { Circle().stroke(lineWidth: 0.1)
-                            }
-                    } placeholder: {
-                        ProgressView()
+                HStack(alignment: .bottom) {
+                    TextField("\(currentUser.userName)로 댓글 남기기", text: $commentString, axis: .vertical)
+                        .font(.cafeCaption)
+                        .lineLimit(6)
+                    Button("Post") {
+                        let comment = Comment(
+                            commentId: UUID().uuidString,
+                            feedId: feed.feedId,
+                            userId: currentUser.userId,
+                            userName: currentUser.userName,
+                            content: commentString,
+                            date: .now
+                        )
+                        
+                        commentStore.create(with: comment)
                     }
-                    
-                    HStack(alignment: .bottom) {
-                        TextField("Add a comment as `user`", text: $commentString, axis: .vertical)
-                            .lineLimit(6)
-                        Button("Post") {
-                            //
-                        }
-                    }
-                    .padding(11)
-                    .background {
-                        RoundedRectangle(cornerRadius: 20.0)
-                            .stroke(lineWidth: 0.2)
-                    }
+                    .font(.cafeSubhead)
+                }
+                .padding(11)
+                .background {
+                    RoundedRectangle(cornerRadius: 20.0)
+                        .stroke(lineWidth: 0.2)
                 }
             }
-            .padding(12.0)
-            .background(Color.white)
-            .overlay(alignment: .top) {
-                Rectangle().frame(height: 0.2).foregroundColor(.secondary)
-            }
-            .scrollDismissesKeyboard(.interactively)
-            .keyboardType(UIKeyboardType.twitter)
         }
+        .padding(12.0)
+        .background(Color.white)
+        .overlay(alignment: .top) {
+            Rectangle().frame(height: 0.2).foregroundColor(.secondary)
+        }
+        .scrollDismissesKeyboard(.interactively)
+        .keyboardType(UIKeyboardType.twitter)
     }
     
     func component(comment: Comment? = nil, isFeed: Bool = false) -> some View {
@@ -108,13 +135,13 @@ struct CommentCell: View {
             VStack(alignment: .leading, spacing: 6.0) {
                 HStack {
                     Text(isFeed ? feed.userName : comment?.userName ?? "")
-                        .font(.headline)
+                        .font(.cafeCallout)
                     Text(isFeed ? feed.date.dayFormmat : comment?.date.dayFormmat ?? "")
-                        .font(.caption)
+                        .font(.cafeCaption)
                         .foregroundColor(.secondary)
                 }
                 Text(isFeed ? feed.description : comment?.content ?? "")
-                    .font(.body)
+                    .font(.cafeCaption2)
                     .lineLimit(3)
             }
         }
@@ -126,12 +153,14 @@ extension Date {
     var dayFormmat: String {
         let date = abs(self.timeIntervalSince(.now) / 3600.0)
         switch date {
+        case 0..<1:
+            return "오늘"
         case 1..<7:
-            return String(format: "%.f", date) + "d"
+            return String(format: "%.f", date) + "일전"
         case 7..<365:
-            return String(format: "%.f", date / 7.0) + "w"
+            return String(format: "%.f", date / 7.0) + "주전"
         default:
-            return "today"
+            return String(format: "%.f", date / 365.0) + "년전"
         }
     }
 }
