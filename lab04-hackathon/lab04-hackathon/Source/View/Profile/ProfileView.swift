@@ -17,6 +17,7 @@ struct ProfileView: View {
     private let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 100))
     ]
+    @EnvironmentObject var userVM : UserStore
     
     @State private var drawingItem: [DrawingItem] = [
         DrawingItem(imageName: "1"),
@@ -41,7 +42,7 @@ struct ProfileView: View {
             VStack {
                 
                 HStack {
-                    Text("닉네임")
+                    Text(userVM.currentUserName ?? "")
                         .font(.title)
                     
                     Spacer()
@@ -112,13 +113,15 @@ struct ProfileView: View {
                         .foregroundColor(.clear)
                 )
             }
+        }.onAppear{
+            userVM.requestUserData(uid: userVM.uid ?? "")
         }
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView().environmentObject(UserStore())
     }
 }
 
