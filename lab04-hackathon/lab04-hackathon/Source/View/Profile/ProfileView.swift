@@ -112,8 +112,8 @@ struct ProfileView: View {
                                     
                             }
                         }
-                        .padding(.leading, 3)
-                        .padding(.trailing, 3)
+                        .padding(.leading, 4)
+                        .padding(.trailing, 4)
                     }
                 }
                 .frame(width: 390, height: 460)
