@@ -1,10 +1,9 @@
 // 2023/01/05 created by 서광현.
 
-import Foundation
+import SwiftUI
 
 /// Feed정보에 대한 구조체입니다.
-struct Feed: Identifiable {
-    var id = UUID().uuidString
+struct Feed: Hashable{
     /// feed 고유 아이디
     var feedId: String
     /// user의 uid
@@ -26,6 +25,7 @@ struct Feed: Identifiable {
     /// 작성날짜 ( Double )
     var date: Date
     /// 작성날짜 ( String )
+    var feedImage: UIImage?
     var createdDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_kr")

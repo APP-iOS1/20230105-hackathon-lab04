@@ -17,6 +17,7 @@ struct ProfileView: View {
     private let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 100))
     ]
+    @EnvironmentObject var userVM : UserStore
     
     @State private var drawingItem: [DrawingItem] = [
         DrawingItem(imageName: "1"),
@@ -41,8 +42,9 @@ struct ProfileView: View {
             VStack {
                 
                 HStack {
-                    Text("닉네임")
+                    Text(userVM.currentUserName ?? "")
                         .font(.title)
+
                     
                     Spacer()
                     
@@ -66,6 +68,7 @@ struct ProfileView: View {
                 VStack {
                     // 자기소개 없을 때 조건 처리하기
                     Text ("내용을 입력해주세요")
+                        .font(.cafeCaption2)
                         .frame(width: 340, height: 150, alignment: .leading)
                         .padding()
                 }
@@ -90,7 +93,9 @@ struct ProfileView: View {
                 VStack(alignment: .leading) {
                     
                     Text("내 캔버스")
-                        .padding()
+                        .font(.cafeSubhead2)
+                        .padding(.leading)
+                        .padding(.top)
                     
                     ScrollView {
                         
@@ -100,10 +105,17 @@ struct ProfileView: View {
                                 Image(item.imageName)
                                     .resizable()
                                     .scaledToFit()
+                                    .frame(width: 127, height: 127)
+                                    .overlay(
+                                    Rectangle()
+                                        .stroke(Color.gray, lineWidth: 0.3)
+                                       
+                                    )
+                                    
                             }
                         }
-                        .padding(.leading, 3)
-                        .padding(.trailing, 3)
+                        .padding(.leading, 4)
+                        .padding(.trailing, 4)
                     }
                 }
                 .frame(width: 390, height: 460)
@@ -112,13 +124,15 @@ struct ProfileView: View {
                         .foregroundColor(.clear)
                 )
             }
+        }.onAppear{
+            userVM.requestUserData(uid: userVM.uid ?? "")
         }
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView().environmentObject(UserStore())
     }
 }
 
