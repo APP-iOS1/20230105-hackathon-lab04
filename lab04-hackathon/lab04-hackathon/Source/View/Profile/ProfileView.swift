@@ -42,11 +42,13 @@ struct ProfileView: View {
             VStack {
                 
                 HStack {
-//                    Text(userVM.currentUserName ?? "")
-                    Text("김튜나")
+                    Text(userVM.user.userName)
                         .font(.cafeTitle2)
-
-                    
+                        .onAppear{
+                            userVM.requestUserData()
+                        }
+                    //                    Text("김튜나")
+                        .font(.cafeTitle2)
                     Spacer()
                     
                     Button {
@@ -108,11 +110,11 @@ struct ProfileView: View {
                                     .scaledToFit()
                                     .frame(width: 127, height: 127)
                                     .overlay(
-                                    Rectangle()
-                                        .stroke(Color.gray, lineWidth: 0.3)
-                                       
+                                        Rectangle()
+                                            .stroke(Color.gray, lineWidth: 0.3)
+                                        
                                     )
-                                    
+                                
                             }
                         }
                         .padding(.leading, 4)
@@ -125,8 +127,6 @@ struct ProfileView: View {
                         .foregroundColor(.clear)
                 )
             }
-        }.onAppear{
-//            userVM.requestUserData(uid: userVM.uid ?? "")
         }
     }
 }
