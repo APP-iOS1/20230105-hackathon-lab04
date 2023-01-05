@@ -23,7 +23,7 @@ struct ContentView: View {
                 case .first:
                     CanvasView()
                 case .second:
-                    EmptyView()
+                    FeedView()
                 case .third:
                     ProfileView()
                     
