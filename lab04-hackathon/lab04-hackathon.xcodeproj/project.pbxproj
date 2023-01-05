@@ -45,6 +45,7 @@
 		FA99088E296690F9001A8124 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99088D296690F9001A8124 /* LoginView.swift */; };
 		FA9908902966910E001A8124 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99088F2966910E001A8124 /* SignupView.swift */; };
 		FA99089429669C24001A8124 /* DrawingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99089329669C24001A8124 /* DrawingStore.swift */; };
+		FA9908982966A73B001A8124 /* FeedDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9908972966A73B001A8124 /* FeedDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		FA99088D296690F9001A8124 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FA99088F2966910E001A8124 /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		FA99089329669C24001A8124 /* DrawingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingStore.swift; sourceTree = "<group>"; };
+		FA9908972966A73B001A8124 /* FeedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,8 +168,8 @@
 				FA99081F29664FBB001A8124 /* ContentView.swift */,
 				FA9908512966530D001A8124 /* AddFeed */,
 				FA99084629665208001A8124 /* Board */,
-				FA9908542966537E001A8124 /* Comment */,
 				FA99084929665228001A8124 /* Feed */,
+				FA9908542966537E001A8124 /* Comment */,
 				FA990840296651B6001A8124 /* Login */,
 				FA99084E29665258001A8124 /* Paint */,
 				FA990843296651DB001A8124 /* Profile */,
@@ -222,10 +224,10 @@
 		FA990832296650E9001A8124 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FA99083A29665184001A8124 /* Feed.swift */,
-				FA9908812966847E001A8124 /* User.swift */,
 				FA99088329668488001A8124 /* Comment.swift */,
 				FA99088729668BEA001A8124 /* Drawing.swift */,
+				FA99083A29665184001A8124 /* Feed.swift */,
+				FA9908812966847E001A8124 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,8 +237,8 @@
 			children = (
 				FA99083829665171001A8124 /* AuthenticationViewModel.swift */,
 				FA99083E296651A7001A8124 /* CommentStore.swift */,
-				FA99083C2966519C001A8124 /* FeedStore.swift */,
 				FA99089329669C24001A8124 /* DrawingStore.swift */,
+				FA99083C2966519C001A8124 /* FeedStore.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -269,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				FA99084A29665234001A8124 /* FeedView.swift */,
+				FA9908962966A720001A8124 /* FeedDetail */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -295,6 +298,14 @@
 				FA99085529665394001A8124 /* CommentView.swift */,
 			);
 			path = Comment;
+			sourceTree = "<group>";
+		};
+		FA9908962966A720001A8124 /* FeedDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FA9908972966A73B001A8124 /* FeedDetailView.swift */,
+			);
+			path = FeedDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,6 +407,7 @@
 				FA99088829668BEA001A8124 /* Drawing.swift in Sources */,
 				FA99088429668488001A8124 /* Comment.swift in Sources */,
 				FA99084B29665234001A8124 /* FeedView.swift in Sources */,
+				FA9908982966A73B001A8124 /* FeedDetailView.swift in Sources */,
 				FA99088E296690F9001A8124 /* LoginView.swift in Sources */,
 				FA99083B29665184001A8124 /* Feed.swift in Sources */,
 				FA99088C296690F0001A8124 /* AuthenticationView.swift in Sources */,
