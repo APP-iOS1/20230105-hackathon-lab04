@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @EnvironmentObject var feed: FeedStore
     @State private var selectedTabBar: SelectedTab = .second
     
     var body: some View {
@@ -23,14 +23,14 @@ struct ContentView: View {
                 case .first:
                     CanvasView()
                 case .second:
-                    EmptyView()
+                    FeedView()
                 case .third:
                     ProfileView()
                     
                 }
                 
                 TabBarView(selectedTabBar: $selectedTabBar)
-                    .frame(height: 50)
+                    .frame(height: 40)
             }
         }
     }
@@ -38,7 +38,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(FeedStore())
     }
 }
 

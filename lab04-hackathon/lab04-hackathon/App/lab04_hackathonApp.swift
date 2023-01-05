@@ -19,20 +19,23 @@ struct lab04_hackathonApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AuthenticatedView {
-                
-                //
-            } content: {
-                ContentView()
-                    .environmentObject(feedViewModel)
-            }
-            .environmentObject(authViewModel)
-            .onOpenURL { url in
-                GIDSignIn.sharedInstance.handle(url)
-            }
-            .onAppear {
-                GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-                    // Check if `user` exists; otherwise, do something with `error`
+            NavigationView {
+                AuthenticatedView {
+                    
+                    //
+                } content: {
+                    ContentView()
+                        .environmentObject(feedViewModel)
+                        .environmentObject(authViewModel)
+                }
+                .environmentObject(authViewModel)
+                .onOpenURL { url in
+                    GIDSignIn.sharedInstance.handle(url)
+                }
+                .onAppear {
+                    GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+                        // Check if `user` exists; otherwise, do something with `error`
+                    }
                 }
             }
             

@@ -9,24 +9,31 @@ import SwiftUI
 
 struct FeedView: View {
     @State private var showMenu = false
+    @EnvironmentObject var feed: FeedStore
+    
     
     let data = Feed.dummy
     
     var body: some View {
-        NavigationView {
-            let drag = DragGesture()
-                .onEnded {
-                    if $0.translation.width < -100 {
-                        withAnimation {
-                            showMenu = false
-                        }
+        
+        let drag = DragGesture()
+            .onEnded {
+                if $0.translation.width < -100 {
+                    withAnimation {
+                        showMenu = false
                     }
                 }
+            }
+        
+        ZStack {
+            
+            Color("background")
+                .ignoresSafeArea()
             
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     ScrollView {
-                        ForEach(data) { feed in
+                        ForEach(feed.feeds, id: \.self) { feed in
                             FeedCell(feed: feed)
                         }
                     }
@@ -41,23 +48,29 @@ struct FeedView: View {
                 }
                 .gesture(drag)
             }
-            
             .toolbar {
+                
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         withAnimation {
                             showMenu.toggle()
                         }
                     } label: {
-                        Image(systemName: "line.3.horizontal")
+                        Image("line")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        print("hi")
+                    NavigationLink {
+                        AddFeedView()
                     } label: {
-                        Image(systemName: "plus")
+                        Image("plus")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
                     }
                 }
             }
@@ -67,6 +80,7 @@ struct FeedView: View {
 
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedView()
+        FeedView().environmentObject(FeedStore())
+        
     }
 }
