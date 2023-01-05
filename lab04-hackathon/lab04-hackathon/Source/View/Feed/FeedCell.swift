@@ -14,11 +14,12 @@ struct FeedCell: View {
         VStack {
             // 제목
             HStack {
-                Text("햄뿡이")
+                Text(feed.title)
                     .font(.largeTitle)
                     .padding(EdgeInsets(top: 5, leading: 5, bottom: -5, trailing: 0))
                 Spacer()
             }
+            
             // 사진
             Rectangle()
                 .fill(.gray)
@@ -27,6 +28,7 @@ struct FeedCell: View {
                 HStack {
                     // 하트
                     Group {
+                        
                         Image(systemName: "heart")
                         Text("1234")
                     }
@@ -41,7 +43,7 @@ struct FeedCell: View {
                 }
                 // 피드 Description
                 HStack {
-                    Text("햄뿡이에욧 !")
+                    Text(feed.description)
                     Spacer()
                 }
                 // 댓글
@@ -53,8 +55,11 @@ struct FeedCell: View {
                         Text("햄뿡이 기여워").offset(x: -5)
                     }
                     Spacer()
-                    Text("댓글 모두 보기")
-                        .opacity(0.5)
+                    NavigationLink {
+                        EmptyView()
+                    } label: {
+                        Text("댓글 모두 보기")
+                    }
                 }
             }.padding([.leading, .trailing], 3)
             Divider()
@@ -68,7 +73,7 @@ struct FeedCell_Previews: PreviewProvider {
         userId: UUID().uuidString,
         title: "title\(1)",
         imageURL: "https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000",
-        description: "\(1) : description description description ",
+        description: "\(1)",
         category: "category\(1)",
         userName: "author\(1)",
         date: Date().addingTimeInterval(.random(in: -1*24*60*60...2*60*60))
