@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		63828F652966BF7F007D6CD0 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63828F642966BF7F007D6CD0 /* TabBarView.swift */; };
+		6A4CEE462966C02C00484B6B /* FeedMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CEE452966C02C00484B6B /* FeedMenu.swift */; };
+		6A4CEE4A2966C43D00484B6B /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CEE492966C43D00484B6B /* FeedCell.swift */; };
 		A7FC877229666E4E00AAD5EB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877129666E4E00AAD5EB /* FirebaseAuth */; };
 		A7FC877429666E4E00AAD5EB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877329666E4E00AAD5EB /* FirebaseFirestore */; };
 		A7FC877629666E4E00AAD5EB /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877529666E4E00AAD5EB /* FirebaseFirestoreSwift */; };
@@ -20,7 +22,6 @@
 		A7FC87862966820700AAD5EB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC87852966820700AAD5EB /* GoogleSignIn */; };
 		A7FC87882966820700AAD5EB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC87872966820700AAD5EB /* GoogleSignInSwift */; };
 		A7FC878B2966823900AAD5EB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC878A2966823900AAD5EB /* Lottie */; };
-		A7FC878E2966827A00AAD5EB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC878D2966827A00AAD5EB /* FirebaseAnalyticsSwift */; };
 		D544A3642966AFDE00F43C50 /* Cafe24SsurroundAir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D544A3632966AFD100F43C50 /* Cafe24SsurroundAir.ttf */; };
 		D544A3652966AFE300F43C50 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D544A3622966AFCB00F43C50 /* Cafe24Ssurround.ttf */; };
 		FA99081E29664FBB001A8124 /* lab04_hackathonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99081D29664FBB001A8124 /* lab04_hackathonApp.swift */; };
@@ -53,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		63828F642966BF7F007D6CD0 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		6A4CEE452966C02C00484B6B /* FeedMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMenu.swift; sourceTree = "<group>"; };
+		6A4CEE492966C43D00484B6B /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		A7FC877A29667EA200AAD5EB /* PrototypeFeedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeFeedDetailView.swift; sourceTree = "<group>"; };
 		A7FC877C29667F0500AAD5EB /* PrototypeLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeLoginView.swift; sourceTree = "<group>"; };
 		A7FC877E29667F4400AAD5EB /* PrototypeSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeSignIn.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		AD4F85502966B59F006E14EC /* lab04-hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lab04-hackathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D544A3622966AFCB00F43C50 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
 		D544A3632966AFD100F43C50 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
+		D5A0F6582966C648004DA3EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FA99081D29664FBB001A8124 /* lab04_hackathonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lab04_hackathonApp.swift; sourceTree = "<group>"; };
 		FA99081F29664FBB001A8124 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA99082129664FBD001A8124 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,7 +102,6 @@
 				A7FC878B2966823900AAD5EB /* Lottie in Frameworks */,
 				A7FC877229666E4E00AAD5EB /* FirebaseAuth in Frameworks */,
 				A7FC877829666E4E00AAD5EB /* FirebaseStorage in Frameworks */,
-				A7FC878E2966827A00AAD5EB /* FirebaseAnalyticsSwift in Frameworks */,
 				A7FC87882966820700AAD5EB /* GoogleSignInSwift in Frameworks */,
 				A7FC877429666E4E00AAD5EB /* FirebaseFirestore in Frameworks */,
 				A7FC877629666E4E00AAD5EB /* FirebaseFirestoreSwift in Frameworks */,
@@ -151,6 +154,7 @@
 		FA99081C29664FBB001A8124 /* lab04-hackathon */ = {
 			isa = PBXGroup;
 			children = (
+				D5A0F6582966C648004DA3EF /* Info.plist */,
 				D544A3612966AFB300F43C50 /* Font */,
 				A7FC87822966819D00AAD5EB /* GoogleService-Info.plist */,
 				FA99082E296650AA001A8124 /* Configuration */,
@@ -279,8 +283,10 @@
 		FA99084929665228001A8124 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				FA99084A29665234001A8124 /* FeedView.swift */,
 				FA9908962966A720001A8124 /* FeedDetail */,
+				6A4CEE452966C02C00484B6B /* FeedMenu.swift */,
+				6A4CEE492966C43D00484B6B /* FeedCell.swift */,
+				FA99084A29665234001A8124 /* FeedView.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -341,7 +347,6 @@
 				A7FC87852966820700AAD5EB /* GoogleSignIn */,
 				A7FC87872966820700AAD5EB /* GoogleSignInSwift */,
 				A7FC878A2966823900AAD5EB /* Lottie */,
-				A7FC878D2966827A00AAD5EB /* FirebaseAnalyticsSwift */,
 			);
 			productName = "lab04-hackathon";
 			productReference = AD4F85502966B59F006E14EC /* lab04-hackathon.app */;
@@ -417,6 +422,7 @@
 				FA9908822966847E001A8124 /* User.swift in Sources */,
 				A7FC877B29667EA200AAD5EB /* PrototypeFeedDetailView.swift in Sources */,
 				FA99088829668BEA001A8124 /* Drawing.swift in Sources */,
+				6A4CEE4A2966C43D00484B6B /* FeedCell.swift in Sources */,
 				FA99088429668488001A8124 /* Comment.swift in Sources */,
 				FA99084B29665234001A8124 /* FeedView.swift in Sources */,
 				FA9908982966A73B001A8124 /* FeedDetailView.swift in Sources */,
@@ -427,6 +433,7 @@
 				FA99082029664FBB001A8124 /* ContentView.swift in Sources */,
 				FA99083929665171001A8124 /* AuthenticationViewModel.swift in Sources */,
 				FA99083D2966519C001A8124 /* FeedStore.swift in Sources */,
+				6A4CEE462966C02C00484B6B /* FeedMenu.swift in Sources */,
 				FA99083F296651A7001A8124 /* CommentStore.swift in Sources */,
 				FA99081E29664FBB001A8124 /* lab04_hackathonApp.swift in Sources */,
 				A7FC877D29667F0500AAD5EB /* PrototypeLoginView.swift in Sources */,
@@ -565,6 +572,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "lab04-hackathon/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -594,6 +602,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "lab04-hackathon/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -697,11 +706,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A7FC87892966823900AAD5EB /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		A7FC878D2966827A00AAD5EB /* FirebaseAnalyticsSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A7FC877029666E4E00AAD5EB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

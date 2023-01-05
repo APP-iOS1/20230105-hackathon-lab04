@@ -10,6 +10,8 @@ import PhotosUI
 
 struct AddFeedView: View {
     
+    @ObservedObject var feedStore: FeedStore = FeedStore()
+    
     var drawingCategory = ["풍경 그림", "캐릭터 그림", "인물 그림", "동물 그림"]
     @State private var currentCategory : Int = 0
     @State private var drawingDescription : String = ""
@@ -51,6 +53,7 @@ struct AddFeedView: View {
             VStack {
                 HStack {
                     Text("카테고리")
+                        .font(.custom("Cafe24Ssurround", size: 20))
                     Spacer()
                     Picker(selection: $currentCategory, label: Text("Picker")) {
                         ForEach(0..<drawingCategory.count) {
@@ -68,13 +71,25 @@ struct AddFeedView: View {
             VStack {
                 HStack {
                     Text("문구입력")
+                        .font(.custom("Cafe24Ssurround", size: 20))
                     Spacer()
                 }
                 TextEditor(text: $drawingDescription)
+                    .font(.custom("Cafe24Ssurround", size: 15))
 
             }
             .padding([.leading, .trailing])
             Spacer()
+            
+            //테스트 버튼
+//            Button(action: {
+//                let imageURL = UUID().uuidString
+//                feedStore.uploadImage(image: selectedImageData, imageURL: imageURL)
+//                feedStore.create(Feed(feedId: <#T##String#>, userId: <#T##String#>, title: <#T##String#>, imageURL: <#T##String#>, description: <#T##String#>, category: <#T##String#>, userName: <#T##String#>, date: <#T##Date#>))
+//
+//            }) {
+//                Text("스토리지에 사진넣기")
+//            }
             
         }
         .toolbar {

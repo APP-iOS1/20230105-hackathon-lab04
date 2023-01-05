@@ -21,11 +21,7 @@ struct lab04_hackathonApp: App {
         WindowGroup {
             AuthenticatedView {
                 
-                Text("모두의 화백")
-                    .font(.title)
-                
-                Text("상상한 당신의 생각을 그리세요.")
-                    .font(.subheadline)
+                //
             } content: {
                 ContentView()
                     .environmentObject(feedViewModel)
