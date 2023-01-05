@@ -22,6 +22,7 @@
 		A7FC87862966820700AAD5EB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC87852966820700AAD5EB /* GoogleSignIn */; };
 		A7FC87882966820700AAD5EB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC87872966820700AAD5EB /* GoogleSignInSwift */; };
 		A7FC878B2966823900AAD5EB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC878A2966823900AAD5EB /* Lottie */; };
+		AD4F85562966E8D3006E14EC /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4F85552966E8D3006E14EC /* CanvasView.swift */; };
 		D544A3642966AFDE00F43C50 /* Cafe24SsurroundAir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D544A3632966AFD100F43C50 /* Cafe24SsurroundAir.ttf */; };
 		D544A3652966AFE300F43C50 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D544A3622966AFCB00F43C50 /* Cafe24Ssurround.ttf */; };
 		FA99081E29664FBB001A8124 /* lab04_hackathonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99081D29664FBB001A8124 /* lab04_hackathonApp.swift */; };
@@ -38,7 +39,6 @@
 		FA99084529665200001A8124 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99084429665200001A8124 /* ProfileView.swift */; };
 		FA99084829665222001A8124 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99084729665222001A8124 /* BoardView.swift */; };
 		FA99084B29665234001A8124 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99084A29665234001A8124 /* FeedView.swift */; };
-		FA99085029665271001A8124 /* PaintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99084F29665271001A8124 /* PaintView.swift */; };
 		FA99085329665327001A8124 /* AddFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99085229665327001A8124 /* AddFeedView.swift */; };
 		FA99085629665394001A8124 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99085529665394001A8124 /* CommentView.swift */; };
 		FA9908822966847E001A8124 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9908812966847E001A8124 /* User.swift */; };
@@ -62,6 +62,7 @@
 		A7FC878029667F9300AAD5EB /* PrototypeFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeFeedView.swift; sourceTree = "<group>"; };
 		A7FC87822966819D00AAD5EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AD4F85502966B59F006E14EC /* lab04-hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lab04-hackathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD4F85552966E8D3006E14EC /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		D544A3622966AFCB00F43C50 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
 		D544A3632966AFD100F43C50 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
 		D5A0F6582966C648004DA3EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -79,7 +80,6 @@
 		FA99084429665200001A8124 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		FA99084729665222001A8124 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		FA99084A29665234001A8124 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
-		FA99084F29665271001A8124 /* PaintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintView.swift; sourceTree = "<group>"; };
 		FA99085229665327001A8124 /* AddFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedView.swift; sourceTree = "<group>"; };
 		FA99085529665394001A8124 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		FA9908812966847E001A8124 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -294,7 +294,7 @@
 		FA99084E29665258001A8124 /* Paint */ = {
 			isa = PBXGroup;
 			children = (
-				FA99084F29665271001A8124 /* PaintView.swift */,
+				AD4F85552966E8D3006E14EC /* CanvasView.swift */,
 			);
 			path = Paint;
 			sourceTree = "<group>";
@@ -412,13 +412,13 @@
 			files = (
 				FA99084829665222001A8124 /* BoardView.swift in Sources */,
 				FA990842296651D4001A8124 /* SignInView.swift in Sources */,
+				AD4F85562966E8D3006E14EC /* CanvasView.swift in Sources */,
 				FA99083529665149001A8124 /* Timestamp+.swift in Sources */,
 				FA99085629665394001A8124 /* CommentView.swift in Sources */,
 				63828F652966BF7F007D6CD0 /* TabBarView.swift in Sources */,
 				FA99084529665200001A8124 /* ProfileView.swift in Sources */,
 				A7FC878129667F9300AAD5EB /* PrototypeFeedView.swift in Sources */,
 				FA99085329665327001A8124 /* AddFeedView.swift in Sources */,
-				FA99085029665271001A8124 /* PaintView.swift in Sources */,
 				FA9908822966847E001A8124 /* User.swift in Sources */,
 				A7FC877B29667EA200AAD5EB /* PrototypeFeedDetailView.swift in Sources */,
 				FA99088829668BEA001A8124 /* Drawing.swift in Sources */,
@@ -573,6 +573,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "lab04-hackathon/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -603,6 +604,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "lab04-hackathon/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

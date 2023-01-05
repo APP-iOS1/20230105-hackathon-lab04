@@ -21,7 +21,7 @@ struct ContentView: View {
                 switch selectedTabBar {
                     
                 case .first:
-                    EmptyView()
+                    CanvasView()
                 case .second:
                     EmptyView()
                 case .third:
