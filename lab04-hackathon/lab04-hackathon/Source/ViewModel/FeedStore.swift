@@ -7,7 +7,7 @@ import UIKit
 class FeedStore: ObservableObject {
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
-
+    
     private let uid = FirebaseAuth.Auth.auth().currentUser?.uid
     //let email = Auth.auth().currentUser?.email
     @Published var feeds: [Feed] = []
@@ -55,9 +55,16 @@ class FeedStore: ObservableObject {
                         let userName = docData["userName"] as? String ?? ""
                         let imageURL = docData["imageURL"] as? String ?? ""
                         
-                        let feed = Feed(feedId: feedId, userId: userId, title: title, imageURL: imageURL, description: description, category: category, userName: userName, date: date)
+                        let storageRef = Storage.storage().reference()
+                        let fileRef = storageRef.child("images/\(imageURL)")
                         
-                        self.feeds.append(feed)
+                        fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                            if error == nil && data != nil {
+                                let uiImage = UIImage(data: data!)!
+                                let feed = Feed(feedId: feedId, userId: userId, title: title, imageURL: imageURL, description: description, category: category, userName: userName, date: date, feedImage: uiImage)
+                                self.feeds.append(feed)
+                            }
+                        }
                     }
                 }
             }
@@ -66,7 +73,7 @@ class FeedStore: ObservableObject {
     
     //미사용 추천
     func update(_ feed: Feed) {
-
+        
         db.collection("Feed")
             .document(feed.feedId)
             .updateData([
@@ -107,7 +114,7 @@ class FeedStore: ObservableObject {
     }
     //사진 불러오기
     func retrievePhotos(_ feed: Feed) {
-
+        
         db.collection("Feed").getDocuments { snapshot, error in
             self.images.removeAll()
             if error == nil && snapshot != nil {
