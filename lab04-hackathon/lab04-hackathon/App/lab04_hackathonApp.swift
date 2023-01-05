@@ -14,7 +14,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct lab04_hackathonApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var feedViewModel = FeedsViewModel()
+    @StateObject var feedViewModel = FeedStore()
     @StateObject var authViewModel = AuthenticationViewModel()
     
     var body: some Scene {

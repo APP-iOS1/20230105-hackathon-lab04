@@ -4,10 +4,10 @@ import FirebaseStorage
 import UIKit
 
 
-class FeedsViewModel: ObservableObject {
+class FeedStore: ObservableObject {
     private let db = Firestore.firestore()
     private let uid = FirebaseAuth.Auth.auth().currentUser?.uid
-    let email = Auth.auth().currentUser?.email
+    //let email = Auth.auth().currentUser?.email
     @Published var feeds: [Feed] = []
     
     init () {
