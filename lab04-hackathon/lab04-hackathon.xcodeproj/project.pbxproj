@@ -20,6 +20,8 @@
 		A7FC87882966820700AAD5EB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC87872966820700AAD5EB /* GoogleSignInSwift */; };
 		A7FC878B2966823900AAD5EB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC878A2966823900AAD5EB /* Lottie */; };
 		A7FC878E2966827A00AAD5EB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC878D2966827A00AAD5EB /* FirebaseAnalyticsSwift */; };
+		D544A3642966AFDE00F43C50 /* Cafe24SsurroundAir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D544A3632966AFD100F43C50 /* Cafe24SsurroundAir.ttf */; };
+		D544A3652966AFE300F43C50 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D544A3622966AFCB00F43C50 /* Cafe24Ssurround.ttf */; };
 		FA99081E29664FBB001A8124 /* lab04_hackathonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99081D29664FBB001A8124 /* lab04_hackathonApp.swift */; };
 		FA99082029664FBB001A8124 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99081F29664FBB001A8124 /* ContentView.swift */; };
 		FA99082229664FBD001A8124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA99082129664FBD001A8124 /* Assets.xcassets */; };
@@ -54,7 +56,9 @@
 		A7FC877E29667F4400AAD5EB /* PrototypeSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeSignIn.swift; sourceTree = "<group>"; };
 		A7FC878029667F9300AAD5EB /* PrototypeFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeFeedView.swift; sourceTree = "<group>"; };
 		A7FC87822966819D00AAD5EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FA99081A29664FBB001A8124 /* lab04-hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lab04-hackathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D544A3622966AFCB00F43C50 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
+		D544A3632966AFD100F43C50 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
+		FA99081A29664FBB001A8124 /* lab04-hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "lab04-hackathon.app"; path = "/Users/macbook/Desktop/dev/20230105-hackathon-lab04/lab04-hackathon/build/Debug-iphoneos/lab04-hackathon.app"; sourceTree = "<absolute>"; };
 		FA99081D29664FBB001A8124 /* lab04_hackathonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lab04_hackathonApp.swift; sourceTree = "<group>"; };
 		FA99081F29664FBB001A8124 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA99082129664FBD001A8124 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,26 +128,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D544A3612966AFB300F43C50 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				D544A3632966AFD100F43C50 /* Cafe24SsurroundAir.ttf */,
+				D544A3622966AFCB00F43C50 /* Cafe24Ssurround.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		FA99081129664FBB001A8124 = {
 			isa = PBXGroup;
 			children = (
 				FA99081C29664FBB001A8124 /* lab04-hackathon */,
-				FA99081B29664FBB001A8124 /* Products */,
 				A7FC878C2966827A00AAD5EB /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		FA99081B29664FBB001A8124 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FA99081A29664FBB001A8124 /* lab04-hackathon.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		FA99081C29664FBB001A8124 /* lab04-hackathon */ = {
 			isa = PBXGroup;
 			children = (
+				D544A3612966AFB300F43C50 /* Font */,
 				A7FC87822966819D00AAD5EB /* GoogleService-Info.plist */,
 				FA99082E296650AA001A8124 /* Configuration */,
 				FA99082D29665072001A8124 /* App */,
@@ -367,7 +372,7 @@
 				A7FC87842966820700AAD5EB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				A7FC87892966823900AAD5EB /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
-			productRefGroup = FA99081B29664FBB001A8124 /* Products */;
+			productRefGroup = FA99081129664FBB001A8124;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -381,8 +386,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D544A3642966AFDE00F43C50 /* Cafe24SsurroundAir.ttf in Resources */,
 				FA99082529664FBD001A8124 /* Preview Assets.xcassets in Resources */,
 				FA99082229664FBD001A8124 /* Assets.xcassets in Resources */,
+				D544A3652966AFE300F43C50 /* Cafe24Ssurround.ttf in Resources */,
 				A7FC87832966819D00AAD5EB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
