@@ -15,52 +15,51 @@ struct FeedView: View {
     let data = Feed.dummy
     
     var body: some View {
-        NavigationView {
-            let drag = DragGesture()
-                .onEnded {
-                    if $0.translation.width < -100 {
-                        withAnimation {
-                            showMenu = false
-                        }
+        
+        let drag = DragGesture()
+            .onEnded {
+                if $0.translation.width < -100 {
+                    withAnimation {
+                        showMenu = false
                     }
                 }
-            
-            GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    ScrollView {
-                        ForEach(feed.feeds, id: \.self) { feed in
-                            FeedCell(feed: feed)
-                        }
-                    }
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                    .offset(x: showMenu ? geometry.size.width/2 : 0)
-                    .disabled(showMenu ? true : false)
-                    if showMenu {
-                        FeedMenu()
-                            .frame(width: geometry.size.width/2)
-                            .transition(.move(edge: .leading))
+            }
+        
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                ScrollView {
+                    ForEach(feed.feeds, id: \.self) { feed in
+                        FeedCell(feed: feed)
                     }
                 }
-                .gesture(drag)
+                .frame(width: geometry.size.width, height: geometry.size.height)
+                .offset(x: showMenu ? geometry.size.width/2 : 0)
+                .disabled(showMenu ? true : false)
+                if showMenu {
+                    FeedMenu()
+                        .frame(width: geometry.size.width/2)
+                        .transition(.move(edge: .leading))
+                }
+            }
+            .gesture(drag)
+        }
+        
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    withAnimation {
+                        showMenu.toggle()
+                    }
+                } label: {
+                    Image(systemName: "line.3.horizontal")
+                }
             }
             
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        withAnimation {
-                            showMenu.toggle()
-                        }
-                    } label: {
-                        Image(systemName: "line.3.horizontal")
-                    }
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        print("hi")
-                    } label: {
-                        Image(systemName: "plus")
-                    }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    AddFeedView()
+                } label: {
+                    Image(systemName: "plus")
                 }
             }
         }
@@ -70,6 +69,6 @@ struct FeedView: View {
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {
         FeedView().environmentObject(FeedStore())
-
+        
     }
 }

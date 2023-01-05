@@ -56,7 +56,7 @@ struct FeedCell: View {
                     }
                     Spacer()
                     NavigationLink {
-                        EmptyView()
+                        CommentCell(feed: feed)
                     } label: {
                         Text("댓글 모두 보기")
                     }

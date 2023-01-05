@@ -30,7 +30,7 @@ struct ContentView: View {
                 }
                 
                 TabBarView(selectedTabBar: $selectedTabBar)
-                    .frame(height: 50)
+                    .frame(height: 40)
             }
         }
     }
