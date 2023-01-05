@@ -37,7 +37,7 @@ struct SignupView: View {
     var body: some View {
         VStack{
             Text("PENCHAT")
-                .padding(.bottom,50)
+                .padding(.bottom,60)
                 .font(.title)
             
             VStack{
@@ -54,7 +54,7 @@ struct SignupView: View {
                 }
                 .padding(.vertical, 6)
                 .background(Divider(), alignment: .bottom)
-                .padding(.bottom, 4)
+                .padding(.bottom, 12)
                 
                 HStack {
                     Image(systemName: "at")
@@ -69,7 +69,7 @@ struct SignupView: View {
                 }
                 .padding(.vertical, 6)
                 .background(Divider(), alignment: .bottom)
-                .padding(.bottom, 4)
+                .padding(.bottom, 12)
                 
                 HStack {
                     Image(systemName: "lock")
@@ -82,7 +82,7 @@ struct SignupView: View {
                 }
                 .padding(.vertical, 6)
                 .background(Divider(), alignment: .bottom)
-                .padding(.bottom, 8)
+                .padding(.bottom, 12)
                 
                 HStack {
                     Image(systemName: "lock")
@@ -95,7 +95,7 @@ struct SignupView: View {
                 }
                 .padding(.vertical, 6)
                 .background(Divider(), alignment: .bottom)
-                .padding(.bottom, 8)
+                .padding(.bottom, 12)
             }
             .padding(.top,50)
             
@@ -111,16 +111,16 @@ struct SignupView: View {
                 Text("계정이 있으신가요?")
                 Button(action: { viewModel.switchFlow() }) {
                     Text("로그인")
-                        .fontWeight(.semibold)
                         .foregroundColor(.blue)
                 }
             }
+            .font(.caption)
             
             
             Button(action: signUpWithEmailPassword) {
                 if viewModel.authenticationState != .authenticating {
                     Text("회원가입")
-                        .font(.title)
+                        .font(.title3)
                         .padding(.vertical, 8)
                         //.frame(maxWidth: .infinity)
                         //.foregroundColor(.primary)
