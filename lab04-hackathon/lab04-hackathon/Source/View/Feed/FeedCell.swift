@@ -27,6 +27,7 @@ struct FeedCell: View {
                 HStack {
                     // 하트
                     Group {
+                        
                         Image(systemName: "heart")
                         Text("1234")
                     }
@@ -41,7 +42,7 @@ struct FeedCell: View {
                 }
                 // 피드 Description
                 HStack {
-                    Text("햄뿡이에욧 !")
+                    Text(feed.description)
                     Spacer()
                 }
                 // 댓글
@@ -59,6 +60,9 @@ struct FeedCell: View {
             }.padding([.leading, .trailing], 3)
             Divider()
         }
+        .onAppear {
+            print("\(feed.feedImage)")
+        }
     }
 }
 
@@ -68,7 +72,7 @@ struct FeedCell_Previews: PreviewProvider {
         userId: UUID().uuidString,
         title: "title\(1)",
         imageURL: "https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000",
-        description: "\(1) : description description description ",
+        description: "\(1)",
         category: "category\(1)",
         userName: "author\(1)",
         date: Date().addingTimeInterval(.random(in: -1*24*60*60...2*60*60))
