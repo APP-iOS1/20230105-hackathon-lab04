@@ -33,6 +33,7 @@ struct Feed: Hashable{
         return dateFormatter.string(from: date)
     }
     
+    
     static var dummy: [Feed] = (0..<10).map {
         Feed(
             feedId: UUID().uuidString,
