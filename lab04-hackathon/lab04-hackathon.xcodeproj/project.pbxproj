@@ -56,9 +56,9 @@
 		A7FC877E29667F4400AAD5EB /* PrototypeSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeSignIn.swift; sourceTree = "<group>"; };
 		A7FC878029667F9300AAD5EB /* PrototypeFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeFeedView.swift; sourceTree = "<group>"; };
 		A7FC87822966819D00AAD5EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AD4F85502966B59F006E14EC /* lab04-hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lab04-hackathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D544A3622966AFCB00F43C50 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
 		D544A3632966AFD100F43C50 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
-		FA99081A29664FBB001A8124 /* lab04-hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "lab04-hackathon.app"; path = "/Users/macbook/Desktop/dev/20230105-hackathon-lab04/lab04-hackathon/build/Debug-iphoneos/lab04-hackathon.app"; sourceTree = "<absolute>"; };
 		FA99081D29664FBB001A8124 /* lab04_hackathonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lab04_hackathonApp.swift; sourceTree = "<group>"; };
 		FA99081F29664FBB001A8124 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA99082129664FBD001A8124 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,6 +142,7 @@
 			children = (
 				FA99081C29664FBB001A8124 /* lab04-hackathon */,
 				A7FC878C2966827A00AAD5EB /* Frameworks */,
+				AD4F85502966B59F006E14EC /* lab04-hackathon.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -340,7 +341,7 @@
 				A7FC878D2966827A00AAD5EB /* FirebaseAnalyticsSwift */,
 			);
 			productName = "lab04-hackathon";
-			productReference = FA99081A29664FBB001A8124 /* lab04-hackathon.app */;
+			productReference = AD4F85502966B59F006E14EC /* lab04-hackathon.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
