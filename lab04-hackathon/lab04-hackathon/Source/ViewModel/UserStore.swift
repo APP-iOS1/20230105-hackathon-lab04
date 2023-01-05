@@ -41,7 +41,8 @@ class UserStore : ObservableObject{
             "followers" : [""],
             "following" : [""],
             "userId" : uid,
-            "userName" : userName
+            "userName" : userName,
+            "introduce" : ""
         ])
     }
     
