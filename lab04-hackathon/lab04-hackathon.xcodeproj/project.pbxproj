@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A4CEE462966C02C00484B6B /* FeedMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CEE452966C02C00484B6B /* FeedMenu.swift */; };
 		A7FC877229666E4E00AAD5EB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877129666E4E00AAD5EB /* FirebaseAuth */; };
 		A7FC877429666E4E00AAD5EB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877329666E4E00AAD5EB /* FirebaseFirestore */; };
 		A7FC877629666E4E00AAD5EB /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877529666E4E00AAD5EB /* FirebaseFirestoreSwift */; };
@@ -51,6 +52,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A4CEE452966C02C00484B6B /* FeedMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMenu.swift; sourceTree = "<group>"; };
 		A7FC877A29667EA200AAD5EB /* PrototypeFeedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeFeedDetailView.swift; sourceTree = "<group>"; };
 		A7FC877C29667F0500AAD5EB /* PrototypeLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeLoginView.swift; sourceTree = "<group>"; };
 		A7FC877E29667F4400AAD5EB /* PrototypeSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeSignIn.swift; sourceTree = "<group>"; };
@@ -276,8 +278,9 @@
 		FA99084929665228001A8124 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				FA99084A29665234001A8124 /* FeedView.swift */,
 				FA9908962966A720001A8124 /* FeedDetail */,
+				6A4CEE452966C02C00484B6B /* FeedMenu.swift */,
+				FA99084A29665234001A8124 /* FeedView.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				FA99082029664FBB001A8124 /* ContentView.swift in Sources */,
 				FA99083929665171001A8124 /* AuthenticationViewModel.swift in Sources */,
 				FA99083D2966519C001A8124 /* FeedStore.swift in Sources */,
+				6A4CEE462966C02C00484B6B /* FeedMenu.swift in Sources */,
 				FA99083F296651A7001A8124 /* CommentStore.swift in Sources */,
 				FA99081E29664FBB001A8124 /* lab04_hackathonApp.swift in Sources */,
 				A7FC877D29667F0500AAD5EB /* PrototypeLoginView.swift in Sources */,
