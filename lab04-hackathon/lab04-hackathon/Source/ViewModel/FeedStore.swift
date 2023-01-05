@@ -122,7 +122,7 @@ class FeedStore: ObservableObject {
                     if error == nil && data != nil {
                         let uiImage = UIImage(data: data!)!
                         
-                        self.images.append(FeedImage(id: imageName, image: uiImage))
+                        self.images.append(FeedImage(feedId: imageName, image: uiImage))
                         
                     }
                 }
@@ -134,6 +134,6 @@ class FeedStore: ObservableObject {
 }
 
 struct FeedImage: Hashable {
-    var id: String
+    var feedId: String
     var image: UIImage
 }
