@@ -10,6 +10,8 @@ import PhotosUI
 
 struct AddFeedView: View {
     
+    @ObservedObject var feedStore: FeedStore = FeedStore()
+    
     var drawingCategory = ["풍경 그림", "캐릭터 그림", "인물 그림", "동물 그림"]
     @State private var currentCategory : Int = 0
     @State private var drawingDescription : String = ""
@@ -75,6 +77,16 @@ struct AddFeedView: View {
             }
             .padding([.leading, .trailing])
             Spacer()
+            
+            //테스트 버튼
+//            Button(action: {
+//                let imageURL = UUID().uuidString
+//                feedStore.uploadImage(image: selectedImageData, imageURL: imageURL)
+//                feedStore.create(Feed(feedId: <#T##String#>, userId: <#T##String#>, title: <#T##String#>, imageURL: <#T##String#>, description: <#T##String#>, category: <#T##String#>, userName: <#T##String#>, date: <#T##Date#>))
+//
+//            }) {
+//                Text("스토리지에 사진넣기")
+//            }
             
         }
         .toolbar {

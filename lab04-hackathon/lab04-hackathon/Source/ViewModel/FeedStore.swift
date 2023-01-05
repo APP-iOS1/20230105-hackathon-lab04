@@ -6,9 +6,12 @@ import UIKit
 
 class FeedStore: ObservableObject {
     private let db = Firestore.firestore()
+    private let storage = Storage.storage()
+
     private let uid = FirebaseAuth.Auth.auth().currentUser?.uid
     //let email = Auth.auth().currentUser?.email
     @Published var feeds: [Feed] = []
+    @Published var images: [FeedImage] = []
     
     init () {
         read()
@@ -84,52 +87,53 @@ class FeedStore: ObservableObject {
             .delete()
     }
     
-    /// storage에 저장하기
-    ///
-    /// - 12조 코드 ( 100번째줄 ) 참고: [https://github.com/APPSCHOOL1-REPO/FirestoreApp-20221212-team12-planB/blob/main/Nautica/Nautica/Model/FeedStore.swift](https://github.com/APPSCHOOL1-REPO/FirestoreApp-20221212-team12-planB/blob/main/Nautica/Nautica/Model/FeedStore.swift)
-    func uploadStorage(image: UIImage, completion: @escaping (URL?) -> Void) {
-        let storage = Storage.storage(url:"gs://hellodemo-2ff28.appspot.com/")
-        let storageRef = storage.reference()
+    // 사진 업로드
+    func uploadImage(image: Data?, imageURL: String) {
+        let storageRef = storage.reference().child("images/\(imageURL)") //images/postId/imageName
+        let data = image
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
         
-        let user = Auth.auth().currentUser
-        let createdAt: Date = Date()
-        
-        // Create a child reference
-        // imagesRef now points to "images"
-        let imagesRef = storageRef.child("images")
-        
-        // Child references can also take paths delimited by '/'
-        // spaceRef now points to "images/space.jpg"
-        // imagesRef still points to "images"
-        var spaceRef = storageRef.child("images/" +  "\(user?.email ?? "")" + "\(createdAt.description)" + "\(UUID())" + ".jpg")
-        
-        // This is equivalent to creating the full reference
-        //let storagePath = "gs://nautica-7bd02.appspot.com/images/space.jpg"
-        //spaceRef = storage.reference(forURL: storagePath)
-        
-        // Data in memory
-        guard let data = image.jpegData(compressionQuality: 0.3) else { return }
-        
-        var metatdata: StorageMetadata = StorageMetadata()
-        
-        metatdata.contentType = "image/jpeg"
-        
-        // Upload the file to the path "images/rivers.jpg"
-        let uploadTask = spaceRef.putData(data, metadata: metatdata) { (metadata, error) in
-            guard let metadata = metadata else {
-                // Uh-oh, an error occurred!
-                return
-            }
-            // Metadata contains file metadata such as size, content-type.
-            let size = metadata.size
-            // You can also access to download URL after upload.
-            spaceRef.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    // Uh-oh, an error occurred!
-                    return
+        if let data = data{
+            storageRef.putData(data, metadata: metadata) {(metadata, error) in
+                if let error = error {
+                    print("Error: \(error)")
                 }
-                completion(downloadURL)
+                if let metadata = metadata {
+                    print("metadata: \(metadata)")
+                }
             }
         }
     }
+    //사진 불러오기
+    func retrievePhotos(_ feed: Feed) {
+
+        db.collection("Feed").getDocuments { snapshot, error in
+            self.images.removeAll()
+            if error == nil && snapshot != nil {
+                
+                let imageName: String = feed.imageURL
+                
+                let storageRef = Storage.storage().reference()
+                let fileRef = storageRef.child("images/\(imageName)")
+                
+                fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                    
+                    if error == nil && data != nil {
+                        let uiImage = UIImage(data: data!)!
+                        
+                        self.images.append(FeedImage(id: imageName, image: uiImage))
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    
+}
+
+struct FeedImage: Hashable {
+    var id: String
+    var image: UIImage
 }
