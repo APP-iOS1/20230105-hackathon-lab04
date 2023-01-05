@@ -17,8 +17,8 @@ extension AuthenticatedView where Unauthenticated == EmptyView {
 
 struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Unauthenticated: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    @State private var presentingLoginScreen = false
-    @State private var presentingProfileScreen = false
+    //@State private var presentingLoginScreen = false
+   // @State private var presentingProfileScreen = false
     
     var unauthenticated: Unauthenticated?
     @ViewBuilder var content: () -> Content
@@ -38,36 +38,14 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
         switch viewModel.authenticationState {
         case .unauthenticated, .authenticating:
             VStack(spacing: 16.0) {
-                Image("drawing")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity)
-                    .cornerRadius(4.0)
-                
-                if let unauthenticated {
-                    unauthenticated
-                }
-                else {
-                    Text("You're not logged in.")
-                }
-                
-                Button {
-                    viewModel.reset()
-                    presentingLoginScreen.toggle()
-                } label: {
-                    Text("로그인하기")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 30)
-                }
-                .buttonStyle(.bordered)
-
-            }
-            .padding(.horizontal ,32.0)
-            .sheet(isPresented: $presentingLoginScreen) {
                 AuthenticationView()
                     .environmentObject(viewModel)
             }
+            .padding(.horizontal ,32.0)
+//            .sheet(isPresented: $presentingLoginScreen) {
+//                AuthenticationView()
+//                    .environmentObject(viewModel)
+//            }
             case .authenticated:
             VStack {
                 content()

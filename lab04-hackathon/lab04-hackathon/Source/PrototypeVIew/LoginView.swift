@@ -30,28 +30,25 @@ struct LoginView: View {
         }
     }
     
-//    private func signInWithGoogle() {
-//        Task {
-//            if await viewModel.signInWithGoogle() {
-//                dismiss()
-//            }
-//        }
-//    }
+    //    private func signInWithGoogle() {
+    //        Task {
+    //            if await viewModel.signInWithGoogle() {
+    //                dismiss()
+    //            }
+    //        }
+    //    }
     
     var body: some View {
         VStack {
-            Image("drawing")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(minHeight: 300, maxHeight: 400)
-            Text("로그인")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            Text("PENCHAT")
+                .padding(.bottom, 80)
+                .font(.title)
+            
+            
             
             HStack {
                 Image(systemName: "at")
-                TextField("이메일", text: $viewModel.email)
+                TextField("이메일을 입력해주세요", text: $viewModel.email)
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
                     .focused($focus, equals: .email)
@@ -66,7 +63,7 @@ struct LoginView: View {
             
             HStack {
                 Image(systemName: "lock")
-                SecureField("비밀번호", text: $viewModel.password)
+                SecureField("비밀번호를 입력해주세요", text: $viewModel.password)
                     .focused($focus, equals: .password)
                     .submitLabel(.go)
                     .onSubmit {
@@ -84,40 +81,43 @@ struct LoginView: View {
                 }
             }
             
+            HStack {
+                Spacer()
+                //Text("계정이 없으신가요?")
+                Button(action: { viewModel.switchFlow() }) {
+                    Text("회원가입")
+                        .fontWeight(.semibold)
+                        //.foregroundColor(.blue)
+                }
+            }
+            //.padding(.top, 10)
+            .padding(.bottom, 50)
+            
             
             Button(action: signInWithEmailPassword) {
                 if viewModel.authenticationState != .authenticating {
-                    Text("로그인")
+                    Text("로그인 하기")
                         .padding(.vertical, 8)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.primary)
+                        .font(.title)
+                        //.frame(maxWidth: .infinity)
+                        //.foregroundColor(.primary)
                 }
                 else {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         .padding(.vertical, 8)
-                        .frame(maxWidth: .infinity)
+                        //.frame(maxWidth: .infinity)
                 }
             }
             .disabled(!viewModel.isValid)
-            .frame(maxWidth: .infinity)
-            .buttonStyle(.borderedProminent)
+            //.frame(maxWidth: .infinity)
+            //.buttonStyle(.borderedProminent)
             .padding(.vertical, 10.0)
             
             // Google Sign in
             //GoogleSignInButton(action: signInWithGoogle)
-              //  .padding(.vertical, 5.0)
+            //  .padding(.vertical, 5.0)
             // ================
-            
-            HStack {
-                Text("계정이 없으신가요?")
-                Button(action: { viewModel.switchFlow() }) {
-                    Text("회원가입")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.blue)
-                }
-            }
-            .padding([.top, .bottom], 50)
             
         }
         .listStyle(.plain)
