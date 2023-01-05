@@ -59,6 +59,7 @@
 		AD4F85502966B59F006E14EC /* lab04-hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lab04-hackathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D544A3622966AFCB00F43C50 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
 		D544A3632966AFD100F43C50 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
+		D5A0F6582966C648004DA3EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FA99081D29664FBB001A8124 /* lab04_hackathonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lab04_hackathonApp.swift; sourceTree = "<group>"; };
 		FA99081F29664FBB001A8124 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA99082129664FBD001A8124 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,6 +150,7 @@
 		FA99081C29664FBB001A8124 /* lab04-hackathon */ = {
 			isa = PBXGroup;
 			children = (
+				D5A0F6582966C648004DA3EF /* Info.plist */,
 				D544A3612966AFB300F43C50 /* Font */,
 				A7FC87822966819D00AAD5EB /* GoogleService-Info.plist */,
 				FA99082E296650AA001A8124 /* Configuration */,
@@ -561,6 +563,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "lab04-hackathon/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -590,6 +593,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "lab04-hackathon/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

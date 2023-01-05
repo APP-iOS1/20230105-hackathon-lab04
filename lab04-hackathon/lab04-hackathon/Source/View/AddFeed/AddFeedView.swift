@@ -53,6 +53,7 @@ struct AddFeedView: View {
             VStack {
                 HStack {
                     Text("카테고리")
+                        .font(.custom("Cafe24Ssurround", size: 20))
                     Spacer()
                     Picker(selection: $currentCategory, label: Text("Picker")) {
                         ForEach(0..<drawingCategory.count) {
@@ -70,9 +71,11 @@ struct AddFeedView: View {
             VStack {
                 HStack {
                     Text("문구입력")
+                        .font(.custom("Cafe24Ssurround", size: 20))
                     Spacer()
                 }
                 TextEditor(text: $drawingDescription)
+                    .font(.custom("Cafe24Ssurround", size: 15))
 
             }
             .padding([.leading, .trailing])
