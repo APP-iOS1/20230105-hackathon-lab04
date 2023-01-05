@@ -19,7 +19,7 @@ class FeedStore: ObservableObject {
     
     func create(_ feed: Feed) {
         
-        db.collection("feeds")
+        db.collection("Feed")
             .document(feed.feedId)
             .setData([
                 "feedId" : feed.feedId,
