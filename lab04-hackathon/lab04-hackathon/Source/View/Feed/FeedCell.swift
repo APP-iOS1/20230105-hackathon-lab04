@@ -14,7 +14,7 @@ struct FeedCell: View {
         VStack {
             // 제목
             HStack {
-                Text("햄뿡이")
+                Text(feed.title)
                     .font(.largeTitle)
                     .padding(EdgeInsets(top: 5, leading: 5, bottom: -5, trailing: 0))
                 Spacer()

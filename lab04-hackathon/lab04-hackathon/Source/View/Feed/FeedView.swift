@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FeedView: View {
     @State private var showMenu = false
+    @EnvironmentObject var feed: FeedStore
+    
     
     let data = Feed.dummy
     
@@ -26,7 +28,7 @@ struct FeedView: View {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     ScrollView {
-                        ForEach(data) { feed in
+                        ForEach(feed.feeds, id: \.self) { feed in
                             FeedCell(feed: feed)
                         }
                     }
@@ -67,6 +69,7 @@ struct FeedView: View {
 
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedView()
+        FeedView().environmentObject(FeedStore())
+
     }
 }

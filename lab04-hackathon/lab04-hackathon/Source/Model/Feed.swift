@@ -3,8 +3,7 @@
 import Foundation
 
 /// Feed정보에 대한 구조체입니다.
-struct Feed: Identifiable {
-    var id = UUID().uuidString
+struct Feed: Hashable{
     /// feed 고유 아이디
     var feedId: String
     /// user의 uid
