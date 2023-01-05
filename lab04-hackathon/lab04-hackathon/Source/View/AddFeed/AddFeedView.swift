@@ -109,10 +109,10 @@ struct AddFeedView: View {
                                 .stroke(lineWidth: 0.3)
                                 .foregroundColor(.gray)
                         )
+                        .frame(width:UIScreen.main.bounds.size.width-40, height: 200)
                         
                 }
                 .padding([.leading, .trailing])
-                Spacer()
                 
                 //테스트 버튼
                 //            Button(action: {
