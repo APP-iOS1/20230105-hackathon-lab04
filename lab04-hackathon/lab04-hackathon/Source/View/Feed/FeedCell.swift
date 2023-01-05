@@ -19,6 +19,7 @@ struct FeedCell: View {
                     .padding(EdgeInsets(top: 5, leading: 5, bottom: -5, trailing: 0))
                 Spacer()
             }
+            
             // 사진
             Rectangle()
                 .fill(.gray)
@@ -54,14 +55,14 @@ struct FeedCell: View {
                         Text("햄뿡이 기여워").offset(x: -5)
                     }
                     Spacer()
-                    Text("댓글 모두 보기")
-                        .opacity(0.5)
+                    NavigationLink {
+                        EmptyView()
+                    } label: {
+                        Text("댓글 모두 보기")
+                    }
                 }
             }.padding([.leading, .trailing], 3)
             Divider()
-        }
-        .onAppear {
-            print("\(feed.feedImage)")
         }
     }
 }
