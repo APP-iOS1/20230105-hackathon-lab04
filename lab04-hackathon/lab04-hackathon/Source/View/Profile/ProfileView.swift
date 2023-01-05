@@ -42,7 +42,7 @@ struct ProfileView: View {
                 
                 HStack {
                     Text("닉네임")
-                        .font(.title)
+                        .font(.cafeTitle2)
                     
                     Spacer()
                     
@@ -66,6 +66,7 @@ struct ProfileView: View {
                 VStack {
                     // 자기소개 없을 때 조건 처리하기
                     Text ("내용을 입력해주세요")
+                        .font(.cafeCaption2)
                         .frame(width: 340, height: 150, alignment: .leading)
                         .padding()
                 }
@@ -90,7 +91,9 @@ struct ProfileView: View {
                 VStack(alignment: .leading) {
                     
                     Text("내 캔버스")
-                        .padding()
+                        .font(.cafeSubhead2)
+                        .padding(.leading)
+                        .padding(.top)
                     
                     ScrollView {
                         
@@ -100,6 +103,13 @@ struct ProfileView: View {
                                 Image(item.imageName)
                                     .resizable()
                                     .scaledToFit()
+                                    .frame(width: 127, height: 127)
+                                    .overlay(
+                                    Rectangle()
+                                        .stroke(Color.gray, lineWidth: 0.3)
+                                       
+                                    )
+                                    
                             }
                         }
                         .padding(.leading, 3)
