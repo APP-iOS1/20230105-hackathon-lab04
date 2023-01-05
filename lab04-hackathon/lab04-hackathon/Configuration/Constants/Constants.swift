@@ -5,7 +5,7 @@
 //  Created by MacBook on 2023/01/05.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - 디바이스의 크기를 구함
 struct Screen {
