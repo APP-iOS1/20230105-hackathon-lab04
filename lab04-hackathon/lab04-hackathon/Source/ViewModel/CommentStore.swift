@@ -54,7 +54,7 @@ final class CommentStore: ObservableObject {
                 "commentId": commentId,
                 "feedId": feed.feedId,
                 "userId": user.userId,
-                "userName": user.username,
+                "userName": user.userName,
                 "content": content,
                 "date": Date()
             ])
