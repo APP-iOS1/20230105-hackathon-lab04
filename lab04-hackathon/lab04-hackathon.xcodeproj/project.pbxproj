@@ -26,7 +26,7 @@
 		FA99082529664FBD001A8124 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA99082429664FBD001A8124 /* Preview Assets.xcassets */; };
 		FA99083529665149001A8124 /* Timestamp+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99083429665149001A8124 /* Timestamp+.swift */; };
 		FA99083729665159001A8124 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99083629665159001A8124 /* Constants.swift */; };
-		FA99083929665171001A8124 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99083829665171001A8124 /* AuthStore.swift */; };
+		FA99083929665171001A8124 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99083829665171001A8124 /* AuthenticationViewModel.swift */; };
 		FA99083B29665184001A8124 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99083A29665184001A8124 /* Feed.swift */; };
 		FA99083D2966519C001A8124 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99083C2966519C001A8124 /* FeedStore.swift */; };
 		FA99083F296651A7001A8124 /* CommentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99083E296651A7001A8124 /* CommentStore.swift */; };
@@ -37,6 +37,15 @@
 		FA99085029665271001A8124 /* PaintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99084F29665271001A8124 /* PaintView.swift */; };
 		FA99085329665327001A8124 /* AddFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99085229665327001A8124 /* AddFeedView.swift */; };
 		FA99085629665394001A8124 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99085529665394001A8124 /* CommentView.swift */; };
+		FA9908822966847E001A8124 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9908812966847E001A8124 /* User.swift */; };
+		FA99088429668488001A8124 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99088329668488001A8124 /* Comment.swift */; };
+		FA99088829668BEA001A8124 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99088729668BEA001A8124 /* Drawing.swift */; };
+		FA99088A296690EA001A8124 /* AuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA990889296690EA001A8124 /* AuthenticatedView.swift */; };
+		FA99088C296690F0001A8124 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99088B296690F0001A8124 /* AuthenticationView.swift */; };
+		FA99088E296690F9001A8124 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99088D296690F9001A8124 /* LoginView.swift */; };
+		FA9908902966910E001A8124 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99088F2966910E001A8124 /* SignupView.swift */; };
+		FA99089429669C24001A8124 /* DrawingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99089329669C24001A8124 /* DrawingStore.swift */; };
+		FA9908982966A73B001A8124 /* FeedDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9908972966A73B001A8124 /* FeedDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +61,7 @@
 		FA99082429664FBD001A8124 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA99083429665149001A8124 /* Timestamp+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timestamp+.swift"; sourceTree = "<group>"; };
 		FA99083629665159001A8124 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		FA99083829665171001A8124 /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
+		FA99083829665171001A8124 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		FA99083A29665184001A8124 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		FA99083C2966519C001A8124 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		FA99083E296651A7001A8124 /* CommentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentStore.swift; sourceTree = "<group>"; };
@@ -63,6 +72,15 @@
 		FA99084F29665271001A8124 /* PaintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintView.swift; sourceTree = "<group>"; };
 		FA99085229665327001A8124 /* AddFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedView.swift; sourceTree = "<group>"; };
 		FA99085529665394001A8124 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		FA9908812966847E001A8124 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA99088329668488001A8124 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		FA99088729668BEA001A8124 /* Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
+		FA990889296690EA001A8124 /* AuthenticatedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedView.swift; sourceTree = "<group>"; };
+		FA99088B296690F0001A8124 /* AuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		FA99088D296690F9001A8124 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FA99088F2966910E001A8124 /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		FA99089329669C24001A8124 /* DrawingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingStore.swift; sourceTree = "<group>"; };
+		FA9908972966A73B001A8124 /* FeedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +109,10 @@
 				A7FC878029667F9300AAD5EB /* PrototypeFeedView.swift */,
 				A7FC877C29667F0500AAD5EB /* PrototypeLoginView.swift */,
 				A7FC877E29667F4400AAD5EB /* PrototypeSignIn.swift */,
+				FA990889296690EA001A8124 /* AuthenticatedView.swift */,
+				FA99088B296690F0001A8124 /* AuthenticationView.swift */,
+				FA99088D296690F9001A8124 /* LoginView.swift */,
+				FA99088F2966910E001A8124 /* SignupView.swift */,
 			);
 			path = PrototypeVIew;
 			sourceTree = "<group>";
@@ -146,8 +168,8 @@
 				FA99081F29664FBB001A8124 /* ContentView.swift */,
 				FA9908512966530D001A8124 /* AddFeed */,
 				FA99084629665208001A8124 /* Board */,
-				FA9908542966537E001A8124 /* Comment */,
 				FA99084929665228001A8124 /* Feed */,
+				FA9908542966537E001A8124 /* Comment */,
 				FA990840296651B6001A8124 /* Login */,
 				FA99084E29665258001A8124 /* Paint */,
 				FA990843296651DB001A8124 /* Profile */,
@@ -202,7 +224,10 @@
 		FA990832296650E9001A8124 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA99088329668488001A8124 /* Comment.swift */,
+				FA99088729668BEA001A8124 /* Drawing.swift */,
 				FA99083A29665184001A8124 /* Feed.swift */,
+				FA9908812966847E001A8124 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,8 +235,9 @@
 		FA990833296650F2001A8124 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				FA99083829665171001A8124 /* AuthStore.swift */,
+				FA99083829665171001A8124 /* AuthenticationViewModel.swift */,
 				FA99083E296651A7001A8124 /* CommentStore.swift */,
+				FA99089329669C24001A8124 /* DrawingStore.swift */,
 				FA99083C2966519C001A8124 /* FeedStore.swift */,
 			);
 			path = ViewModel;
@@ -245,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				FA99084A29665234001A8124 /* FeedView.swift */,
+				FA9908962966A720001A8124 /* FeedDetail */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -271,6 +298,14 @@
 				FA99085529665394001A8124 /* CommentView.swift */,
 			);
 			path = Comment;
+			sourceTree = "<group>";
+		};
+		FA9908962966A720001A8124 /* FeedDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FA9908972966A73B001A8124 /* FeedDetailView.swift */,
+			);
+			path = FeedDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,16 +402,25 @@
 				A7FC878129667F9300AAD5EB /* PrototypeFeedView.swift in Sources */,
 				FA99085329665327001A8124 /* AddFeedView.swift in Sources */,
 				FA99085029665271001A8124 /* PaintView.swift in Sources */,
+				FA9908822966847E001A8124 /* User.swift in Sources */,
 				A7FC877B29667EA200AAD5EB /* PrototypeFeedDetailView.swift in Sources */,
+				FA99088829668BEA001A8124 /* Drawing.swift in Sources */,
+				FA99088429668488001A8124 /* Comment.swift in Sources */,
 				FA99084B29665234001A8124 /* FeedView.swift in Sources */,
+				FA9908982966A73B001A8124 /* FeedDetailView.swift in Sources */,
+				FA99088E296690F9001A8124 /* LoginView.swift in Sources */,
 				FA99083B29665184001A8124 /* Feed.swift in Sources */,
+				FA99088C296690F0001A8124 /* AuthenticationView.swift in Sources */,
+				FA99088A296690EA001A8124 /* AuthenticatedView.swift in Sources */,
 				FA99082029664FBB001A8124 /* ContentView.swift in Sources */,
-				FA99083929665171001A8124 /* AuthStore.swift in Sources */,
+				FA99083929665171001A8124 /* AuthenticationViewModel.swift in Sources */,
 				FA99083D2966519C001A8124 /* FeedStore.swift in Sources */,
 				FA99083F296651A7001A8124 /* CommentStore.swift in Sources */,
 				FA99081E29664FBB001A8124 /* lab04_hackathonApp.swift in Sources */,
 				A7FC877D29667F0500AAD5EB /* PrototypeLoginView.swift in Sources */,
 				A7FC877F29667F4400AAD5EB /* PrototypeSignIn.swift in Sources */,
+				FA99089429669C24001A8124 /* DrawingStore.swift in Sources */,
+				FA9908902966910E001A8124 /* SignupView.swift in Sources */,
 				FA99083729665159001A8124 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
