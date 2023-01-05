@@ -16,7 +16,7 @@ class UserStore : ObservableObject{
     @Published var user : User = User(userId: "", userName: "", email: "", introduce: "")
     
     func requestUserData(){
-                                        
+        
         db.collection("User").document(uid ?? "").getDocument { snapshot,error in
             if let snapshot {
                 let docData = snapshot.data()
@@ -31,6 +31,16 @@ class UserStore : ObservableObject{
                 
             }
         }
-
+        
+    }
+    
+    func createUserData(uid: String,userName: String){
+        db.collection("User").document(uid).setData([
+            "email" : "준비 중",
+            "followers" : [""],
+            "following" : [""],
+            "userId" : uid,
+            "userName" : userName
+        ])
     }
 }

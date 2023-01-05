@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 //import FirebaseAnalyticsSwift
+import FirebaseAuth
 
 private enum FocusableField: Hashable {
     case userName
@@ -18,6 +19,7 @@ private enum FocusableField: Hashable {
 
 struct SignupView: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
+    @EnvironmentObject var userVm: UserStore
     @Environment(\.dismiss) var dismiss
     
     @FocusState private var focus: FocusableField?
@@ -29,6 +31,7 @@ struct SignupView: View {
     private func signUpWithEmailPassword() {
         Task {
             if await viewModel.signUpWithEmailPassword() == true {
+                userVm.createUserData(uid: FirebaseAuth.Auth.auth().currentUser?.uid ?? "", userName: userName)
                 dismiss()
             }
         }
@@ -181,6 +184,6 @@ struct SignupView_Previews: PreviewProvider {
             //SignupView()
             //  .preferredColorScheme(.dark)
         }
-        .environmentObject(AuthenticationViewModel())
+        .environmentObject(AuthenticationViewModel()).environmentObject(UserStore())
     }
 }

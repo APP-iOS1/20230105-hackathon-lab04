@@ -49,8 +49,6 @@ struct ProfileView: View {
                         .onAppear{
                             userVM.requestUserData()
                         }
-                    //                    Text("김튜나")
-                        .font(.cafeTitle2)
                     Spacer()
                     
                     Button {
