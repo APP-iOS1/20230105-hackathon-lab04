@@ -5,17 +5,17 @@ import Foundation
 /// Comment정보에 대한 구조체입니다.
 struct Comment {
     /// comment의 id
-    let commentId: String
+    var commentId: String
     /// feed의 id
-    let feedId : String
+    var feedId : String
     /// user의 uid 
-    let userId : String
+    var userId : String
     /// user이름
-    let userName: String
+    var userName: String
     /// 댓글
-    let content: String
+    var content: String
     /// 작성 날짜(Double타입)
-    let date: Date
+    var date: Date
     //var liked: Int
     /// 날짜(String타입) 연산 프로퍼티
     var createdDate: String {
@@ -27,7 +27,7 @@ struct Comment {
         return dateFormatter.string(from: date)
     }
     
-    static let dummy: [Comment] = (0..<10).map {
+    static var dummy: [Comment] = (0..<10).map {
         Comment(
             commentId: UUID().uuidString,
             feedId: UUID().uuidString,

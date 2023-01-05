@@ -1,27 +1,29 @@
 // 2023/01/05 created by 서광현.
 
+import Foundation
+
 /// Feed정보에 대한 구조체입니다.
 struct Feed {
     /// feed 고유 아이디
-    let feedId: String
+    var feedId: String
     /// user의 uid
-    let userId : String
+    var userId : String
     /// 피드 제목
-    let title: String
+    var title: String
     /// 이미지 URL
-    let imageURL: String
+    var imageURL: String
     /// 피드 내용
-    let description: String
+    var description: String
     /// 피드 구분 ( 카테고리 )
-    let category : String
+    var category : String
     /// 좋아요 ( 개발예정 )
     //var liked: Dictionay<user.id:Bool>
     /// 작성자
-    let userName: String
+    var userName: String
     /// 댓글뷰에서 구현할거라 사용 안함
     // var comments: [Comment]?
     /// 작성날짜 ( Double )
-    let date: Date
+    var date: Date
     /// 작성날짜 ( String )
     var createdDate: String {
         let dateFormatter = DateFormatter()
@@ -31,7 +33,7 @@ struct Feed {
         return dateFormatter.string(from: date)
     }
     
-    static let dummy: [Feed] = (0..<10).map {
+    static var dummy: [Feed] = (0..<10).map {
         Feed(
             feedId: UUID().uuidString,
             userId: UUID().uuidString,

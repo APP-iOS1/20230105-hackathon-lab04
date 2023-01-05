@@ -1,21 +1,22 @@
+import Foundation
 // 2023/01/05 created by 서광현.
 
 /// User정보에 대한 구조체입니다.
 struct User {
     /// user의 고유 uid
-    let userId: String
+    var userId: String
     /// user의 이름
-    let username: String
+    var username: String
     /// user의 email
-    let email: String
+    var email: String
     /// 한 줄 소개
-    let introduce: String
+    var introduce: String
     /// 팔로워 배열
-    let followers: [String]?
+    var followers: [String]?
     /// 팔로잉 배열
-    let following: [String]?
+    var following: [String]?
     
-    static let dummy: [User] = (0..<10).map {
+    static var dummy: [User] = (0..<10).map {
         User(
             userId: UUID().uuidString,
             username: "user\($0)",
