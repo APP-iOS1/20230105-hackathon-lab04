@@ -16,7 +16,7 @@ struct lab04_hackathonApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var feedViewModel = FeedStore()
     @StateObject var authViewModel = AuthenticationViewModel()
-    
+    @StateObject var userViewModel = UserStore()
     var body: some Scene {
         WindowGroup {
             NavigationView {
@@ -27,6 +27,8 @@ struct lab04_hackathonApp: App {
                     ContentView()
                         .environmentObject(feedViewModel)
                         .environmentObject(authViewModel)
+                        .environmentObject(userViewModel)
+                        
                 }
                 .environmentObject(authViewModel)
                 .onOpenURL { url in

@@ -44,11 +44,13 @@ struct ProfileView: View {
             VStack {
                 
                 HStack {
-//                    Text(userVM.currentUserName ?? "")
-                    Text("김튜나")
+                    Text(userVM.user.userName)
                         .font(.cafeTitle2)
-
-                    
+                        .onAppear{
+                            userVM.requestUserData()
+                        }
+                    //                    Text("김튜나")
+                        .font(.cafeTitle2)
                     Spacer()
                     
                     Button {
@@ -104,6 +106,7 @@ struct ProfileView: View {
                         
                         // 데이터 연동 후 아무것도 없을때 조건 처리하기
                         LazyVGrid(columns: columns, spacing: 3) {
+
                             ForEach(feed.feeds, id: \.self) { feed in
                                 
                                 NavigationLink {
@@ -132,8 +135,6 @@ struct ProfileView: View {
                         .foregroundColor(.clear)
                 )
             }
-        }.onAppear{
-//            userVM.requestUserData(uid: userVM.uid ?? "")
         }
     }
 }

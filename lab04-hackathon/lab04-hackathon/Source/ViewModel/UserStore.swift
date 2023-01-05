@@ -13,25 +13,11 @@ class UserStore : ObservableObject{
     
     private let db = Firestore.firestore()
     let uid = FirebaseAuth.Auth.auth().currentUser?.uid
-    var currentUserName : String?
     @Published var user : User = User(userId: "", userName: "", email: "", introduce: "")
     
-    init(){
-//        requestUserData(uid: uid ?? "")
-    }
-    
-//    func requestAllUserData(){
-//        db.collection("User").getDocuments { snapshot, error in
-//            if let snapshot{
-//                let docData = snapshot.data()
-//
-//            }
-//        }
-//    }
-    
-    func requestUserData(uid: String){
-                                        // 임시
-        db.collection("User").document("CofDfNO7DynyOG1Vhiqy").getDocument { snapshot,error in
+    func requestUserData(){
+                                        
+        db.collection("User").document(uid ?? "").getDocument { snapshot,error in
             if let snapshot {
                 let docData = snapshot.data()
                 
@@ -41,11 +27,10 @@ class UserStore : ObservableObject{
                 //followers
                 //following
                 let user = User(userId: userId, userName: userName, email: email, introduce: "")
-                print(user.userName)
-                self.currentUserName = user.userName
+                self.user = user
                 
             }
         }
-        
+
     }
 }
