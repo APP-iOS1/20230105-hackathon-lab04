@@ -8,20 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var selectedTabBar: SelectedTab = .second
+    
     var body: some View {
-        TabView {
-            PaintView().tabItem {
-                Image(systemName: "house")
-                Text("그림그리기")
-            }.tag(1)
-            AddFeedView().tabItem {
-                Image(systemName: "house")
-                Text("피드")
-            }.tag(2)
-            ProfileView().tabItem {
-                Image(systemName: "house")
-                Text("프로필")
-            }.tag(2)
+        ZStack {
+            Color("background")
+                .ignoresSafeArea()
+            
+            VStack {
+                
+                switch selectedTabBar {
+                    
+                case .first:
+                    CanvasView()
+                case .second:
+                    EmptyView()
+                case .third:
+                    ProfileView()
+                    
+                }
+                
+                TabBarView(selectedTabBar: $selectedTabBar)
+                    .frame(height: 50)
+            }
         }
     }
 }
@@ -31,3 +41,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
