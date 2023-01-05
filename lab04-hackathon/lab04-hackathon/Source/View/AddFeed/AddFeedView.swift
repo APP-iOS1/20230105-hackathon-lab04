@@ -127,7 +127,7 @@ struct AddFeedView: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Button("완료") {
                     
                 }

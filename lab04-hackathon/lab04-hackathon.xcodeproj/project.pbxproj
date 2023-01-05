@@ -181,14 +181,14 @@
 		FA99082B29665042001A8124 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FA99081F29664FBB001A8124 /* ContentView.swift */,
-				63828F642966BF7F007D6CD0 /* TabBarView.swift */,
 				FA9908512966530D001A8124 /* AddFeed */,
 				FA99084629665208001A8124 /* Board */,
-				FA99084929665228001A8124 /* Feed */,
 				FA9908542966537E001A8124 /* Comment */,
+				FA99081F29664FBB001A8124 /* ContentView.swift */,
+				FA99084929665228001A8124 /* Feed */,
 				FA990840296651B6001A8124 /* Login */,
 				FA990843296651DB001A8124 /* Profile */,
+				63828F642966BF7F007D6CD0 /* TabBarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
