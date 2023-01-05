@@ -35,111 +35,142 @@ struct SignupView: View {
     }
     
     var body: some View {
-        VStack{
-            Text("PENCHAT")
-                .padding(.bottom,60)
-                .font(.title)
+        
+        ZStack {
             
-            VStack{
-                HStack {
-                    Image(systemName: "person")
-                    TextField("별명을 입력해주세요", text: $userName)
-                        .textInputAutocapitalization(.never)
-                        .disableAutocorrection(true)
-                        .focused($focus, equals: .userName)
-                        .submitLabel(.next)
-                        .onSubmit {
-                            self.focus = .email
-                        }
-                }
-                .padding(.vertical, 6)
-                .background(Divider(), alignment: .bottom)
-                .padding(.bottom, 12)
+            Color("background")
+                .ignoresSafeArea()
+            
+            VStack {
+                Text("PENCHAT")
+                    .font(.cafeLargeTitle)
+                    .padding(.bottom, 80)
                 
-                HStack {
-                    Image(systemName: "at")
-                    TextField("이메일을 입력해주세요", text: $viewModel.email)
-                        .textInputAutocapitalization(.never)
-                        .disableAutocorrection(true)
-                        .focused($focus, equals: .email)
-                        .submitLabel(.next)
-                        .onSubmit {
-                            self.focus = .password
-                        }
+                VStack(spacing: 30) {
+                    HStack {
+                        Image("person2")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
+                            .padding(.leading)
+                        TextField("별명을 입력해주세요", text: $userName)
+                            .font(.cafeHeadline2)
+                            .textInputAutocapitalization(.never)
+                            .disableAutocorrection(true)
+                            .focused($focus, equals: .userName)
+                            .submitLabel(.next)
+                            .onSubmit {
+                                self.focus = .email
+                            }
+                    }
+                    .frame(width: 380, height: 50)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 0.3)
+                    )
+                    
+                    
+                    HStack {
+                        Image("mail")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
+                            .padding(.leading)
+                        TextField("이메일을 입력해주세요", text: $viewModel.email)
+                            .font(.cafeHeadline2)
+                            .textInputAutocapitalization(.never)
+                            .disableAutocorrection(true)
+                            .focused($focus, equals: .email)
+                            .submitLabel(.next)
+                            .onSubmit {
+                                self.focus = .password
+                            }
+                    }
+                    .frame(width: 380, height: 50)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 0.3)
+                    )
+                    
+                    HStack {
+                        Image("lock")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
+                            .padding(.leading)
+                        SecureField("비밀번호를 입력해주세요", text: $viewModel.password)
+                            .font(.cafeHeadline2)
+                            .focused($focus, equals: .password)
+                            .submitLabel(.next)
+                            .onSubmit {
+                                self.focus = .confirmPassword
+                            }
+                    }
+                    .frame(width: 380, height: 50)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 0.3)
+                    )
+                    
+                    HStack {
+                        Image("lock")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
+                            .padding(.leading)
+                        SecureField("비밀번호를 한번 더 입력해주세요", text: $viewModel.confirmPassword)
+                            .font(.cafeHeadline2)
+                            .focused($focus, equals: .confirmPassword)
+                            .submitLabel(.go)
+                            .onSubmit {
+                                signUpWithEmailPassword()
+                            }
+                    }
+                    .frame(width: 380, height: 50)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 0.3)
+                    )
                 }
-                .padding(.vertical, 6)
-                .background(Divider(), alignment: .bottom)
-                .padding(.bottom, 12)
                 
-                HStack {
-                    Image(systemName: "lock")
-                    SecureField("비밀번호를 입력해주세요", text: $viewModel.password)
-                        .focused($focus, equals: .password)
-                        .submitLabel(.next)
-                        .onSubmit {
-                            self.focus = .confirmPassword
-                        }
+                if !viewModel.errorMessage.isEmpty {
+                    VStack {
+                        Text(viewModel.errorMessage)
+                            .foregroundColor(Color(UIColor.systemRed))
+                    }
                 }
-                .padding(.vertical, 6)
-                .background(Divider(), alignment: .bottom)
-                .padding(.bottom, 12)
                 
-                HStack {
-                    Image(systemName: "lock")
-                    SecureField("비밀번호를 한번 더 입력해주세요", text: $viewModel.confirmPassword)
-                        .focused($focus, equals: .confirmPassword)
-                        .submitLabel(.go)
-                        .onSubmit {
-                            signUpWithEmailPassword()
+                VStack(spacing: 60) {
+                    HStack {
+                        Spacer()
+                        Text("계정이 있으신가요?")
+                            .font(.cafeCaption2)
+                            .foregroundColor(.black)
+                        Button(action: { viewModel.switchFlow() }) {
+                            Text("로그인")
+                                .font(.cafeSubhead2)
+                                .foregroundColor(.black)
                         }
+                        .padding(.trailing)
+                    }
+                    
+                    Button(action: signUpWithEmailPassword) {
+                        if viewModel.authenticationState != .authenticating {
+                            Text("회원가입")
+                                .font(.cafeCallout)
+                                .foregroundColor(.black)
+                        }
+                        else {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        }
+                    }
+                    .disabled(!viewModel.isValid)
                 }
-                .padding(.vertical, 6)
-                .background(Divider(), alignment: .bottom)
-                .padding(.bottom, 12)
+                
             }
-            .padding(.top,50)
-            
-            if !viewModel.errorMessage.isEmpty {
-                VStack {
-                    Text(viewModel.errorMessage)
-                        .foregroundColor(Color(UIColor.systemRed))
-                }
-            }
-            
-            HStack {
-                Spacer()
-                Text("계정이 있으신가요?")
-                Button(action: { viewModel.switchFlow() }) {
-                    Text("로그인")
-                        .foregroundColor(.blue)
-                }
-            }
-            .font(.caption)
-            
-            
-            Button(action: signUpWithEmailPassword) {
-                if viewModel.authenticationState != .authenticating {
-                    Text("회원가입")
-                        .font(.title3)
-                        .padding(.vertical, 8)
-                        //.frame(maxWidth: .infinity)
-                        //.foregroundColor(.primary)
-                }
-                else {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                        .padding(.vertical, 8)
-                        //.frame(maxWidth: .infinity)
-                }
-            }
-            .disabled(!viewModel.isValid)
-            
-            Spacer()
+            //.analyticsScreen(name: "\(Self.self)")
         }
-        .listStyle(.plain)
-        .frame(height: 500)
-        .padding()
-        //.analyticsScreen(name: "\(Self.self)")
     }
 }
 
@@ -148,7 +179,7 @@ struct SignupView_Previews: PreviewProvider {
         Group {
             SignupView()
             //SignupView()
-              //  .preferredColorScheme(.dark)
+            //  .preferredColorScheme(.dark)
         }
         .environmentObject(AuthenticationViewModel())
     }
