@@ -37,11 +37,11 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
     var body: some View {
         switch viewModel.authenticationState {
         case .unauthenticated, .authenticating:
-            VStack(spacing: 16.0) {
+            VStack {
                 AuthenticationView()
                     .environmentObject(viewModel)
             }
-            .padding(.horizontal ,32.0)
+            //.padding(.horizontal ,32.0)
 //            .sheet(isPresented: $presentingLoginScreen) {
 //                AuthenticationView()
 //                    .environmentObject(viewModel)
@@ -60,12 +60,12 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
     }
 }
 
-struct AuthenticatedView_Previews: PreviewProvider {
-    static var previews: some View {
-        AuthenticatedView {
-            Text("You're signed in.")
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                .background(.yellow)
-        }
-    }
-}
+//struct AuthenticatedView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AuthenticatedView {
+//            Text("You're signed in.")
+//                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+//                .background(.yellow)
+//        }
+//    }
+//}

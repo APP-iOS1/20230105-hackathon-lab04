@@ -39,9 +39,12 @@ class AuthenticationViewModel: ObservableObject {
     @Published var user: FirebaseAuth.User?
     @Published var displayName = ""
     
+    //currentuseruid
+    var currentUid : String?
+    
     init() {
         //registerAuthStateHandler()
-        
+
         $flow
             .combineLatest($email, $password, $confirmPassword)
             .map { flow, email, password, confirmPassword in
@@ -87,6 +90,8 @@ extension AuthenticationViewModel {
         do {
             try await Auth.auth().signIn(withEmail: self.email, password: self.password)
             authenticationState = .authenticated
+            //로그인 성공시 현재유저 uid 가져오기
+            currentUid = FirebaseAuth.Auth.auth().currentUser?.uid
             return true
         }
         catch  {

@@ -12,53 +12,81 @@ struct CanvasView: View {
     @Environment(\.undoManager) private var undoManager
     @State var canvas = PKCanvasView()
     @State var drawingImage: [Data] = []
-    @State var toggle: Bool = true
+    @State var toggle: Bool = false
     @State private var showingAlert = false
 
     
     var body: some View {
-        NavigationView {
+        ZStack {
+            Color("background")
+                .ignoresSafeArea()
             VStack {
-                
-                HStack(spacing: 10) {
-                    Button(action: {
-                        undoManager?.undo()
+                HStack {
+                    Button(action : {
+                        SaveImage()
+                    }, label: {
+                        Image("down")
+                            .resizable()
+                            .frame(width: 44, height: 44)
                         
-                    }, label: {
-                        Image(systemName: "arrow.uturn.left")
                     })
+                    .padding(.leading,20)
+                    Spacer()
                     Button(action: {
-                        undoManager?.redo()
-
+                        showingAlert = true
                     }, label: {
-                        Image(systemName: "arrow.uturn.right")
+                        Image("new")
+                            .resizable()
+                            .frame(width: 44, height: 44)
                     })
+                    .alert("새로 그리시겠습니까?", isPresented: $showingAlert) {
+                        Button("취소", role: .cancel) { }
+                        Button("확인") {
+                            canvas.drawing = PKDrawing()
+                        }
+                    }
+                    
+                    .padding(.trailing,20)
+                    
                 }
+                Spacer()
                 Divider()
                 DrawingView(toggle: $toggle, canvas: $canvas)
                     .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.width)
                 Divider()
-                Button(action: {toggle.toggle()}, label: {Text("그리기도구")})
-                
-                
+                HStack {
+                    Button(action: {
+                        undoManager?.undo()
+                        
+                    }, label: {
+                        Image("reload2")
+                            .resizable()
+                            .frame(width: 44, height: 44)
+                    })
+                    .padding(.trailing,40)
+                    Button(action: {
+                        undoManager?.redo()
+                        
+                    }, label: {
+                        Image("reload")
+                            .resizable()
+                            .frame(width: 44, height: 44)
+                    })
+                    Button(action: {
+                        toggle.toggle()
+                    }, label: {
+                        Image(systemName: "pencil.tip.crop.circle")
+                            .resizable()
+                            .frame(width: 44, height: 44)
+                            .foregroundColor(Color.black)
+                    })
+                    .padding(.leading,40)
+
+                    
+                }
+                Spacer()
             }
-            .navigationTitle("Drawing")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading: Button(action : {
-                SaveImage()
-            }, label: {
-                Image(systemName: "menubar.arrow.down.rectangle")
-            }),trailing: HStack(spacing: 15){
-                Button("새로그리기") {
-                    showingAlert = true
-                }
-                .alert("새로 그리시겠습니까?", isPresented: $showingAlert) {
-                    Button("취소", role: .cancel) { }
-                    Button("확인") {
-                        canvas.drawing = PKDrawing()
-                    }
-                }
-            })
+            
         }
     }
     
