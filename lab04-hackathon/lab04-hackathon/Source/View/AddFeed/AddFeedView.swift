@@ -10,14 +10,30 @@ import PhotosUI
 
 struct AddFeedView: View {
     
-    @ObservedObject var feedStore: FeedStore = FeedStore()
+    @EnvironmentObject var feedStore: FeedStore
+    @EnvironmentObject var currentUser: UserStore
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var drawingCategory = ["캐릭터 그림", "인물 그림", "동물 그림", "풍경 그림"]
     @State private var currentCategory : String = "풍경 그림"
     @State private var index = 0
+    @State private var drawingTitle = ""
     @State private var drawingDescription : String = ""
+    @State private var placeHolder = "그림을 소개해주세요."
     @State private var selectedImage: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
+    var btnBack : some View { Button(action: {
+        self.presentationMode.wrappedValue.dismiss()
+    }) {
+        
+        Image("left")
+            .resizable()
+        //.scaledToFit()
+        //.aspectRatio(contentMode: .fit)
+            .frame(width:18, height: 18)// set image here
+        
+    }
+    }
     
     var body: some View {
         ScrollView {
@@ -91,9 +107,34 @@ struct AddFeedView: View {
                             
                         }.animation(nil)
                     }
-                    Divider()
+
                 }
-                .padding()
+                .padding([.leading, .trailing, .top])
+                Divider()
+
+                
+                //MARK: - 제목입력
+                VStack {
+                    HStack {
+                        Text("제목입력")
+                            .font(.cafeHeadline2)
+                        Spacer()
+                    }
+                    TextField(" 그림의 제목을 알려주세요.", text: $drawingTitle)
+                        .font(.cafeHeadline2)
+                    
+                        .frame(width:UIScreen.main.bounds.size.width-40, height: 40)
+                        .background(.white)
+                        .overlay (
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(lineWidth: 0.3)
+                                .foregroundColor(.gray)
+                        )
+                    
+                }
+                .padding([.leading, .trailing])
+                Divider()
+                    .padding(.top, 5)
                 
                 // MARK: - 문구 입력
                 VStack {
@@ -102,37 +143,58 @@ struct AddFeedView: View {
                             .font(.cafeHeadline2)
                         Spacer()
                     }
-                    TextEditor(text: $drawingDescription)
-                        .font(.cafeHeadline2)
-                        .overlay (
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(lineWidth: 0.3)
-                                .foregroundColor(.gray)
-                        )
-                        .frame(width:UIScreen.main.bounds.size.width-40, height: 200)
+                    //placeHolder를 위해 사용
+                    if drawingDescription.isEmpty {
+                        TextEditor(text: $placeHolder)
+                            .font(.cafeHeadline2)
+                            .foregroundColor(.black)
+                            .opacity(0.2)
+                            .overlay (
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(lineWidth: 0.3)
+                                    .foregroundColor(.gray)
+                            )
+                            .background(.white)
+                            .frame(width:UIScreen.main.bounds.size.width-40, height: 200)
                         
+                    } else {
+                        TextEditor(text: $drawingDescription)
+                            .font(.cafeHeadline2)
+                            .overlay (
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(lineWidth: 0.3)
+                                    .foregroundColor(.gray)
+                            )
+                            .frame(width:UIScreen.main.bounds.size.width-40, height: 200)
+                    }
+                    
+                    
                 }
                 .padding([.leading, .trailing])
                 
-                //테스트 버튼
-                //            Button(action: {
-                //                let imageURL = UUID().uuidString
-                //                feedStore.uploadImage(image: selectedImageData, imageURL: imageURL)
-                //                feedStore.create(Feed(feedId: <#T##String#>, userId: <#T##String#>, title: <#T##String#>, imageURL: <#T##String#>, description: <#T##String#>, category: <#T##String#>, userName: <#T##String#>, date: <#T##Date#>))
-                //
-                //            }) {
-                //                Text("스토리지에 사진넣기")
-                //            }
-                
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: btnBack)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("완료") {
-                    
+                Button {
+                    //let imageURL = UUID().uuidString
+                    let feedId = UUID().uuidString
+                    let currenTitle: String = drawingTitle
+                    let currentDescription: String = drawingDescription
+                    feedStore.uploadImage(image: selectedImageData, imageURL: "")
+                    feedStore.create(Feed(feedId: feedId, userId: currentUser.user.userId, title: currenTitle, imageURL: "", description: currentDescription, category: currentCategory, userName: currentUser.currentUserName!, date: Date.now))
+                } label: {
+                    Text("완료")
+                        .font(.cafeHeadline2)
+                        .foregroundColor(.black)
                 }
             }
+            
+            
         }
+        
         .background(Color(red: 252/255, green: 251/255, blue: 245/255))
     }
 }
