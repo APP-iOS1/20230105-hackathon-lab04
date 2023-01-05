@@ -2,7 +2,7 @@ import Foundation
 // 2023/01/05 created by 서광현.
 
 /// User정보에 대한 구조체입니다.
-struct User :Hashable{
+struct User {
     /// user의 고유 uid
     var userId: String
     /// user의 이름
