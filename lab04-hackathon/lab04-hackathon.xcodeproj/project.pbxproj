@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63828F652966BF7F007D6CD0 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63828F642966BF7F007D6CD0 /* TabBarView.swift */; };
 		A7FC877229666E4E00AAD5EB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877129666E4E00AAD5EB /* FirebaseAuth */; };
 		A7FC877429666E4E00AAD5EB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877329666E4E00AAD5EB /* FirebaseFirestore */; };
 		A7FC877629666E4E00AAD5EB /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877529666E4E00AAD5EB /* FirebaseFirestoreSwift */; };
@@ -51,6 +52,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63828F642966BF7F007D6CD0 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		A7FC877A29667EA200AAD5EB /* PrototypeFeedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeFeedDetailView.swift; sourceTree = "<group>"; };
 		A7FC877C29667F0500AAD5EB /* PrototypeLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeLoginView.swift; sourceTree = "<group>"; };
 		A7FC877E29667F4400AAD5EB /* PrototypeSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeSignIn.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				FA99081F29664FBB001A8124 /* ContentView.swift */,
+				63828F642966BF7F007D6CD0 /* TabBarView.swift */,
 				FA9908512966530D001A8124 /* AddFeed */,
 				FA99084629665208001A8124 /* Board */,
 				FA99084929665228001A8124 /* Feed */,
@@ -406,6 +409,7 @@
 				FA990842296651D4001A8124 /* SignInView.swift in Sources */,
 				FA99083529665149001A8124 /* Timestamp+.swift in Sources */,
 				FA99085629665394001A8124 /* CommentView.swift in Sources */,
+				63828F652966BF7F007D6CD0 /* TabBarView.swift in Sources */,
 				FA99084529665200001A8124 /* ProfileView.swift in Sources */,
 				A7FC878129667F9300AAD5EB /* PrototypeFeedView.swift in Sources */,
 				FA99085329665327001A8124 /* AddFeedView.swift in Sources */,
