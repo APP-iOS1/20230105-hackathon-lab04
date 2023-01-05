@@ -11,6 +11,7 @@
 		A77BFC6429665D5200B7B7E0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77BFC6329665D5200B7B7E0 /* ContentView.swift */; };
 		A77BFC6629665D5300B7B7E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77BFC6529665D5300B7B7E0 /* Assets.xcassets */; };
 		A77BFC6A29665D5300B7B7E0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77BFC6929665D5300B7B7E0 /* Preview Assets.xcassets */; };
+		A77BFC71296660CC00B7B7E0 /* FeedViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77BFC70296660CB00B7B7E0 /* FeedViewTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		A77BFC6529665D5300B7B7E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A77BFC6729665D5300B7B7E0 /* prototypeFirebase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = prototypeFirebase.entitlements; sourceTree = "<group>"; };
 		A77BFC6929665D5300B7B7E0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A77BFC70296660CB00B7B7E0 /* FeedViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				A77BFC6129665D5200B7B7E0 /* prototypeFirebaseApp.swift */,
 				A77BFC6329665D5200B7B7E0 /* ContentView.swift */,
+				A77BFC70296660CB00B7B7E0 /* FeedViewTest.swift */,
 				A77BFC6529665D5300B7B7E0 /* Assets.xcassets */,
 				A77BFC6729665D5300B7B7E0 /* prototypeFirebase.entitlements */,
 				A77BFC6829665D5300B7B7E0 /* Preview Content */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A77BFC6429665D5200B7B7E0 /* ContentView.swift in Sources */,
+				A77BFC71296660CC00B7B7E0 /* FeedViewTest.swift in Sources */,
 				A77BFC6229665D5200B7B7E0 /* prototypeFirebaseApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
