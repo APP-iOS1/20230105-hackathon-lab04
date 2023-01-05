@@ -19,7 +19,6 @@
 		A7FC87862966820700AAD5EB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC87852966820700AAD5EB /* GoogleSignIn */; };
 		A7FC87882966820700AAD5EB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC87872966820700AAD5EB /* GoogleSignInSwift */; };
 		A7FC878B2966823900AAD5EB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC878A2966823900AAD5EB /* Lottie */; };
-		A7FC878E2966827A00AAD5EB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC878D2966827A00AAD5EB /* FirebaseAnalyticsSwift */; };
 		D544A3642966AFDE00F43C50 /* Cafe24SsurroundAir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D544A3632966AFD100F43C50 /* Cafe24SsurroundAir.ttf */; };
 		D544A3652966AFE300F43C50 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D544A3622966AFCB00F43C50 /* Cafe24Ssurround.ttf */; };
 		FA99081E29664FBB001A8124 /* lab04_hackathonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99081D29664FBB001A8124 /* lab04_hackathonApp.swift */; };
@@ -96,7 +95,6 @@
 				A7FC878B2966823900AAD5EB /* Lottie in Frameworks */,
 				A7FC877229666E4E00AAD5EB /* FirebaseAuth in Frameworks */,
 				A7FC877829666E4E00AAD5EB /* FirebaseStorage in Frameworks */,
-				A7FC878E2966827A00AAD5EB /* FirebaseAnalyticsSwift in Frameworks */,
 				A7FC87882966820700AAD5EB /* GoogleSignInSwift in Frameworks */,
 				A7FC877429666E4E00AAD5EB /* FirebaseFirestore in Frameworks */,
 				A7FC877629666E4E00AAD5EB /* FirebaseFirestoreSwift in Frameworks */,
@@ -338,7 +336,6 @@
 				A7FC87852966820700AAD5EB /* GoogleSignIn */,
 				A7FC87872966820700AAD5EB /* GoogleSignInSwift */,
 				A7FC878A2966823900AAD5EB /* Lottie */,
-				A7FC878D2966827A00AAD5EB /* FirebaseAnalyticsSwift */,
 			);
 			productName = "lab04-hackathon";
 			productReference = AD4F85502966B59F006E14EC /* lab04-hackathon.app */;
@@ -693,11 +690,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A7FC87892966823900AAD5EB /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		A7FC878D2966827A00AAD5EB /* FirebaseAnalyticsSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A7FC877029666E4E00AAD5EB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
