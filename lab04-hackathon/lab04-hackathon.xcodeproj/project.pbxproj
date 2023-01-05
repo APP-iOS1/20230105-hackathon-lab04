@@ -11,6 +11,10 @@
 		A7FC877429666E4E00AAD5EB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877329666E4E00AAD5EB /* FirebaseFirestore */; };
 		A7FC877629666E4E00AAD5EB /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877529666E4E00AAD5EB /* FirebaseFirestoreSwift */; };
 		A7FC877829666E4E00AAD5EB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC877729666E4E00AAD5EB /* FirebaseStorage */; };
+		A7FC877B29667EA200AAD5EB /* PrototypeFeedDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FC877A29667EA200AAD5EB /* PrototypeFeedDetailView.swift */; };
+		A7FC877D29667F0500AAD5EB /* PrototypeLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FC877C29667F0500AAD5EB /* PrototypeLoginView.swift */; };
+		A7FC877F29667F4400AAD5EB /* PrototypeSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FC877E29667F4400AAD5EB /* PrototypeSignIn.swift */; };
+		A7FC878129667F9300AAD5EB /* PrototypeFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FC878029667F9300AAD5EB /* PrototypeFeedView.swift */; };
 		FA99081E29664FBB001A8124 /* lab04_hackathonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99081D29664FBB001A8124 /* lab04_hackathonApp.swift */; };
 		FA99082029664FBB001A8124 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99081F29664FBB001A8124 /* ContentView.swift */; };
 		FA99082229664FBD001A8124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA99082129664FBD001A8124 /* Assets.xcassets */; };
@@ -31,6 +35,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A7FC877A29667EA200AAD5EB /* PrototypeFeedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeFeedDetailView.swift; sourceTree = "<group>"; };
+		A7FC877C29667F0500AAD5EB /* PrototypeLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeLoginView.swift; sourceTree = "<group>"; };
+		A7FC877E29667F4400AAD5EB /* PrototypeSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeSignIn.swift; sourceTree = "<group>"; };
+		A7FC878029667F9300AAD5EB /* PrototypeFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeFeedView.swift; sourceTree = "<group>"; };
 		FA99081A29664FBB001A8124 /* lab04-hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lab04-hackathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA99081D29664FBB001A8124 /* lab04_hackathonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lab04_hackathonApp.swift; sourceTree = "<group>"; };
 		FA99081F29664FBB001A8124 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +74,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7FC877929667E5F00AAD5EB /* PrototypeVIew */ = {
+			isa = PBXGroup;
+			children = (
+				A7FC877A29667EA200AAD5EB /* PrototypeFeedDetailView.swift */,
+				A7FC878029667F9300AAD5EB /* PrototypeFeedView.swift */,
+				A7FC877C29667F0500AAD5EB /* PrototypeLoginView.swift */,
+				A7FC877E29667F4400AAD5EB /* PrototypeSignIn.swift */,
+			);
+			path = PrototypeVIew;
+			sourceTree = "<group>";
+		};
 		FA99081129664FBB001A8124 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +139,7 @@
 		FA99082C29665051001A8124 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A7FC877929667E5F00AAD5EB /* PrototypeVIew */,
 				FA990833296650F2001A8124 /* ViewModel */,
 				FA990832296650E9001A8124 /* Model */,
 				FA99082B29665042001A8124 /* View */,
@@ -318,8 +338,10 @@
 				FA99083529665149001A8124 /* Timestamp+.swift in Sources */,
 				FA99085629665394001A8124 /* CommentView.swift in Sources */,
 				FA99084529665200001A8124 /* ProfileView.swift in Sources */,
+				A7FC878129667F9300AAD5EB /* PrototypeFeedView.swift in Sources */,
 				FA99085329665327001A8124 /* AddFeedView.swift in Sources */,
 				FA99085029665271001A8124 /* PaintView.swift in Sources */,
+				A7FC877B29667EA200AAD5EB /* PrototypeFeedDetailView.swift in Sources */,
 				FA99084B29665234001A8124 /* FeedView.swift in Sources */,
 				FA99083B29665184001A8124 /* Feed.swift in Sources */,
 				FA99082029664FBB001A8124 /* ContentView.swift in Sources */,
@@ -327,6 +349,8 @@
 				FA99083D2966519C001A8124 /* FeedStore.swift in Sources */,
 				FA99083F296651A7001A8124 /* CommentStore.swift in Sources */,
 				FA99081E29664FBB001A8124 /* lab04_hackathonApp.swift in Sources */,
+				A7FC877D29667F0500AAD5EB /* PrototypeLoginView.swift in Sources */,
+				A7FC877F29667F4400AAD5EB /* PrototypeSignIn.swift in Sources */,
 				FA99083729665159001A8124 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
