@@ -18,6 +18,8 @@ struct ProfileView: View {
         GridItem(.adaptive(minimum: 100))
     ]
     @EnvironmentObject var userVM : UserStore
+    @EnvironmentObject var feed: FeedStore
+
     
     @State private var drawingItem: [DrawingItem] = [
         DrawingItem(imageName: "1"),
@@ -102,16 +104,21 @@ struct ProfileView: View {
                         
                         // 데이터 연동 후 아무것도 없을때 조건 처리하기
                         LazyVGrid(columns: columns, spacing: 3) {
-                            ForEach(drawingItem) { item in
-                                Image(item.imageName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 127, height: 127)
-                                    .overlay(
-                                    Rectangle()
-                                        .stroke(Color.gray, lineWidth: 0.3)
-                                       
-                                    )
+                            ForEach(feed.feeds, id: \.self) { feed in
+                                
+                                NavigationLink {
+                                    FeedCell(feed: feed)
+                                } label: {
+                                    Image(systemName: "plus")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 127, height: 127)
+                                        .overlay(
+                                        Rectangle()
+                                            .stroke(Color.gray, lineWidth: 0.3)
+
+                                        )
+                                }
                                     
                             }
                         }
@@ -133,7 +140,7 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView().environmentObject(UserStore())
+        ProfileView().environmentObject(UserStore()).environmentObject(FeedStore())
     }
 }
 
