@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-struct DrawingItem: Identifiable {
-    var id = UUID()
-    var imageName: String
-}
-
 struct ProfileView: View {
     
     private let columns: [GridItem] = [
@@ -19,26 +14,12 @@ struct ProfileView: View {
     ]
     @EnvironmentObject var userVM : UserStore
     @EnvironmentObject var feed: FeedStore
-    
-    
-    @State private var drawingItem: [DrawingItem] = [
-        DrawingItem(imageName: "1"),
-        DrawingItem(imageName: "2"),
-        DrawingItem(imageName: "3"),
-        DrawingItem(imageName: "4"),
-        DrawingItem(imageName: "5"),
-        DrawingItem(imageName: "6"),
-        DrawingItem(imageName: "7"),
-        DrawingItem(imageName: "8"),
-        DrawingItem(imageName: "9")
-    ]
-    // 내용을 입력해주세요 ( 자기소개 )?
+    @EnvironmentObject var viewModel : AuthenticationViewModel
+
     @State private var writeContent : String = ""
-    @FocusState private var writeIsFocused: Bool
     
-    
+    @State private var sheetShowing = false
     @State private var showingAlert = false
-    
     
     var body: some View {
         
@@ -65,7 +46,12 @@ struct ProfileView: View {
                             .frame(width: 20)
                     }
                     .alert("로그아웃", isPresented: $showingAlert) {
-                        Button("확인") {print("로그아웃함")}
+                        Button("확인") {
+                            viewModel.signOut()
+                            viewModel.authenticationState = .unauthenticated
+                            viewModel.reset()
+                            
+                        }
                         Button("취소", role: .cancel) {}
                     } message: {
                         Text("로그아웃하시겠습니까?")
@@ -73,13 +59,18 @@ struct ProfileView: View {
                 }
                 .padding()
                 //자기소개
-                VStack {
-                    TextField("내용을 입력해주세요", text:$writeContent)
-                        .font(.cafeCaption2)
-                        .frame(width: 340, height: 150, alignment: .leading)
-                        .padding()
-                        .focused($writeIsFocused)
-                        
+                VStack(alignment: .leading) {
+                    if writeContent == ""{
+                        Text("자기소개 해주세요")
+                            .font(.cafeCaption2)
+                            .frame(width: 340, height: 150, alignment: .leading)
+                            .padding()
+                    }else{
+                        Text("\(writeContent)")
+                            .font(.cafeCaption2)
+                            .frame(width: 340, height: 150, alignment: .leading)
+                            .padding()
+                    }
                 }
                 .overlay (
                     RoundedRectangle(cornerRadius: 10)
@@ -88,11 +79,7 @@ struct ProfileView: View {
                 )
                 .overlay(
                     Button {
-                        // 자기소개 업데이트
-                        writeContent = userVM.updateUserDataIntroduce(content: writeContent)
-                        // 텍스트필드에서 손 떼게
-                        writeIsFocused = false
-
+                        sheetShowing.toggle()
                     } label: {
                         Image("new")
                             .resizable()
@@ -117,24 +104,34 @@ struct ProfileView: View {
                             
                             ForEach(feed.feeds, id: \.self) { feed in
                                 
+                                //                                if (userVM.user.userId == feed.userId) {
+                                //                                        Text("""
+                                //                                                게시물이 없습니다.
+                                //                                                게시물을 남기러 가볼까요 ?
+                                //                                                아래의 홈버튼을 클릭해보세요 ;)
+                                //                                                """)
+                                //                                        .font(.cafeSubhead2)
+                                //
+                                //                                } else {
+                                //
                                 NavigationLink {
                                     FeedCell(feed: feed)
                                 } label: {
-                                    Image(systemName: "plus")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 127, height: 127)
-                                        .overlay(
-                                            Rectangle()
-                                                .stroke(Color.gray, lineWidth: 0.3)
-                                            
-                                        )
+                                    if userVM.user.userId == feed.userId {
+                                        Image(uiImage: feed.feedImage ?? UIImage())
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 127, height: 127)
+                                            .overlay(
+                                                Rectangle()
+                                                    .stroke(Color.gray, lineWidth: 0.3)
+                                            )
+                                    }
                                 }
-                                
                             }
+                            .padding(.leading, 4)
+                            .padding(.trailing, 4)
                         }
-                        .padding(.leading, 4)
-                        .padding(.trailing, 4)
                     }
                 }
                 .frame(width: 390, height: 440)
@@ -142,6 +139,10 @@ struct ProfileView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(.clear)
                 )
+            }
+            .sheet(isPresented: $sheetShowing) {
+                ProfileSheetView(sheetShowing: $sheetShowing, writeContent: $writeContent)
+                    .presentationDetents([.medium])
             }
         }
     }
