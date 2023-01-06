@@ -13,13 +13,22 @@ struct SplashView: View {
     var body: some View {
         
         if isActive {
-            LoginView()
+//            LoginView()
+            CanvasView()
         } else {
-            Lottie(filename: "lottie2")
+            ZStack {
+             
+                Text("PENCHAT")
+                    .font(.custom("Cafe24Ssurround", size: 34))
+                    .offset(y: -110)
+                
+                Lottie(filename: "lottie2")
+                    
+            }
                 .background(Color("background"))
                 .edgesIgnoringSafeArea(.all)
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.7) {
+                    DispatchQueue.main.asyncAfter(deadline: .now()) {
                         self.isActive = true
                     }
                 }

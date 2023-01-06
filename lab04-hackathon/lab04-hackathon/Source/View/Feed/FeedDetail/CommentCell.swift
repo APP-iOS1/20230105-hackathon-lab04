@@ -20,6 +20,20 @@ struct CommentCell: View {
         return userStore.user
     }
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    var btnBack : some View { Button(action: {
+        self.presentationMode.wrappedValue.dismiss()
+    }) {
+        
+        Image("left")
+            .resizable()
+        //.scaledToFit()
+        //.aspectRatio(contentMode: .fit)
+            .frame(width:18, height: 18)// set image here
+        
+    }
+    }
+    
     var body: some View {
         List {
             component(isFeed: true)
@@ -46,8 +60,10 @@ struct CommentCell: View {
             Color("background")
                 .ignoresSafeArea()
         })
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: btnBack)
         .padding(.bottom, 110)
-        .navigationTitle("댓글")
+//        .navigationTitle("댓글")
         .navigationBarTitleDisplayMode(.inline)
         .overlay(alignment: .bottom) {
             VStack(alignment: .center, spacing: 12.0) {
@@ -83,7 +99,7 @@ struct CommentCell: View {
                                 content: commentString,
                                 date: .now
                             )
-
+                            
                             commentStore.create(with: comment)
                             commentStore.comments.insert(comment, at: 0)
                             hideKeyboard()
@@ -114,7 +130,7 @@ struct CommentCell: View {
     
     func component(comment: Comment? = nil, isFeed: Bool = false) -> some View {
         HStack(alignment: .top, spacing: 6.0) {
-           Image("person")
+            Image("person")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 30, height: 30, alignment: .center)
@@ -127,9 +143,9 @@ struct CommentCell: View {
                         .font(.cafeCaption)
                         .foregroundColor(.secondary)
                 }
-                    Text(isFeed ? feed.description : comment?.content ?? "")
-                        .font(.cafeCallout2)
-                        .lineLimit(3)
+                Text(isFeed ? feed.description : comment?.content ?? "")
+                    .font(.cafeCallout2)
+                    .lineLimit(3)
             }
         }
     }

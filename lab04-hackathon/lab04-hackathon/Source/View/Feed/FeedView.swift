@@ -58,9 +58,9 @@ struct FeedView: View {
                 }
                 .gesture(drag)
             }
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigation) {
                     Button {
                         withAnimation {
                             showingMenu.toggle()

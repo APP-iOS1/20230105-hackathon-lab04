@@ -46,11 +46,17 @@ struct lab04_hackathonApp: App {
                         }
                     }
                 } else {
-                    Lottie(filename: "lottie2")
+                    
+                    ZStack {
+                        Text("PENCHAT")
+                            .font(.custom("Cafe24Ssurround", size: 34))
+                            .offset(y: -110)
+                        Lottie(filename: "lottie2")
+                    }
                         .background(Color("background"))
                         .edgesIgnoringSafeArea(.all)
                         .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.7) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                 self.isActive = true
                             }
                         }
