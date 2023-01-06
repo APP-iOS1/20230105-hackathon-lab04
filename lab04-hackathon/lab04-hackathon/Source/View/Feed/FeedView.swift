@@ -37,13 +37,13 @@ struct FeedView: View {
                         if feed.feedsorted.isEmpty {
                             Spacer()
                             FeedCellEmpty()
-                                .opacity(showingMenu ? 0.2 : 1)
+                                .opacity(showingMenu ? 0.5 : 1)
                             Spacer()
                         } else {
                             ForEach(feed.feedsorted, id: \.self) { feed in
                                 FeedCell(feed: feed)
                                     .padding(.bottom)
-                                    .opacity(showingMenu ? 0.2 : 1)
+                                    .opacity(showingMenu ? 0.5 : 1)
                             }
                         }
                     }
