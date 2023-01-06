@@ -10,6 +10,7 @@ import SwiftUI
 struct FeedView: View {
     @State var showingMenu = false
     @EnvironmentObject var feed: FeedStore
+    @EnvironmentObject var user: UserStore
     
     
     let data = Feed.dummy
@@ -35,6 +36,7 @@ struct FeedView: View {
                     ScrollView {
                         ForEach(feed.feedsorted, id: \.self) { feed in
                             FeedCell(feed: feed)
+                                .environmentObject(user)
                         }
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
