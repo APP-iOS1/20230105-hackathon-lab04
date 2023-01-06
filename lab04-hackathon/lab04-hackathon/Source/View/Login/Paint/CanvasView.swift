@@ -34,7 +34,7 @@ struct CanvasView: View {
                             .frame(width: 20)
                         
                     })
-                    .alert("사진이 저장되었습니다.", isPresented: $showingSaveAlert) {
+                    .alert("그림이 저장되었습니다.", isPresented: $showingSaveAlert) {
                         Button("확인", role: .cancel) { }
                     }
                     .padding(.leading,20)
