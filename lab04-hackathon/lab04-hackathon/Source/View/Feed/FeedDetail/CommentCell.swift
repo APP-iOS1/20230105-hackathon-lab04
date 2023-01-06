@@ -89,6 +89,7 @@ struct CommentCell: View {
                     
                     HStack(alignment: .bottom) {
                         TextField("'\(currentUser.userName)'로 댓글 남기기", text: $commentString, axis: .vertical)
+                            .font(.cafeSubhead)
                             .lineLimit(6)
                         Button("Post") {
                             let comment = Comment(

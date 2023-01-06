@@ -53,7 +53,7 @@ struct FeedCell: View {
                             Image("comment")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 25)
+                                .frame(width: 23)
                             Text("\(commentStore.comments.count)")
                                 .font(.cafeCallout2)
                         }
