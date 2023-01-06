@@ -38,16 +38,16 @@
 <img src="https://user-images.githubusercontent.com/91583287/210932599-fe35e1e1-ce9e-47b2-bd22-dabea78a1d87.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
 <img src="https://user-images.githubusercontent.com/91583287/210933269-f6b03934-9fec-43e9-95de-31f806266e1f.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
 <img src="https://user-images.githubusercontent.com/91583287/210941295-8187e035-6a39-4d62-98a5-be383276c901.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
+<img src="https://user-images.githubusercontent.com/91583287/210942523-74e9681b-aa66-4b50-a6ca-381c8fc3d24a.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
+
+
+
 <img src="https://user-images.githubusercontent.com/91583287/210941890-eb73c426-60b7-4b6d-a540-89502c027114.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
-
-
-
-
 <img src="https://user-images.githubusercontent.com/91583287/210942071-0706c32f-459a-45ad-a686-2e8815a5932d.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
 <img src="https://user-images.githubusercontent.com/91583287/210941498-9378a62d-593f-43ec-8bfb-3f72fece76b8.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
 <img src="https://user-images.githubusercontent.com/91583287/210941616-c10b33be-1f0c-4420-a0d1-d481cde57d48.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
-<img src="https://user-images.githubusercontent.com/91583287/210941674-92cbf9ee-7a4b-46a9-b94c-a16a3c44bf95.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
 
+<img src="https://user-images.githubusercontent.com/91583287/210941674-92cbf9ee-7a4b-46a9-b94c-a16a3c44bf95.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
 <img src="https://user-images.githubusercontent.com/91583287/210942197-b9f11cc1-0c5f-42ba-ac1e-e2695d71498b.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
 <img src="https://user-images.githubusercontent.com/91583287/210942324-2cfafe14-3bf0-444f-9596-3efc5ced859d.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
 
