@@ -32,7 +32,7 @@
 
 
 ## 구현 동작
-![simulator_screenshot_03F0C52C-281A-47B5-AC0A-9B90F0563E7F](https://user-images.githubusercontent.com/91583287/210932599-fe35e1e1-ce9e-47b2-bd22-dabea78a1d87.png)
+ <p><img src="https://user-images.githubusercontent.com/91583287/210932599-fe35e1e1-ce9e-47b2-bd22-dabea78a1d87.png" width=10%></p>
 
 
 ## 데이터 구조 
