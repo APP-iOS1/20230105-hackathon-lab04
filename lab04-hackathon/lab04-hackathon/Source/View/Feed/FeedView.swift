@@ -33,8 +33,17 @@ struct FeedView: View {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     ScrollView {
-                        ForEach(feed.feedsorted, id: \.self) { feed in
-                            FeedCell(feed: feed)
+                        if feed.feedsorted.isEmpty {
+                            Spacer()
+                            FeedCellEmpty()
+                                .opacity(showingMenu ? 0.5 : 1)
+                            Spacer()
+                        } else {
+                            ForEach(feed.feedsorted, id: \.self) { feed in
+                                FeedCell(feed: feed)
+                                    .padding(.bottom)
+                                    .opacity(showingMenu ? 0.5 : 1)
+                            }
                         }
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)

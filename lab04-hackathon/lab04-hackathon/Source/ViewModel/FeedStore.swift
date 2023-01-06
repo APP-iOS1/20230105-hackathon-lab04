@@ -64,6 +64,8 @@ class FeedStore: ObservableObject {
                                 let feed = Feed(feedId: feedId, userId: userId, title: title, imageURL: imageURL, description: description, category: category, userName: userName, date: date, feedImage: uiImage)
                                 self.feeds.append(feed)
                                 self.feedsorted.append(feed)
+                                self.feeds.sort(by: {$0.createdDate > $1.createdDate})
+                                self.feedsorted.sort(by: {$0.createdDate > $1.createdDate})
                             }
                         }
                     }
