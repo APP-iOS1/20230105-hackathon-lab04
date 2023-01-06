@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FeedCell: View {
-    @EnvironmentObject var user: UserStore
+    @ObservedObject var user: UserStore = UserStore()
     @StateObject var commentStore: CommentStore = CommentStore()
     let feed: Feed
     

@@ -10,6 +10,7 @@ import SwiftUI
 struct FeedView: View {
     @State var showingMenu = false
     @EnvironmentObject var feed: FeedStore
+    @EnvironmentObject var user: UserStore
     
     var body: some View {
         
@@ -41,6 +42,7 @@ struct FeedView: View {
                                 FeedCell(feed: feed)
                                     .padding(.bottom)
                                     .opacity(showingMenu ? 0.5 : 1)
+                                    .environmentObject(user)
                             }
                         }
                     }
