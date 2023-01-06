@@ -16,8 +16,7 @@ struct FeedMenu: View {
             
             HStack {
                 Button {
-                    feed.feedsorted = feed.feeds
-                        .sorted(by: {$0.createdDate > $1.createdDate})
+                    feed.feedsSorted = feed.feeds.sorted(by: { $0.createdDate > $1.createdDate })
                     withAnimation {
                         showingMenu.toggle()
                     }
@@ -36,9 +35,7 @@ struct FeedMenu: View {
             
             HStack {
                 Button {
-                    feed.feedsorted = feed.feeds.filter{$0.category == "풍경"}
-                        .sorted(by: {$0.createdDate > $1.createdDate})
-                    
+                    feed.feedsSorted = feed.feeds.filter{$0.category == "풍경"}.sorted(by: { $0.createdDate > $1.createdDate })
                     withAnimation {
                         showingMenu.toggle()
                     }
@@ -56,8 +53,7 @@ struct FeedMenu: View {
             
             HStack {
                 Button {
-                    feed.feedsorted = feed.feeds.filter{$0.category == "캐릭터"}
-                        .sorted(by: {$0.createdDate > $1.createdDate})
+                    feed.feedsSorted = feed.feeds.filter{$0.category == "캐릭터"}.sorted(by: { $0.createdDate > $1.createdDate })
 
                     withAnimation {
                         showingMenu.toggle()
@@ -76,8 +72,8 @@ struct FeedMenu: View {
             
             HStack {
                 Button {
-                    feed.feedsorted = feed.feeds.filter{$0.category == "인물"}
-                        .sorted(by: {$0.createdDate > $1.createdDate})
+                    feed.feedsSorted = feed.feeds.filter{$0.category == "인물"}.sorted(by: { $0.createdDate > $1.createdDate })
+
 
                     withAnimation {
                         showingMenu.toggle()
@@ -96,8 +92,8 @@ struct FeedMenu: View {
             
             HStack {
                 Button {
-                    feed.feedsorted = feed.feeds.filter{$0.category == "동물"}
-                        .sorted(by: {$0.createdDate > $1.createdDate})
+                    feed.feedsSorted = feed.feeds.filter{$0.category == "동물"}.sorted(by: { $0.createdDate > $1.createdDate })
+
 
                     withAnimation {
                         showingMenu.toggle()

@@ -10,9 +10,7 @@ import SwiftUI
 struct FeedView: View {
     @State var showingMenu = false
     @EnvironmentObject var feed: FeedStore
-    
-    
-    let data = Feed.dummy
+    @EnvironmentObject var user: UserStore
     
     var body: some View {
         
@@ -34,16 +32,17 @@ struct FeedView: View {
                 ZStack(alignment: .leading) {
                     ScrollView {
 
-                        if feed.feedsorted.isEmpty {
+                        if feed.feedsSorted.isEmpty {
                             Spacer()
                             FeedCellEmpty()
                                 .opacity(showingMenu ? 0.5 : 1)
                             Spacer()
                         } else {
-                            ForEach(feed.feedsorted, id: \.self) { feed in
+                            ForEach(feed.feedsSorted, id: \.feedId) { feed in
                                 FeedCell(feed: feed)
                                     .padding(.bottom)
                                     .opacity(showingMenu ? 0.5 : 1)
+                                    .environmentObject(user)
                             }
                         }
                     }
