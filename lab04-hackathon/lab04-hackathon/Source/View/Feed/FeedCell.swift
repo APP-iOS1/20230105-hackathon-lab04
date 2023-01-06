@@ -35,15 +35,15 @@ struct FeedCell: View {
                 Group {
                     HStack {
                         // 하트
-                        Group {
-                            
-                            Image("like")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20)
-                            Text("1234")
-                                .font(.cafeCallout2)
-                        }
+//                        Group {
+//
+//                            Image("like")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(width: 20)
+//                            Text("1234")
+//                                .font(.cafeCallout2)
+//                        }
                         
                         // 댓글
                         Group {

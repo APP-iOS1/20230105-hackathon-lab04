@@ -11,9 +11,6 @@ struct FeedView: View {
     @State var showingMenu = false
     @EnvironmentObject var feed: FeedStore
     
-    
-    let data = Feed.dummy
-    
     var body: some View {
         
         let drag = DragGesture()
@@ -34,13 +31,13 @@ struct FeedView: View {
                 ZStack(alignment: .leading) {
                     ScrollView {
 
-                        if feed.feedsorted.isEmpty {
+                        if feed.feedsSorted.isEmpty {
                             Spacer()
                             FeedCellEmpty()
                                 .opacity(showingMenu ? 0.5 : 1)
                             Spacer()
                         } else {
-                            ForEach(feed.feedsorted, id: \.self) { feed in
+                            ForEach(feed.feedsSorted, id: \.feedId) { feed in
                                 FeedCell(feed: feed)
                                     .padding(.bottom)
                                     .opacity(showingMenu ? 0.5 : 1)
