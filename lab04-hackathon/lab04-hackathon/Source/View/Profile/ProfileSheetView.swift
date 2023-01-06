@@ -13,6 +13,8 @@ struct ProfileSheetView: View {
     @State private var myProfileDescription: String = ""
     @Environment(\.dismiss) private var dismiss
     @Binding var sheetShowing: Bool
+    @Binding var writeContent : String
+    @EnvironmentObject var userVM : UserStore
     
     var body: some View {
         
@@ -30,9 +32,12 @@ struct ProfileSheetView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(lineWidth: 0.3)
                                 .foregroundColor(.gray)
-                        )
+                        ).onTapGesture{
+                            myProfileText = ""
+                        }
                         .background(.white)
                         .frame(width:UIScreen.main.bounds.size.width-40, height: 200)
+                        
                 } else {
                     TextEditor(text: $myProfileDescription)
                         .font(.cafeHeadline2)
@@ -45,6 +50,7 @@ struct ProfileSheetView: View {
                 }
                 
                 Button {
+                    writeContent = userVM.updateUserDataIntroduce(content: myProfileText)
                     dismiss()
                 } label: {
                     Text("완료")
@@ -56,8 +62,8 @@ struct ProfileSheetView: View {
     }
 }
 
-struct ProfileSheetView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileSheetView(sheetShowing: .constant(true))
-    }
-}
+//struct ProfileSheetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileSheetView(sheetShowing: .constant(true))
+//    }
+//}
