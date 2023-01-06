@@ -33,6 +33,7 @@
 
 ## 구현 동작
 | <img src="https://user-images.githubusercontent.com/91583287/210932599-fe35e1e1-ce9e-47b2-bd22-dabea78a1d87.png" width=15%><br /> | <img src="https://user-images.githubusercontent.com/91583287/210933269-f6b03934-9fec-43e9-95de-31f806266e1f.png" width=15%><br /> | <img src="https://user-images.githubusercontent.com/91583287/210933492-3d1662c4-c171-476e-874f-0d185b0ba535.png" width=15%><br /> | <img src="https://user-images.githubusercontent.com/91583287/210933582-02f40a95-ab7f-4a98-a5b3-f2cf7e73ea7c.png" width=15%><br /> |
+| :----------------------------------------------------------: | :---------------------------------------------: | :-------------------------------------------------: |:----------------------------------------------------------: |
 
 
 
