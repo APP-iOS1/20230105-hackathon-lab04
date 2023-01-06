@@ -126,7 +126,7 @@ struct LoginView: View {
                         if viewModel.authenticationState != .authenticating {
                             Text("로그인")
                                 .font(.cafeCallout)
-                                .foregroundColor(.black)
+                                .foregroundColor(!viewModel.isValid ? .gray : .black )
                         }
                         else {
                             ProgressView()
