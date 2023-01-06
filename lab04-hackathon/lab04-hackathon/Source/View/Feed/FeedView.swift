@@ -46,9 +46,6 @@ struct FeedView: View {
                             }
                         }
                     }
-                    .onAppear {
-                        print("\(feed.feeds)")
-                    }
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: showingMenu ? geometry.size.width/2 : 0)
                     .disabled(showingMenu ? true : false)
