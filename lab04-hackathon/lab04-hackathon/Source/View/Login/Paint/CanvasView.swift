@@ -27,7 +27,8 @@ struct CanvasView: View {
                     }, label: {
                         Image("down")
                             .resizable()
-                            .frame(width: 44, height: 44)
+                            .scaledToFit()
+                            .frame(width: 20)
                         
                     })
                     .padding(.leading,20)
@@ -37,7 +38,8 @@ struct CanvasView: View {
                     }, label: {
                         Image("new")
                             .resizable()
-                            .frame(width: 44, height: 44)
+                            .scaledToFit()
+                            .frame(width: 20)
                     })
                     .alert("새로 그리시겠습니까?", isPresented: $showingAlert) {
                         Button("취소", role: .cancel) { }
@@ -49,7 +51,8 @@ struct CanvasView: View {
                     .padding(.trailing,20)
                     
                 }
-                Spacer()
+                .padding(.bottom, 70)
+//                Spacer()
                 Divider()
                 DrawingView(toggle: $toggle, canvas: $canvas)
                     .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.width)
@@ -61,7 +64,8 @@ struct CanvasView: View {
                     }, label: {
                         Image("reload2")
                             .resizable()
-                            .frame(width: 44, height: 44)
+                            .scaledToFit()
+                            .frame(width: 20)
                     })
                     .padding(.trailing,40)
                     Button(action: {
@@ -70,19 +74,19 @@ struct CanvasView: View {
                     }, label: {
                         Image("reload")
                             .resizable()
-                            .frame(width: 44, height: 44)
+                            .scaledToFit()
+                            .frame(width: 20)
                     })
                     Button(action: {
                         toggle.toggle()
                     }, label: {
                         Image(systemName: "pencil.tip.crop.circle")
                             .resizable()
-                            .frame(width: 44, height: 44)
+                            .scaledToFit()
+                            .frame(width: 20)
                             .foregroundColor(Color.black)
                     })
                     .padding(.leading,40)
-
-                    
                 }
                 Spacer()
             }
