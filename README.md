@@ -48,6 +48,7 @@
 <img src="https://user-images.githubusercontent.com/91583287/210941616-c10b33be-1f0c-4420-a0d1-d481cde57d48.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
 <img src="https://user-images.githubusercontent.com/91583287/210941674-92cbf9ee-7a4b-46a9-b94c-a16a3c44bf95.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
 
+<img src="https://user-images.githubusercontent.com/91583287/210942197-b9f11cc1-0c5f-42ba-ac1e-e2695d71498b.png" width="20%" height="15%" title="px(픽셀) 크기 설정" alt="RubberDuck" style="float:left;"></img> | 
 
 
 
