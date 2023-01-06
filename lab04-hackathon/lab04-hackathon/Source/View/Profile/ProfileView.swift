@@ -7,30 +7,18 @@
 
 import SwiftUI
 
-struct DrawingItem: Identifiable {
-    var id = UUID()
-    var imageName: String
-}
-
 struct ProfileView: View {
     
     private let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 100))
     ]
     @EnvironmentObject var userVM : UserStore
+    @EnvironmentObject var feed: FeedStore
+    @EnvironmentObject var viewModel : AuthenticationViewModel
     
-    @State private var drawingItem: [DrawingItem] = [
-        DrawingItem(imageName: "1"),
-        DrawingItem(imageName: "2"),
-        DrawingItem(imageName: "3"),
-        DrawingItem(imageName: "4"),
-        DrawingItem(imageName: "5"),
-        DrawingItem(imageName: "6"),
-        DrawingItem(imageName: "7"),
-        DrawingItem(imageName: "8"),
-        DrawingItem(imageName: "9")
-    ]
+    @State private var writeContent : String = ""
     
+    @State private var sheetShowing = false
     @State private var showingAlert = false
     
     var body: some View {
@@ -42,11 +30,11 @@ struct ProfileView: View {
             VStack {
                 
                 HStack {
-//                    Text(userVM.currentUserName ?? "")
-                    Text("김튜나")
+                    Text(userVM.user.userName ?? "")
                         .font(.cafeTitle2)
-
-                    
+                        .onAppear{
+                            userVM.requestUserData()
+                        }
                     Spacer()
                     
                     Button {
@@ -58,20 +46,31 @@ struct ProfileView: View {
                             .frame(width: 20)
                     }
                     .alert("로그아웃", isPresented: $showingAlert) {
-                        Button("확인") {print("로그아웃함")}
+                        Button("확인") {
+                            viewModel.signOut()
+                            viewModel.authenticationState = .unauthenticated
+                            viewModel.reset()
+                            
+                        }
                         Button("취소", role: .cancel) {}
                     } message: {
                         Text("로그아웃하시겠습니까?")
                     }
                 }
                 .padding()
-                
-                VStack {
-                    // 자기소개 없을 때 조건 처리하기
-                    Text ("내용을 입력해주세요")
-                        .font(.cafeCaption2)
-                        .frame(width: 340, height: 150, alignment: .leading)
-                        .padding()
+                //자기소개
+                VStack(alignment: .leading) {
+                    if writeContent == ""{
+                        Text("자기소개 해주세요")
+                            .font(.cafeCaption2)
+                            .frame(width: 340, height: 150, alignment: .leading)
+                            .padding()
+                    }else{
+                        Text("\(writeContent)")
+                            .font(.cafeCaption2)
+                            .frame(width: 340, height: 150, alignment: .leading)
+                            .padding()
+                    }
                 }
                 .overlay (
                     RoundedRectangle(cornerRadius: 10)
@@ -80,7 +79,7 @@ struct ProfileView: View {
                 )
                 .overlay(
                     Button {
-                        
+                        sheetShowing.toggle()
                     } label: {
                         Image("new")
                             .resizable()
@@ -102,21 +101,27 @@ struct ProfileView: View {
                         
                         // 데이터 연동 후 아무것도 없을때 조건 처리하기
                         LazyVGrid(columns: columns, spacing: 3) {
-                            ForEach(drawingItem) { item in
-                                Image(item.imageName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 127, height: 127)
-                                    .overlay(
-                                    Rectangle()
-                                        .stroke(Color.gray, lineWidth: 0.3)
-                                       
-                                    )
-                                    
+                            
+                            ForEach(feed.feeds, id: \.self) { feed in
+                                
+                                NavigationLink {
+                                    CanvasDetailView(feed: feed)
+                                } label: {
+                                    if userVM.user.userId == feed.userId {
+                                        Image(uiImage: feed.feedImage ?? UIImage())
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 127, height: 127)
+                                            .overlay(
+                                                Rectangle()
+                                                    .stroke(Color.gray, lineWidth: 0.3)
+                                            )
+                                    }
+                                }
                             }
+                            .padding(.leading, 4)
+                            .padding(.trailing, 4)
                         }
-                        .padding(.leading, 4)
-                        .padding(.trailing, 4)
                     }
                 }
                 .frame(width: 390, height: 440)
@@ -125,15 +130,17 @@ struct ProfileView: View {
                         .foregroundColor(.clear)
                 )
             }
-        }.onAppear{
-//            userVM.requestUserData(uid: userVM.uid ?? "")
+            .sheet(isPresented: $sheetShowing) {
+                ProfileSheetView(sheetShowing: $sheetShowing, writeContent: $writeContent)
+                    .presentationDetents([.medium])
+            }
         }
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView().environmentObject(UserStore())
-    }
-}
+//struct ProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileView().environmentObject(UserStore()).environmentObject(FeedStore())
+//    }
+//}
 

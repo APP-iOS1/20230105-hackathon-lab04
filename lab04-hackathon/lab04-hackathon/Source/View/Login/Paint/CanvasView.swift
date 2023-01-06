@@ -14,6 +14,8 @@ struct CanvasView: View {
     @State var drawingImage: [Data] = []
     @State var toggle: Bool = false
     @State private var showingAlert = false
+    @State private var showingSaveAlert = false
+
 
     
     var body: some View {
@@ -24,20 +26,23 @@ struct CanvasView: View {
                 HStack {
                     Button(action : {
                         SaveImage()
+                        showingSaveAlert.toggle()
                     }, label: {
-                        Image("down")
-                            .resizable()
-                            .frame(width: 44, height: 44)
-                        
+                        Text("저장")
+                            .font(.cafeCallout2)
+                            .foregroundColor(.black)
                     })
+                    .alert("그림이 저장되었습니다.", isPresented: $showingSaveAlert) {
+                        Button("확인", role: .cancel) { }
+                    }
                     .padding(.leading,20)
                     Spacer()
                     Button(action: {
                         showingAlert = true
                     }, label: {
-                        Image("new")
-                            .resizable()
-                            .frame(width: 44, height: 44)
+                        Text("새로그리기")
+                            .font(.cafeCallout2)
+                            .foregroundColor(.black)
                     })
                     .alert("새로 그리시겠습니까?", isPresented: $showingAlert) {
                         Button("취소", role: .cancel) { }
@@ -49,7 +54,8 @@ struct CanvasView: View {
                     .padding(.trailing,20)
                     
                 }
-                Spacer()
+                .padding(.bottom, 70)
+//                Spacer()
                 Divider()
                 DrawingView(toggle: $toggle, canvas: $canvas)
                     .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.width)
@@ -59,9 +65,13 @@ struct CanvasView: View {
                         undoManager?.undo()
                         
                     }, label: {
-                        Image("reload2")
-                            .resizable()
-                            .frame(width: 44, height: 44)
+                        VStack {
+                            Image("reload2")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20)
+                        }
+                        
                     })
                     .padding(.trailing,40)
                     Button(action: {
@@ -70,19 +80,16 @@ struct CanvasView: View {
                     }, label: {
                         Image("reload")
                             .resizable()
-                            .frame(width: 44, height: 44)
+                            .scaledToFit()
+                            .frame(width: 20)
                     })
                     Button(action: {
                         toggle.toggle()
                     }, label: {
-                        Image(systemName: "pencil.tip.crop.circle")
-                            .resizable()
-                            .frame(width: 44, height: 44)
-                            .foregroundColor(Color.black)
+                        PecilView(toggle: $toggle)
+                        
                     })
                     .padding(.leading,40)
-
-                    
                 }
                 Spacer()
             }
@@ -123,3 +130,10 @@ struct DrawingView : UIViewRepresentable {
 
 }
 
+struct PecilView: View {
+    @Binding var toggle: Bool
+
+    var body: some View {
+        Image(toggle ? "pencilTipBrown" : "pencilTipBlack")
+    }
+}

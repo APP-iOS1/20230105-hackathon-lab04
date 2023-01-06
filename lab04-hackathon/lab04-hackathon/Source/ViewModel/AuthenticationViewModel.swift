@@ -43,7 +43,7 @@ class AuthenticationViewModel: ObservableObject {
     var currentUid : String?
     
     init() {
-        //registerAuthStateHandler()
+        registerAuthStateHandler()
 
         $flow
             .combineLatest($email, $password, $confirmPassword)

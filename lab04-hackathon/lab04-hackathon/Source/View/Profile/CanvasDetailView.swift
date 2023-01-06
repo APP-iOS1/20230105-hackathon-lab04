@@ -1,17 +1,31 @@
 //
-//  FeedCell.swift
+//  CanvasDetailView.swift
 //  lab04-hackathon
 //
-//  Created by Park Jungwoo on 2023/01/05.
+//  Created by MacBook on 2023/01/06.
 //
 
 import SwiftUI
 
-struct FeedCell: View {
+import SwiftUI
+
+struct CanvasDetailView: View {
     @ObservedObject var user: UserStore = UserStore()
     @StateObject var commentStore: CommentStore = CommentStore()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     let feed: Feed
-    
+    var btnBack : some View { Button(action: {
+        self.presentationMode.wrappedValue.dismiss()
+    }) {
+        
+        Image("left")
+            .resizable()
+        //.scaledToFit()
+        //.aspectRatio(contentMode: .fit)
+            .frame(width:18, height: 18)// set image here
+        
+    }
+    }
     var body: some View {
         
         ZStack {
@@ -53,7 +67,7 @@ struct FeedCell: View {
                             Image("comment")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 23)
+                                .frame(width: 25)
                             Text("\(commentStore.comments.count)")
                                 .font(.cafeCallout2)
                         }
@@ -101,24 +115,27 @@ struct FeedCell: View {
                 Divider()
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: btnBack)
         .onAppear {
             commentStore.read(feedId: feed.feedId)
         }
     }
 }
 
-struct FeedCell_Previews: PreviewProvider {
-    static var feed = Feed(
-        feedId: UUID().uuidString,
-        userId: UUID().uuidString,
-        title: "title\(1)",
-        imageURL: "https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000",
-        description: "\(1)",
-        category: "category\(1)",
-        userName: "author\(1)",
-        date: Date().addingTimeInterval(.random(in: -1*24*60*60...2*60*60))
-    )
-    static var previews: some View {
-        FeedCell(feed: feed)
-    }
-}
+//
+//struct FeedCell_Previews: PreviewProvider {
+//    static var feed = Feed(
+//        feedId: UUID().uuidString,
+//        userId: UUID().uuidString,
+//        title: "title\(1)",
+//        imageURL: "https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000",
+//        description: "\(1)",
+//        category: "category\(1)",
+//        userName: "author\(1)",
+//        date: Date().addingTimeInterval(.random(in: -1*24*60*60...2*60*60))
+//    )
+//    static var previews: some View {
+//        FeedCell(feed: feed)
+//    }
+//}

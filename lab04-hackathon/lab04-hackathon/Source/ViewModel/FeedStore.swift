@@ -11,11 +11,11 @@ class FeedStore: ObservableObject {
     private let uid = FirebaseAuth.Auth.auth().currentUser?.uid
     //let email = Auth.auth().currentUser?.email
     @Published var feeds: [Feed] = []
-    @Published var images: [FeedImage] = []
+    @Published var feedsSorted: [Feed] = []
     
-    init () {
-        read()
-    }
+//    init () {
+//        read()
+//    }
     
     func create(_ feed: Feed) {
         
@@ -41,7 +41,8 @@ class FeedStore: ObservableObject {
         db.collection("Feed").order(by: "date", descending: true)
             .addSnapshotListener { snapshot, error in
                 self.feeds.removeAll()
-                
+                self.feedsSorted.removeAll()
+
                 if let snapshot = snapshot {
                     for document in snapshot.documents {
                         let feedId: String = document.documentID
@@ -58,11 +59,28 @@ class FeedStore: ObservableObject {
                         let storageRef = Storage.storage().reference()
                         let fileRef = storageRef.child("images/\(imageURL)")
                         
-                        fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+//                        let feed = Feed(
+//                            feedId: feedId,
+//                            userId: userId,
+//                            title: title,
+//                            imageURL: imageURL,
+//                            description: description,
+//                            category: category,
+//                            userName: userName,
+//                            date: date,
+//                            feedImage: nil
+//                        )
+//                        self.feeds.append(feed)
+//                        self.feedsSorted.append(feed)
+                        
+                        fileRef.getData(maxSize: 1 * 512 * 512) { data, error in
                             if error == nil && data != nil {
                                 let uiImage = UIImage(data: data!)!
                                 let feed = Feed(feedId: feedId, userId: userId, title: title, imageURL: imageURL, description: description, category: category, userName: userName, date: date, feedImage: uiImage)
                                 self.feeds.append(feed)
+                                self.feeds.sort(by: {$0.createdDate > $1.createdDate})
+                                self.feedsSorted.append(feed)
+                                self.feedsSorted.sort(by: {$0.createdDate > $1.createdDate})
                             }
                         }
                     }
@@ -116,7 +134,6 @@ class FeedStore: ObservableObject {
     func retrievePhotos(_ feed: Feed) {
         
         db.collection("Feed").getDocuments { snapshot, error in
-            self.images.removeAll()
             if error == nil && snapshot != nil {
                 
                 let imageName: String = feed.imageURL
@@ -128,9 +145,6 @@ class FeedStore: ObservableObject {
                     
                     if error == nil && data != nil {
                         let uiImage = UIImage(data: data!)!
-                        
-                        self.images.append(FeedImage(feedId: imageName, image: uiImage))
-                        
                     }
                 }
             }

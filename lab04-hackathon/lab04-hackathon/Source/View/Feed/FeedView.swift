@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct FeedView: View {
-    @State private var showMenu = false
+    @State var showingMenu = false
     @EnvironmentObject var feed: FeedStore
-    
-    
-    let data = Feed.dummy
+    @EnvironmentObject var user: UserStore
     
     var body: some View {
         
@@ -20,7 +18,7 @@ struct FeedView: View {
             .onEnded {
                 if $0.translation.width < -100 {
                     withAnimation {
-                        showMenu = false
+                        showingMenu.toggle()
                     }
                 }
             }
@@ -33,27 +31,38 @@ struct FeedView: View {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     ScrollView {
-                        ForEach(feed.feeds, id: \.self) { feed in
-                            FeedCell(feed: feed)
+
+                        if feed.feedsSorted.isEmpty {
+                            Spacer()
+                            FeedCellEmpty()
+                                .opacity(showingMenu ? 0.5 : 1)
+                            Spacer()
+                        } else {
+                            ForEach(feed.feedsSorted, id: \.feedId) { feed in
+                                FeedCell(feed: feed)
+                                    .padding(.bottom)
+                                    .opacity(showingMenu ? 0.5 : 1)
+                                    .environmentObject(user)
+                            }
                         }
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                    .offset(x: showMenu ? geometry.size.width/2 : 0)
-                    .disabled(showMenu ? true : false)
-                    if showMenu {
-                        FeedMenu()
+                    .offset(x: showingMenu ? geometry.size.width/2 : 0)
+                    .disabled(showingMenu ? true : false)
+                    if showingMenu {
+                        FeedMenu(showingMenu: $showingMenu)
                             .frame(width: geometry.size.width/2)
                             .transition(.move(edge: .leading))
                     }
                 }
                 .gesture(drag)
             }
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigation) {
                     Button {
                         withAnimation {
-                            showMenu.toggle()
+                            showingMenu.toggle()
                         }
                     } label: {
                         Image("line")
@@ -73,6 +82,9 @@ struct FeedView: View {
                             .frame(width: 20)
                     }
                 }
+            }
+            .onAppear {
+                feed.read()
             }
         }
     }

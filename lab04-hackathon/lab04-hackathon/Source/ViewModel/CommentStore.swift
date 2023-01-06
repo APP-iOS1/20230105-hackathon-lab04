@@ -16,34 +16,50 @@ final class CommentStore: ObservableObject {
     @Published var comments: [Comment] = []
     private var ref = Firestore.firestore()
     
-    var listener: ListenerRegistration?
-    
     func read(feedId: String) {
-        listener = ref.collection("Comment")
+        self.comments = []
+        ref.collection("Comment")
             .whereField("feedId", isEqualTo: feedId)
-            .addSnapshotListener({ snapshot, error in
-                if let error = error { print(error) }
+            .order(by: "date", descending: true)
+            .getDocuments(completion: { snapshot, error in
+                if let error = error { print("\ncommentstore의 get에서 에러남. \(error)\n")}
                 
-                guard let documents = snapshot?.documents else { return }
-                self.comments = documents.map {
-                    let dict: [String: Any] = $0.data()
-                    let commentId = dict["commentId"] as? String ?? ""
-                    let feedId = dict["feedId"] as? String ?? ""
-                    let userId = dict["userId"] as? String ?? ""
-                    let userName = dict["userName"] as? String ?? ""
-                    let content = dict["content"] as? String ?? ""
-                    let date = (dict["date"] as? Timestamp)?.dateValue() ?? Date()
-                    
-                    return Comment(
-                        commentId: commentId,
-                        feedId: feedId,
-                        userId: userId,
-                        userName: userName,
-                        content: content,
-                        date: date
-                    )
+                if let snapshot = snapshot {
+                    for document in snapshot.documents {
+                        let dict: [String: Any] = document.data()
+                        let commentId = dict["commentId"] as? String ?? ""
+                        let feedId = dict["feedId"] as? String ?? ""
+                        let userId = dict["userId"] as? String ?? ""
+                        let userName = dict["userName"] as? String ?? ""
+                        let content = dict["content"] as? String ?? ""
+                        let date = (dict["date"] as? Timestamp)?.dateValue() ?? Date()
+                        
+                        let comment = Comment(
+                            commentId: commentId,
+                            feedId: feedId,
+                            userId: userId,
+                            userName: userName,
+                            content: content,
+                            date: date
+                        )
+                        
+                        self.comments.append(comment)
+                    }
                 }
             })
+    }
+    
+    func create(with comment: Comment) {
+        ref.collection("Comment")
+            .document(comment.commentId)
+            .setData([
+                "commentId": comment.commentId,
+                "feedId": comment.feedId,
+                "userId": comment.userId,
+                "userName": comment.userName,
+                "content": comment.content,
+                "date": comment.date
+            ])
     }
     
     func create(content: String, feed: Feed, user: User) {
@@ -68,15 +84,9 @@ final class CommentStore: ObservableObject {
             ])
     }
     
-    func delete(comment: Comment, user: User) {
-        if comment.userId == user.userId {
-            ref.collection("Comment")
-                .document(comment.commentId)
-                .delete()
-        }
-    }
-    
-    func detachListener() {
-        listener?.remove()
+    func delete(comment: Comment) {
+        ref.collection("Comment")
+            .document(comment.commentId)
+            .delete()
     }
 }

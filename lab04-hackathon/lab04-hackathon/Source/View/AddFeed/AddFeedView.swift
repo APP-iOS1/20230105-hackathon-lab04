@@ -7,17 +7,36 @@
 
 import SwiftUI
 import PhotosUI
+import FirebaseAuth
 
 struct AddFeedView: View {
     
     @ObservedObject var feedStore: FeedStore = FeedStore()
-    
-    var drawingCategory = ["캐릭터 그림", "인물 그림", "동물 그림", "풍경 그림"]
-    @State private var currentCategory : String = "풍경 그림"
+    @ObservedObject var currentUser: UserStore = UserStore()
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    var drawingCategory = ["풍경", "캐릭터", "인물", "동물"]
+    @State private var currentCategory : String = "풍경"
     @State private var index = 0
+    @State private var drawingTitle = ""
     @State private var drawingDescription : String = ""
+    @State private var placeHolder = "그림을 소개해주세요."
     @State private var selectedImage: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
+    @State private var showingAlert = false
+    
+    var btnBack : some View { Button(action: {
+        self.presentationMode.wrappedValue.dismiss()
+    }) {
+        
+        Image("left")
+            .resizable()
+        //.scaledToFit()
+        //.aspectRatio(contentMode: .fit)
+            .frame(width:18, height: 18)// set image here
+        
+    }
+    }
     
     var body: some View {
         ScrollView {
@@ -91,9 +110,36 @@ struct AddFeedView: View {
                             
                         }.animation(nil)
                     }
-                    Divider()
+
                 }
-                .padding()
+                .padding([.leading, .trailing, .top])
+                Divider()
+
+                
+                //MARK: - 제목입력
+                VStack {
+                    HStack {
+                        Text("제목입력")
+                            .font(.cafeHeadline2)
+                        Spacer()
+                    }
+                    TextField("그림의 제목을 알려주세요.", text: $drawingTitle)
+                        .font(.cafeHeadline2)
+                        .padding(.trailing)
+                        .padding(.leading, 10)
+                    
+                        .frame(width:UIScreen.main.bounds.size.width-40, height: 40)
+                        .background(.white)
+                        .overlay (
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(lineWidth: 0.3)
+                                .foregroundColor(.gray)
+                        )
+                    
+                }
+                .padding([.leading, .trailing])
+                Divider()
+                    .padding(.top, 5)
                 
                 // MARK: - 문구 입력
                 VStack {
@@ -102,44 +148,85 @@ struct AddFeedView: View {
                             .font(.cafeHeadline2)
                         Spacer()
                     }
-                    TextEditor(text: $drawingDescription)
-                        .font(.cafeHeadline2)
-                        .overlay (
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(lineWidth: 0.3)
-                                .foregroundColor(.gray)
-                        )
-                        .frame(width:UIScreen.main.bounds.size.width-40, height: 200)
+                    //placeHolder를 위해 사용
+                    ZStack(alignment: .leading) {
+                                                
+                        TextEditor(text: $drawingDescription)
+                            .font(.cafeHeadline2)
+                            .padding(.trailing)
+                            .padding(.leading)
+                            .overlay (
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(lineWidth: 0.3)
+                                    .foregroundColor(.gray)
+                            )
+                            .frame(width:UIScreen.main.bounds.size.width-40, height: 200)
+                            .background(Color.white)
                         
+                        if drawingDescription == "" {
+                            Text("그림을 소개해주세요.")
+                                .font(.cafeHeadline2)
+                                .opacity(0.25)
+                                .padding(.leading, 18)
+                                .padding(.bottom, 160)
+                        }
+                    }
                 }
                 .padding([.leading, .trailing])
                 
-                //테스트 버튼
-                //            Button(action: {
-                //                let imageURL = UUID().uuidString
-                //                feedStore.uploadImage(image: selectedImageData, imageURL: imageURL)
-                //                feedStore.create(Feed(feedId: <#T##String#>, userId: <#T##String#>, title: <#T##String#>, imageURL: <#T##String#>, description: <#T##String#>, category: <#T##String#>, userName: <#T##String#>, date: <#T##Date#>))
-                //
-                //            }) {
-                //                Text("스토리지에 사진넣기")
-                //            }
-                
             }
         }
+        .onAppear{
+            currentUser.requestUserData()
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: btnBack)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("완료") {
+                Button {
+                    //let imageURL = UUID().uuidString
+                    let feedId = UUID().uuidString
+                    let userId = FirebaseAuth.Auth.auth().currentUser?.uid
+                    let currenTitle: String = drawingTitle
+                    let userName: String = currentUser.user.userName
+                    let currentDescription: String = drawingDescription
+                    feedStore.uploadImage(image: selectedImageData, imageURL: feedId)
+                    feedStore.create(
+                        Feed(
+                            feedId: feedId,
+                            userId: userId!,
+                            title: currenTitle,
+                            imageURL: feedId,
+                            description: currentDescription,
+                            category: currentCategory,
+                            userName: userName,
+                            date: Date.now
+                        )
+                    )
+                    showingAlert.toggle()
+                } label: {
+                    Text("완료")
+                        .font(.cafeHeadline2)
+                        .foregroundColor(.black)
                     
                 }
+                .alert("그림이 업로드 되었습니다.", isPresented: $showingAlert) {
+                    Button("확인") {dismiss()}
+                }
             }
+            
+            
         }
+        
         .background(Color(red: 252/255, green: 251/255, blue: 245/255))
     }
 }
-
-struct AddFeedView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddFeedView()
-    }
-}
-
+//
+//struct AddFeedView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddFeedView()
+//            .environmentObject(FeedStore())
+//            .environmentObject(UserStore())
+//    }
+//}
+//
