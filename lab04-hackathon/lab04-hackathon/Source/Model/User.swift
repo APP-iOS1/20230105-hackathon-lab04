@@ -10,7 +10,7 @@ struct User {
     /// user의 email
     var email: String
     /// 한 줄 소개
-    var introduce: String
+    var introduce: String?
     /// 팔로워 배열
     var followers: [String]?
     /// 팔로잉 배열

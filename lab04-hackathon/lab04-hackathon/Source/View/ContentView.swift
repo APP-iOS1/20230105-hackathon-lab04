@@ -28,7 +28,6 @@ struct ContentView: View {
                     ProfileView()
                     
                 }
-                
                 TabBarView(selectedTabBar: $selectedTabBar)
                     .frame(height: 40)
             }

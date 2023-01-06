@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FeedView: View {
-    @State private var showMenu = false
+    @State var showingMenu = false
     @EnvironmentObject var feed: FeedStore
     
     
@@ -20,46 +20,58 @@ struct FeedView: View {
             .onEnded {
                 if $0.translation.width < -100 {
                     withAnimation {
-                        showMenu = false
+                        showingMenu.toggle()
                     }
                 }
             }
         
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                ScrollView {
-                    ForEach(feed.feeds, id: \.self) { feed in
-                        FeedCell(feed: feed)
-                    }
-                }
-                .frame(width: geometry.size.width, height: geometry.size.height)
-                .offset(x: showMenu ? geometry.size.width/2 : 0)
-                .disabled(showMenu ? true : false)
-                if showMenu {
-                    FeedMenu()
-                        .frame(width: geometry.size.width/2)
-                        .transition(.move(edge: .leading))
-                }
-            }
-            .gesture(drag)
-        }
-        
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    withAnimation {
-                        showMenu.toggle()
-                    }
-                } label: {
-                    Image(systemName: "line.3.horizontal")
-                }
-            }
+        ZStack {
             
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    AddFeedView()
-                } label: {
-                    Image(systemName: "plus")
+            Color("background")
+                .ignoresSafeArea()
+            
+            GeometryReader { geometry in
+                ZStack(alignment: .leading) {
+                    ScrollView {
+                        ForEach(feed.feedsorted, id: \.self) { feed in
+                            FeedCell(feed: feed)
+                        }
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .offset(x: showingMenu ? geometry.size.width/2 : 0)
+                    .disabled(showingMenu ? true : false)
+                    if showingMenu {
+                        FeedMenu(showingMenu: $showingMenu)
+                            .frame(width: geometry.size.width/2)
+                            .transition(.move(edge: .leading))
+                    }
+                }
+                .gesture(drag)
+            }
+            .toolbar {
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        withAnimation {
+                            showingMenu.toggle()
+                        }
+                    } label: {
+                        Image("line")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        AddFeedView()
+                    } label: {
+                        Image("plus")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
+                    }
                 }
             }
         }

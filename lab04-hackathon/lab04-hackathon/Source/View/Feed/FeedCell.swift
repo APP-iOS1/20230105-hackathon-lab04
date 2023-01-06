@@ -8,61 +8,86 @@
 import SwiftUI
 
 struct FeedCell: View {
+    
     let feed: Feed
     
     var body: some View {
-        VStack {
-            // 제목
-            HStack {
-                Text(feed.title)
-                    .font(.largeTitle)
-                    .padding(EdgeInsets(top: 5, leading: 5, bottom: -5, trailing: 0))
-                Spacer()
-            }
+        
+        ZStack {
+            Color("background")
+                .ignoresSafeArea()
             
-            // 사진
-            Rectangle()
-                .fill(.gray)
-                .frame(width: Screen.maxWidth, height: Screen.maxWidth)
-            Group {
+            VStack {
+                // 제목
                 HStack {
-                    // 하트
-                    Group {
+                    Text(feed.title)
+                        .font(.cafeTitle)
+                        .padding(EdgeInsets(top: 5, leading: 5, bottom: -5, trailing: 0))
+                    Spacer()
+                }
+                
+//                 사진
+                Image(uiImage: feed.feedImage ?? UIImage())
+                    .resizable()
+                    .frame(width: Screen.maxWidth, height: Screen.maxWidth)
+
+                Group {
+                    HStack {
+                        // 하트
+                        Group {
+                            
+                            Image("like")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20)
+                            Text("1234")
+                                .font(.cafeCallout2)
+                        }
                         
-                        Image(systemName: "heart")
-                        Text("1234")
+                        // 댓글
+                        Group {
+                            Image("comment")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20)
+                            Text("12")
+                                .font(.cafeCallout2)
+                        }
+                        Spacer()
+                        Text("\(feed.createdDate)")
+                            .font(.cafeCallout2)
                     }
-                    
+                    // 피드 Description
+                    HStack {
+                        Text(feed.description)
+                            .font(.cafeCallout2)
+                        Spacer()
+                    }
                     // 댓글
-                    Group {
-                        Image(systemName: "message")
-                        Text("12")
+                    HStack {
+                        // 프로필
+                        Group {
+                            Image("person")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20)
+                            Text("주희 :").offset(x: -5)
+                                .font(.cafeCallout2)
+                            Text("햄뿡이 기여워").offset(x: -5)
+                                .font(.cafeCallout2)
+                        }
+                        Spacer()
+                        NavigationLink {
+                            CommentCell(feed: feed)
+                        } label: {
+                            Text("댓글 모두 보기")
+                                .font(.cafeCallout2)
+                                .foregroundColor(.gray)
+                        }
                     }
-                    Spacer()
-                    Text("1월 4일")
-                }
-                // 피드 Description
-                HStack {
-                    Text(feed.description)
-                    Spacer()
-                }
-                // 댓글
-                HStack {
-                    // 프로필
-                    Group {
-                        Image(systemName: "person.circle.fill")
-                        Text("주희 :").offset(x: -5)
-                        Text("햄뿡이 기여워").offset(x: -5)
-                    }
-                    Spacer()
-                    NavigationLink {
-                        CommentCell(feed: feed)
-                    } label: {
-                        Text("댓글 모두 보기")
-                    }
-                }
-            }.padding([.leading, .trailing], 3)
-            Divider()
+                }.padding([.leading, .trailing], 3)
+                Divider()
+            }
         }
     }
 }
