@@ -19,7 +19,7 @@ struct ProfileView: View {
     ]
     @EnvironmentObject var userVM : UserStore
     @EnvironmentObject var feed: FeedStore
-
+    
     
     @State private var drawingItem: [DrawingItem] = [
         DrawingItem(imageName: "1"),
@@ -32,8 +32,13 @@ struct ProfileView: View {
         DrawingItem(imageName: "8"),
         DrawingItem(imageName: "9")
     ]
+    // 내용을 입력해주세요 ( 자기소개 )?
+    @State private var writeContent : String = ""
+    @FocusState private var writeIsFocused: Bool
+    
     
     @State private var showingAlert = false
+    
     
     var body: some View {
         
@@ -49,8 +54,6 @@ struct ProfileView: View {
                         .onAppear{
                             userVM.requestUserData()
                         }
-                    //                    Text("김튜나")
-                        .font(.cafeTitle2)
                     Spacer()
                     
                     Button {
@@ -69,13 +72,14 @@ struct ProfileView: View {
                     }
                 }
                 .padding()
-                
+                //자기소개
                 VStack {
-                    // 자기소개 없을 때 조건 처리하기
-                    Text ("내용을 입력해주세요")
+                    TextField("내용을 입력해주세요", text:$writeContent)
                         .font(.cafeCaption2)
                         .frame(width: 340, height: 150, alignment: .leading)
                         .padding()
+                        .focused($writeIsFocused)
+                        
                 }
                 .overlay (
                     RoundedRectangle(cornerRadius: 10)
@@ -84,7 +88,11 @@ struct ProfileView: View {
                 )
                 .overlay(
                     Button {
-                        
+                        // 자기소개 업데이트
+                        writeContent = userVM.updateUserDataIntroduce(content: writeContent)
+                        // 텍스트필드에서 손 떼게
+                        writeIsFocused = false
+
                     } label: {
                         Image("new")
                             .resizable()
@@ -106,7 +114,7 @@ struct ProfileView: View {
                         
                         // 데이터 연동 후 아무것도 없을때 조건 처리하기
                         LazyVGrid(columns: columns, spacing: 3) {
-
+                            
                             ForEach(feed.feeds, id: \.self) { feed in
                                 
                                 NavigationLink {
@@ -117,12 +125,12 @@ struct ProfileView: View {
                                         .scaledToFit()
                                         .frame(width: 127, height: 127)
                                         .overlay(
-                                        Rectangle()
-                                            .stroke(Color.gray, lineWidth: 0.3)
-
+                                            Rectangle()
+                                                .stroke(Color.gray, lineWidth: 0.3)
+                                            
                                         )
                                 }
-                                    
+                                
                             }
                         }
                         .padding(.leading, 4)

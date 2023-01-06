@@ -31,6 +31,7 @@ struct lab04_hackathonApp: App {
                         
                 }
                 .environmentObject(authViewModel)
+                .environmentObject(userViewModel)
                 .onOpenURL { url in
                     GIDSignIn.sharedInstance.handle(url)
                 }
