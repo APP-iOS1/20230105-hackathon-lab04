@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		634DC66E2967A4D8000E3324 /* ProfileSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC66D2967A4D8000E3324 /* ProfileSheetView.swift */; };
 		63828F652966BF7F007D6CD0 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63828F642966BF7F007D6CD0 /* TabBarView.swift */; };
 		6A03A0BB2966FD4700A44765 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A03A0BA2966FD4700A44765 /* CommentCell.swift */; };
 		6A4CEE462966C02C00484B6B /* FeedMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CEE452966C02C00484B6B /* FeedMenu.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		634DC66D2967A4D8000E3324 /* ProfileSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetView.swift; sourceTree = "<group>"; };
 		63828F642966BF7F007D6CD0 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		6A03A0BA2966FD4700A44765 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		6A4CEE452966C02C00484B6B /* FeedMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMenu.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				FA99084429665200001A8124 /* ProfileView.swift */,
+				634DC66D2967A4D8000E3324 /* ProfileSheetView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				FA99084B29665234001A8124 /* FeedView.swift in Sources */,
 				FA99088E296690F9001A8124 /* LoginView.swift in Sources */,
 				FA99083B29665184001A8124 /* Feed.swift in Sources */,
+				634DC66E2967A4D8000E3324 /* ProfileSheetView.swift in Sources */,
 				FA99088C296690F0001A8124 /* AuthenticationView.swift in Sources */,
 				FA99088A296690EA001A8124 /* AuthenticatedView.swift in Sources */,
 				FA99082029664FBB001A8124 /* ContentView.swift in Sources */,

@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct DrawingItem: Identifiable {
-    var id = UUID()
-    var imageName: String
-}
+//struct DrawingItem: Identifiable {
+//    var id = UUID()
+//    var imageName: String
+//}
 
 struct ProfileView: View {
     
@@ -21,22 +21,22 @@ struct ProfileView: View {
     @EnvironmentObject var feed: FeedStore
     
     
-    @State private var drawingItem: [DrawingItem] = [
-        DrawingItem(imageName: "1"),
-        DrawingItem(imageName: "2"),
-        DrawingItem(imageName: "3"),
-        DrawingItem(imageName: "4"),
-        DrawingItem(imageName: "5"),
-        DrawingItem(imageName: "6"),
-        DrawingItem(imageName: "7"),
-        DrawingItem(imageName: "8"),
-        DrawingItem(imageName: "9")
-    ]
+//    @State private var drawingItem: [DrawingItem] = [
+//        DrawingItem(imageName: "1"),
+//        DrawingItem(imageName: "2"),
+//        DrawingItem(imageName: "3"),
+//        DrawingItem(imageName: "4"),
+//        DrawingItem(imageName: "5"),
+//        DrawingItem(imageName: "6"),
+//        DrawingItem(imageName: "7"),
+//        DrawingItem(imageName: "8"),
+//        DrawingItem(imageName: "9")
+//    ]
     // 내용을 입력해주세요 ( 자기소개 )?
     @State private var writeContent : String = ""
     @FocusState private var writeIsFocused: Bool
     
-    
+    @State private var sheetShowing = false
     @State private var showingAlert = false
     
     
@@ -74,12 +74,12 @@ struct ProfileView: View {
                 .padding()
                 //자기소개
                 VStack {
-                    TextField("내용을 입력해주세요", text:$writeContent)
+                    Text("\(writeContent)")
                         .font(.cafeCaption2)
                         .frame(width: 340, height: 150, alignment: .leading)
                         .padding()
                         .focused($writeIsFocused)
-                        
+                    
                 }
                 .overlay (
                     RoundedRectangle(cornerRadius: 10)
@@ -87,12 +87,15 @@ struct ProfileView: View {
                         .foregroundColor(.gray)
                 )
                 .overlay(
+                    
+                    
                     Button {
+                        sheetShowing.toggle()
                         // 자기소개 업데이트
-                        writeContent = userVM.updateUserDataIntroduce(content: writeContent)
+                        //                        writeContent = userVM.updateUserDataIntroduce(content: writeContent)
                         // 텍스트필드에서 손 떼게
-                        writeIsFocused = false
-
+                        //                        writeIsFocused = false
+                        
                     } label: {
                         Image("new")
                             .resizable()
@@ -127,7 +130,6 @@ struct ProfileView: View {
                                         .overlay(
                                             Rectangle()
                                                 .stroke(Color.gray, lineWidth: 0.3)
-                                            
                                         )
                                 }
                                 
@@ -142,6 +144,10 @@ struct ProfileView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(.clear)
                 )
+            }
+            .sheet(isPresented: $sheetShowing) {
+                ProfileSheetView(sheetShowing: $sheetShowing)
+                    .presentationDetents([.medium])
             }
         }
     }
