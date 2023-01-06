@@ -30,7 +30,7 @@ struct ProfileView: View {
             VStack {
                 
                 HStack {
-                    Text(userVM.user.userName)
+                    Text(userVM.user.userName ?? "")
                         .font(.cafeTitle2)
                         .onAppear{
                             userVM.requestUserData()
@@ -138,9 +138,9 @@ struct ProfileView: View {
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView().environmentObject(UserStore()).environmentObject(FeedStore())
-    }
-}
+//struct ProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileView().environmentObject(UserStore()).environmentObject(FeedStore())
+//    }
+//}
 

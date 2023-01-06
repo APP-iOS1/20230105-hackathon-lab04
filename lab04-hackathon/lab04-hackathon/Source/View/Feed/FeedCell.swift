@@ -22,8 +22,8 @@ struct FeedCell: View {
                 // 제목
                 HStack {
                     Text(feed.title)
-                        .font(.cafeTitle)
-                        .padding(EdgeInsets(top: 5, leading: 5, bottom: -5, trailing: 0))
+                        .font(.custom("Cafe24Ssurround", size: 23))
+                        .padding(EdgeInsets(top: 5, leading: 10, bottom: -5, trailing: 0))
                     Spacer()
                 }
                 
@@ -31,10 +31,13 @@ struct FeedCell: View {
                 Image(uiImage: feed.feedImage ?? UIImage())
                     .resizable()
                     .frame(width: Screen.maxWidth, height: Screen.maxWidth)
+                    .padding(.top, 10)
+                    .padding(.bottom, 10)
 
                 Group {
                     HStack {
                         // 하트
+
 //                        Group {
 //
 //                            Image("like")
@@ -50,7 +53,7 @@ struct FeedCell: View {
                             Image("comment")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 20)
+                                .frame(width: 25)
                             Text("\(commentStore.comments.count)")
                                 .font(.cafeCallout2)
                         }
@@ -58,12 +61,15 @@ struct FeedCell: View {
                         Text("\(feed.createdDate)")
                             .font(.cafeCallout2)
                     }
+                    .padding(.top, 10)
+                    .padding(.bottom, 10)
                     // 피드 Description
                     HStack {
                         Text(feed.description)
-                            .font(.cafeCallout2)
+                            .font(.cafeHeadline2)
                         Spacer()
                     }
+                    .padding(.bottom, 10)
                     // 댓글
                     HStack {
                         // 프로필
