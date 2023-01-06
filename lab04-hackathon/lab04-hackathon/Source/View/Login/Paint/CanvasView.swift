@@ -28,11 +28,9 @@ struct CanvasView: View {
                         SaveImage()
                         showingSaveAlert.toggle()
                     }, label: {
-                        Image("down")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20)
-                        
+                        Text("저장")
+                            .font(.cafeCallout2)
+                            .foregroundColor(.black)
                     })
                     .alert("그림이 저장되었습니다.", isPresented: $showingSaveAlert) {
                         Button("확인", role: .cancel) { }
@@ -42,10 +40,9 @@ struct CanvasView: View {
                     Button(action: {
                         showingAlert = true
                     }, label: {
-                        Image("new")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20)
+                        Text("새로그리기")
+                            .font(.cafeCallout2)
+                            .foregroundColor(.black)
                     })
                     .alert("새로 그리시겠습니까?", isPresented: $showingAlert) {
                         Button("취소", role: .cancel) { }
@@ -68,10 +65,13 @@ struct CanvasView: View {
                         undoManager?.undo()
                         
                     }, label: {
-                        Image("reload2")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20)
+                        VStack {
+                            Image("reload2")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20)
+                        }
+                        
                     })
                     .padding(.trailing,40)
                     Button(action: {
@@ -86,11 +86,8 @@ struct CanvasView: View {
                     Button(action: {
                         toggle.toggle()
                     }, label: {
-                        Image(systemName: "pencil.tip.crop.circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20)
-                            .foregroundColor(Color.black)
+                        PecilView(toggle: $toggle)
+                        
                     })
                     .padding(.leading,40)
                 }
@@ -133,3 +130,10 @@ struct DrawingView : UIViewRepresentable {
 
 }
 
+struct PecilView: View {
+    @Binding var toggle: Bool
+
+    var body: some View {
+        Image(toggle ? "pencilTipBrown" : "pencilTipBlack")
+    }
+}
