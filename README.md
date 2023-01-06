@@ -1,4 +1,4 @@
-<h1 align="middle">PENCHAT(Tech!Ting)</h1>
+<h1 align="middle">PENCHAT</h1>
 
 ## ADS 및 페르소나
 ```
