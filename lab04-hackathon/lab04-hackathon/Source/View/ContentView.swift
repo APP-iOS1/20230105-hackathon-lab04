@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var feed: FeedStore
+    @EnvironmentObject var user: UserStore
     @State private var selectedTabBar: SelectedTab = .second
     
     var body: some View {
@@ -24,6 +25,7 @@ struct ContentView: View {
                     CanvasView()
                 case .second:
                     FeedView()
+                        .environmentObject(user)
                 case .third:
                     ProfileView()
                     

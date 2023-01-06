@@ -10,6 +10,7 @@ import SwiftUI
 struct FeedView: View {
     @State var showingMenu = false
     @EnvironmentObject var feed: FeedStore
+    @EnvironmentObject var user: UserStore
     
     
     let data = Feed.dummy
@@ -33,6 +34,7 @@ struct FeedView: View {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     ScrollView {
+
                         if feed.feedsorted.isEmpty {
                             Spacer()
                             FeedCellEmpty()

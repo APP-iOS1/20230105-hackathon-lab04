@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FeedCell: View {
-    
+    @EnvironmentObject var user: UserStore
     let feed: Feed
     
     var body: some View {
@@ -79,6 +79,7 @@ struct FeedCell: View {
                         Spacer()
                         NavigationLink {
                             CommentCell(feed: feed)
+                                .environmentObject(user)
                         } label: {
                             Text("댓글 모두 보기")
                                 .font(.cafeCallout2)
