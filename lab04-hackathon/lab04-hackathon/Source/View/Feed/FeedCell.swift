@@ -26,10 +26,11 @@ struct FeedCell: View {
                     Spacer()
                 }
                 
-                // 사진
-                Rectangle()
-                    .fill(.gray)
+//                 사진
+                Image(uiImage: feed.feedImage ?? UIImage())
+                    .resizable()
                     .frame(width: Screen.maxWidth, height: Screen.maxWidth)
+
                 Group {
                     HStack {
                         // 하트
@@ -53,7 +54,7 @@ struct FeedCell: View {
                                 .font(.cafeCallout2)
                         }
                         Spacer()
-                        Text("1월 4일")
+                        Text("\(feed.createdDate)")
                             .font(.cafeCallout2)
                     }
                     // 피드 Description
