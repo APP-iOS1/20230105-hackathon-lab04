@@ -105,7 +105,7 @@ struct ProfileView: View {
                             ForEach(feed.feeds, id: \.self) { feed in
                                 
                                 NavigationLink {
-                                    FeedCell(feed: feed)
+                                    CanvasDetailView(feed: feed)
                                 } label: {
                                     if userVM.user.userId == feed.userId {
                                         Image(uiImage: feed.feedImage ?? UIImage())

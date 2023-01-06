@@ -59,6 +59,7 @@
 		FA99088E296690F9001A8124 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99088D296690F9001A8124 /* LoginView.swift */; };
 		FA9908902966910E001A8124 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99088F2966910E001A8124 /* SignupView.swift */; };
 		FA99089429669C24001A8124 /* DrawingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99089329669C24001A8124 /* DrawingStore.swift */; };
+		FAB625912967F73600B58342 /* CanvasDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB625902967F73600B58342 /* CanvasDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,7 @@
 		FA99088D296690F9001A8124 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FA99088F2966910E001A8124 /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		FA99089329669C24001A8124 /* DrawingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingStore.swift; sourceTree = "<group>"; };
+		FAB625902967F73600B58342 /* CanvasDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +304,7 @@
 			children = (
 				FA99084429665200001A8124 /* ProfileView.swift */,
 				634DC66D2967A4D8000E3324 /* ProfileSheetView.swift */,
+				FAB625902967F73600B58342 /* CanvasDetailView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				FA99088429668488001A8124 /* Comment.swift in Sources */,
 				FA99084B29665234001A8124 /* FeedView.swift in Sources */,
 				FA99088E296690F9001A8124 /* LoginView.swift in Sources */,
+				FAB625912967F73600B58342 /* CanvasDetailView.swift in Sources */,
 				FA99083B29665184001A8124 /* Feed.swift in Sources */,
 				634DC66E2967A4D8000E3324 /* ProfileSheetView.swift in Sources */,
 				FA99088C296690F0001A8124 /* AuthenticationView.swift in Sources */,
