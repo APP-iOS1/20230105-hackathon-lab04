@@ -46,6 +46,19 @@ final class CommentStore: ObservableObject {
             })
     }
     
+    func create(with comment: Comment) {
+        ref.collection("Comment")
+            .document(comment.commentId)
+            .setData([
+                "commentId": comment.commentId,
+                "feedId": comment.feedId,
+                "userId": comment.userId,
+                "userName": comment.userName,
+                "content": comment.content,
+                "date": comment.date
+            ])
+    }
+    
     func create(content: String, feed: Feed, user: User) {
         let commentId: String = UUID().uuidString
         ref.collection("Comment")
