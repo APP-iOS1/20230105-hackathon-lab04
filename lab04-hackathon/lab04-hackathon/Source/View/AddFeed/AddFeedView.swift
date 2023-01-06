@@ -183,8 +183,19 @@ struct AddFeedView: View {
                     let feedId = UUID().uuidString
                     let currenTitle: String = drawingTitle
                     let currentDescription: String = drawingDescription
-                    feedStore.uploadImage(image: selectedImageData, imageURL: "")
-                    feedStore.create(Feed(feedId: feedId, userId: currentUser.user.userId, title: currenTitle, imageURL: "", description: currentDescription, category: currentCategory, userName: currentUser.currentUserName!, date: Date.now))
+                    feedStore.uploadImage(image: selectedImageData, imageURL: feedId)
+                    feedStore.create(
+                        Feed(
+                            feedId: feedId,
+                            userId: currentUser.user.userId,
+                            title: currenTitle,
+                            imageURL: feedId,
+                            description: currentDescription,
+                            category: currentCategory,
+                            userName: currentUser.user.userName,
+                            date: Date.now
+                        )
+                    )
                 } label: {
                     Text("완료")
                         .font(.cafeHeadline2)
