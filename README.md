@@ -32,7 +32,8 @@
 
 
 ## 구현 동작
-앱 캡쳐본 업로드 예정
+![simulator_screenshot_03F0C52C-281A-47B5-AC0A-9B90F0563E7F](https://user-images.githubusercontent.com/91583287/210932599-fe35e1e1-ce9e-47b2-bd22-dabea78a1d87.png)
+
 
 ## 데이터 구조 
 ```
