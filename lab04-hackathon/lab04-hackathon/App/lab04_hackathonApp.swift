@@ -17,29 +17,45 @@ struct lab04_hackathonApp: App {
     @StateObject var feedViewModel = FeedStore()
     @StateObject var authViewModel = AuthenticationViewModel()
     @StateObject var userViewModel = UserStore()
+    
+    @State private var isActive = false
+
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                AuthenticatedView {
-                    
-                    //
-                } content: {
-                    ContentView()
-                        .environmentObject(feedViewModel)
-                        .environmentObject(authViewModel)
-                        .environmentObject(userViewModel)
+                
+                if isActive {
+                    AuthenticatedView {
                         
-                }
-                .environmentObject(authViewModel)
-                .environmentObject(userViewModel)
-                .onOpenURL { url in
-                    GIDSignIn.sharedInstance.handle(url)
-                }
-                .onAppear {
-                    GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-                        // Check if `user` exists; otherwise, do something with `error`
+                        //
+                    } content: {
+                        ContentView()
+                            .environmentObject(feedViewModel)
+                            .environmentObject(authViewModel)
+                            .environmentObject(userViewModel)
+                            
                     }
+                    .environmentObject(authViewModel)
+                    .environmentObject(userViewModel)
+                    .onOpenURL { url in
+                        GIDSignIn.sharedInstance.handle(url)
+                    }
+                    .onAppear {
+                        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+                            // Check if `user` exists; otherwise, do something with `error`
+                        }
+                    }
+                } else {
+                    Lottie(filename: "lottie2")
+                        .background(Color("background"))
+                        .edgesIgnoringSafeArea(.all)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.7) {
+                                self.isActive = true
+                            }
+                        }
                 }
+                                
             }
             
         }

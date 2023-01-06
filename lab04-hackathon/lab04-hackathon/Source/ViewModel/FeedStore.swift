@@ -41,7 +41,8 @@ class FeedStore: ObservableObject {
         db.collection("Feed").order(by: "date", descending: true)
             .addSnapshotListener { snapshot, error in
                 self.feeds.removeAll()
-                
+                self.feedsorted.removeAll()
+
                 if let snapshot = snapshot {
                     for document in snapshot.documents {
                         let feedId: String = document.documentID
