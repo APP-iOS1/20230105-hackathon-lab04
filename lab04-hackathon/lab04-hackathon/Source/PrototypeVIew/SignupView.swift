@@ -172,7 +172,7 @@ struct SignupView: View {
                             if viewModel.authenticationState != .authenticating {
                                 Text("회원가입")
                                     .font(.cafeCallout)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(!viewModel.isValid ? .gray : .black )
                             }
                             else {
                                 ProgressView()
