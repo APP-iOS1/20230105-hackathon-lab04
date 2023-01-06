@@ -10,6 +10,7 @@ import SwiftUI
 struct FeedView: View {
     @State var showingMenu = false
     @EnvironmentObject var feed: FeedStore
+    @EnvironmentObject var currentUser: UserStore
     
     
     let data = Feed.dummy
@@ -73,6 +74,9 @@ struct FeedView: View {
                             .frame(width: 20)
                     }
                 }
+            }
+            .onAppear {
+                feed.read()
             }
         }
     }
