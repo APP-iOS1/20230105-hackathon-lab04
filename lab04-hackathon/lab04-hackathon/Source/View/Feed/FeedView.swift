@@ -35,6 +35,7 @@ struct FeedView: View {
                     ScrollView {
                         ForEach(feed.feedsorted, id: \.self) { feed in
                             FeedCell(feed: feed)
+                                .padding(.bottom)
                         }
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)

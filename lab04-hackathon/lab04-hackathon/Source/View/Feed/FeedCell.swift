@@ -85,7 +85,7 @@ struct FeedCell: View {
                                 .foregroundColor(.gray)
                         }
                     }
-                }.padding([.leading, .trailing], 3)
+                }.padding([.leading, .trailing], 10)
                 Divider()
             }
         }
