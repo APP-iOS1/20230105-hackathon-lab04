@@ -42,10 +42,12 @@
 | :----------------------------------------------------------: | :---------------------------------------------: | :-------------------------------------------------: |:----------------------------------------------------------: |
 |<img src="https://avatars.githubusercontent.com/u/39407635?v=4" width=200> | <img src="https://avatars.githubusercontent.com/u/91583287?v=4" width=200>  | <img src="https://avatars.githubusercontent.com/u/107897929?v=4" width=200> | <img src="https://avatars.githubusercontent.com/u/68586179?v=4" width=200> |
 
-| 📎지정훈<br/>[@jeonghoonji](https://github.com/jeonghoonji)<br/> | 📎장다영<br/> [@Da01002](https://github.com/Da01002)<br/> | 📎박정우<br/>[@
-Jungwoo Park](https://github.com/
-Jungwoo Park)<br/> | 📎서광현<br/> [@seo-kh](https://github.com/seo-kh)<br/> |
-| :----------------------------------------------------------: | :---------------------------------------------: | :-------------------------------------------------: |:----------------------------------------------------------: |
+| 📎지정훈<br/> [@jeonghoonji](https://github.com/jeonghoonji)<br/> |  📎장다영<br/> [@Da01002-b](https://github.com/Da01002)<br/> | 📎박정우<br/> [@Jungwoo Park](https://github.com/Jungwoo Park)<br/> | 📎서광현<br/> [@seo-kh](https://github.com/seo-kh)<br/> |
+| :---------------------------------------------: | :-------------------------------------------------: | :----------------------------------------------------------: | :---------------------------------------------: |
 |<img src="https://avatars.githubusercontent.com/u/73868968?v=4" width=200> | <img src="https://avatars.githubusercontent.com/u/80445363?v=4" width=200>  | <img src="[https://avatars.githubusercontent.com/u/107897929?v=4](https://avatars.githubusercontent.com/u/48409306?v=4)" width=200> | <img src="https://avatars.githubusercontent.com/u/68586179?v=4" width=200> |
+
+
+
+
 
 
