@@ -16,19 +16,13 @@ final class CommentStore: ObservableObject {
     @Published var comments: [Comment] = []
     private var ref = Firestore.firestore()
     
-    init(feedId: String) {
-        read(feedId: feedId)
-    }
-    
-    var listener: ListenerRegistration?
-    
     func read(feedId: String) {
-//        listener = ref.collection("Comment")
+        self.comments = []
         ref.collection("Comment")
             .whereField("feedId", isEqualTo: feedId)
             .order(by: "date", descending: true)
-            .addSnapshotListener({ snapshot, error in
-                if let error = error { print(error) }
+            .getDocuments(completion: { snapshot, error in
+                if let error = error { print("\ncommentstore의 get에서 에러남. \(error)\n")}
                 
                 if let snapshot = snapshot {
                     for document in snapshot.documents {
@@ -52,26 +46,6 @@ final class CommentStore: ObservableObject {
                         self.comments.append(comment)
                     }
                 }
-                
-//                guard let documents = snapshot?.documents else { return }
-//                self.comments = documents.map {
-//                    let dict: [String: Any] = $0.data()
-//                    let commentId = dict["commentId"] as? String ?? ""
-//                    let feedId = dict["feedId"] as? String ?? ""
-//                    let userId = dict["userId"] as? String ?? ""
-//                    let userName = dict["userName"] as? String ?? ""
-//                    let content = dict["content"] as? String ?? ""
-//                    let date = (dict["date"] as? Timestamp)?.dateValue() ?? Date()
-//
-//                    return Comment(
-//                        commentId: commentId,
-//                        feedId: feedId,
-//                        userId: userId,
-//                        userName: userName,
-//                        content: content,
-//                        date: date
-//                    )
-//                }
             })
     }
     
@@ -114,9 +88,5 @@ final class CommentStore: ObservableObject {
         ref.collection("Comment")
             .document(comment.commentId)
             .delete()
-    }
-    
-    func detachListener() {
-        listener?.remove()
     }
 }
