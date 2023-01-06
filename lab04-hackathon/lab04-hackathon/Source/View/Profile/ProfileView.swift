@@ -15,7 +15,7 @@ struct ProfileView: View {
     @EnvironmentObject var userVM : UserStore
     @EnvironmentObject var feed: FeedStore
     @EnvironmentObject var viewModel : AuthenticationViewModel
-
+    
     @State private var writeContent : String = ""
     
     @State private var sheetShowing = false
@@ -104,16 +104,6 @@ struct ProfileView: View {
                             
                             ForEach(feed.feeds, id: \.self) { feed in
                                 
-                                //                                if (userVM.user.userId == feed.userId) {
-                                //                                        Text("""
-                                //                                                게시물이 없습니다.
-                                //                                                게시물을 남기러 가볼까요 ?
-                                //                                                아래의 홈버튼을 클릭해보세요 ;)
-                                //                                                """)
-                                //                                        .font(.cafeSubhead2)
-                                //
-                                //                                } else {
-                                //
                                 NavigationLink {
                                     FeedCell(feed: feed)
                                 } label: {
