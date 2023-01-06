@@ -14,6 +14,8 @@ struct CanvasView: View {
     @State var drawingImage: [Data] = []
     @State var toggle: Bool = false
     @State private var showingAlert = false
+    @State private var showingSaveAlert = false
+
 
     
     var body: some View {
@@ -24,6 +26,7 @@ struct CanvasView: View {
                 HStack {
                     Button(action : {
                         SaveImage()
+                        showingSaveAlert.toggle()
                     }, label: {
                         Image("down")
                             .resizable()
@@ -31,6 +34,9 @@ struct CanvasView: View {
                             .frame(width: 20)
                         
                     })
+                    .alert("사진이 저장되었습니다.", isPresented: $showingSaveAlert) {
+                        Button("확인", role: .cancel) { }
+                    }
                     .padding(.leading,20)
                     Spacer()
                     Button(action: {
