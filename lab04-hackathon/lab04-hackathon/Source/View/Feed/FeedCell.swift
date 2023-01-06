@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FeedCell: View {
     @EnvironmentObject var user: UserStore
+    @StateObject var commentStore: CommentStore = CommentStore()
     let feed: Feed
     
     var body: some View {
@@ -50,7 +51,7 @@ struct FeedCell: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 20)
-                            Text("12")
+                            Text("\(commentStore.comments.count)")
                                 .font(.cafeCallout2)
                         }
                         Spacer()
@@ -71,14 +72,18 @@ struct FeedCell: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 20)
-                            Text("주희 :").offset(x: -5)
+                                .opacity(commentStore.comments.isEmpty ? 0 : 1)
+                            Text("\(commentStore.comments.first?.userName ?? "")").offset(x: -5)
                                 .font(.cafeCallout2)
-                            Text("햄뿡이 기여워").offset(x: -5)
+                            Text("\(commentStore.comments.first?.content ?? "")")
+                                .offset(x: -5)
                                 .font(.cafeCallout2)
+                                .lineLimit(1)
+                                .truncationMode(Text.TruncationMode.tail)
                         }
                         Spacer()
                         NavigationLink {
-                            CommentCell(feed: feed)
+                            CommentCell(feed: feed, commentStore: commentStore)
                                 .environmentObject(user)
                         } label: {
                             Text("댓글 모두 보기")
@@ -89,6 +94,9 @@ struct FeedCell: View {
                 }.padding([.leading, .trailing], 10)
                 Divider()
             }
+        }
+        .onAppear {
+            commentStore.read(feedId: feed.feedId)
         }
     }
 }

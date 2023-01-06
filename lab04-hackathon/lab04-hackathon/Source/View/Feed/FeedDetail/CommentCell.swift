@@ -12,13 +12,8 @@ struct CommentCell: View {
     let emojis: [String] = ["🥰","🧐","🥹","😏","🙁","😒","😄","😅","😡","🥱","😪","🫠","😩","😐"]
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @EnvironmentObject var userStore: UserStore
-    @StateObject var commentStore: CommentStore
+    @ObservedObject var commentStore: CommentStore
     @State private var commentString: String = ""
-    
-    init(feed: Feed) {
-        self.feed = feed
-        self._commentStore = StateObject(wrappedValue: CommentStore(feedId: feed.feedId))
-    }
     
     var currentUser: User {
         userStore.requestUserData()
@@ -38,18 +33,15 @@ struct CommentCell: View {
                     .swipeActions {
                         Button("삭제", role: .destructive) {
                             commentStore.delete(comment: comment)
+                            if let index = commentStore.comments.firstIndex(where: { comment.commentId == $0.commentId }) {
+                                commentStore.comments.remove(at: index)
+                            }
                         }
                         .disabled(comment.userId != currentUser.userId)
                     }
             }
         }
         .listStyle(.plain)
-//        .onAppear(perform: {
-//            commentStore.read(feedId: feed.feedId)
-//        })
-//        .onDisappear(perform: {
-//            commentStore.detachListener()
-//        })
         .background(content: {
             Color("background")
                 .ignoresSafeArea()
@@ -93,10 +85,12 @@ struct CommentCell: View {
                             )
 
                             commentStore.create(with: comment)
+                            commentStore.comments.insert(comment, at: 0)
                             hideKeyboard()
                             commentString = ""
                         }
                         .font(.cafeSubhead)
+                        .disabled(commentString.isEmpty)
                     }
                     .padding(11)
                     .background {
@@ -113,6 +107,9 @@ struct CommentCell: View {
             .keyboardType(UIKeyboardType.twitter)
         }
         .scrollDismissesKeyboard(.interactively)
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
     
     func component(comment: Comment? = nil, isFeed: Bool = false) -> some View {
@@ -130,30 +127,11 @@ struct CommentCell: View {
                         .font(.cafeCaption)
                         .foregroundColor(.secondary)
                 }
-                Text(isFeed ? feed.description : comment?.content ?? "")
-                    .font(.cafeCallout2)
-                    .lineLimit(3)
+                    Text(isFeed ? feed.description : comment?.content ?? "")
+                        .font(.cafeCallout2)
+                        .lineLimit(3)
             }
         }
-//        .padding(.horizontal, 12.0)
     }
 }
 
-#if canImport(UIKit)
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-#endif
-
-
-struct CommentCell_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            CommentCell(feed: Feed.dummy[4])
-            //            .environmentObject(AuthenticationViewModel())
-        }
-            .environmentObject(FeedStore())
-    }
-}
