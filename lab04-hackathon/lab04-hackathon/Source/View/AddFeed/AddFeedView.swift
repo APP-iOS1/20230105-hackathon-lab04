@@ -15,8 +15,8 @@ struct AddFeedView: View {
     @ObservedObject var currentUser: UserStore = UserStore()
     @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var drawingCategory = ["풍경 그림", "캐릭터 그림", "인물 그림", "동물 그림"]
-    @State private var currentCategory : String = "풍경 그림"
+    var drawingCategory = ["풍경", "캐릭터", "인물", "동물"]
+    @State private var currentCategory : String = "풍경"
     @State private var index = 0
     @State private var drawingTitle = ""
     @State private var drawingDescription : String = ""
