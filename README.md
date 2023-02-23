@@ -21,6 +21,10 @@
 - `iPhone 14 pro 최적화`
 - `iOS 16.0`
 
+## 협업과정
+- Notion, Discord
+- [Figma](https://www.figma.com/file/fw0aE5IV3ZTj7xByEmAsH2/%EB%AA%A8%EB%91%90%EC%9D%98%ED%99%94%EB%B0%B1?node-id=0%3A1&t=r5t1ZKpFmUSPfb2S-1)
+
 
 ## 주요기능
 
