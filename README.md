@@ -90,7 +90,11 @@
 |<img src="https://avatars.githubusercontent.com/u/73868968?v=4" width=200> | <img src="https://avatars.githubusercontent.com/u/80445363?v=4" width=200>  | <img src="https://avatars.githubusercontent.com/u/48409306?v=4" width=200> | <img src="https://avatars.githubusercontent.com/u/104570633?v=4" width=200> |
 
 
+## 라이센스
+PENCHAT is available under the MIT license. See the [LICENSE](https://github.com/APPSCHOOL1-REPO/20230105-hackathon-lab04/blob/main/License) file for more info.
 
-
+- [Firebase](https://github.com/firebase/firebase-ios-sdk/blob/master/LICENSE) 
+- [GoogleSignIn](https://github.com/google/GoogleSignIn-iOS/blob/main/LICENSE)
+- [lottie](https://github.com/airbnb/lottie-ios/blob/master/LICENSE)
 
 
