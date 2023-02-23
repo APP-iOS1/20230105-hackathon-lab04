@@ -27,7 +27,6 @@
 		A7FC877D29667F0500AAD5EB /* PrototypeLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FC877C29667F0500AAD5EB /* PrototypeLoginView.swift */; };
 		A7FC877F29667F4400AAD5EB /* PrototypeSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FC877E29667F4400AAD5EB /* PrototypeSignIn.swift */; };
 		A7FC878129667F9300AAD5EB /* PrototypeFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FC878029667F9300AAD5EB /* PrototypeFeedView.swift */; };
-		A7FC87832966819D00AAD5EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7FC87822966819D00AAD5EB /* GoogleService-Info.plist */; };
 		A7FC87862966820700AAD5EB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC87852966820700AAD5EB /* GoogleSignIn */; };
 		A7FC87882966820700AAD5EB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC87872966820700AAD5EB /* GoogleSignInSwift */; };
 		A7FC878B2966823900AAD5EB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A7FC878A2966823900AAD5EB /* Lottie */; };
@@ -79,7 +78,6 @@
 		A7FC877C29667F0500AAD5EB /* PrototypeLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeLoginView.swift; sourceTree = "<group>"; };
 		A7FC877E29667F4400AAD5EB /* PrototypeSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeSignIn.swift; sourceTree = "<group>"; };
 		A7FC878029667F9300AAD5EB /* PrototypeFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeFeedView.swift; sourceTree = "<group>"; };
-		A7FC87822966819D00AAD5EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AD4F85502966B59F006E14EC /* lab04-hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lab04-hackathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4F85552966E8D3006E14EC /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		D544A3622966AFCB00F43C50 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 			children = (
 				D5A0F6582966C648004DA3EF /* Info.plist */,
 				D544A3612966AFB300F43C50 /* Font */,
-				A7FC87822966819D00AAD5EB /* GoogleService-Info.plist */,
 				FA99082E296650AA001A8124 /* Configuration */,
 				FA99082D29665072001A8124 /* App */,
 				FA99082C29665051001A8124 /* Source */,
@@ -438,7 +435,6 @@
 				FA99082229664FBD001A8124 /* Assets.xcassets in Resources */,
 				6AE794CD2967D8CD00F9C429 /* lottie2.json in Resources */,
 				D544A3652966AFE300F43C50 /* Cafe24Ssurround.ttf in Resources */,
-				A7FC87832966819D00AAD5EB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
