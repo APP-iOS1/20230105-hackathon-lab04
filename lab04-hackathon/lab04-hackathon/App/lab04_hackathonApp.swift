@@ -31,8 +31,6 @@ struct lab04_hackathonApp: App {
                     } content: {
                         ContentView()
                             .environmentObject(feedViewModel)
-                            .environmentObject(authViewModel)
-                            .environmentObject(userViewModel)
                             
                     }
                     .environmentObject(authViewModel)
