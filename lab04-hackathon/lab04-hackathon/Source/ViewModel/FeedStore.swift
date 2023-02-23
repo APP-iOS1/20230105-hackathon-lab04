@@ -59,20 +59,6 @@ class FeedStore: ObservableObject {
                         let storageRef = Storage.storage().reference()
                         let fileRef = storageRef.child("images/\(imageURL)")
                         
-//                        let feed = Feed(
-//                            feedId: feedId,
-//                            userId: userId,
-//                            title: title,
-//                            imageURL: imageURL,
-//                            description: description,
-//                            category: category,
-//                            userName: userName,
-//                            date: date,
-//                            feedImage: nil
-//                        )
-//                        self.feeds.append(feed)
-//                        self.feedsSorted.append(feed)
-                        
                         fileRef.getData(maxSize: 1 * 512 * 512) { data, error in
                             if error == nil && data != nil {
                                 let uiImage = UIImage(data: data!)!
@@ -83,6 +69,10 @@ class FeedStore: ObservableObject {
                                 self.feedsSorted.sort(by: {$0.createdDate > $1.createdDate})
                             }
                         }
+                        self.feeds = self.feeds.compactMap({ feed in
+                            print(feed)
+                            return feed
+                        })
                     }
                 }
             }
